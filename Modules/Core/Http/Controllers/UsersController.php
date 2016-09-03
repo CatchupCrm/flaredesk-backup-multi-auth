@@ -1,23 +1,23 @@
 <?php
-namespace App\Http\Controllers;
+namespace Modules\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Models\Ticket;
+use Modules\Core\Models\User;
+use Modules\Tickets\Models\Ticket;
 use Illuminate\Http\Request;
 use Gate;
 use Datatables;
 use Carbon;
 use PHPZen\LaravelRbac\Traits\Rbac;
 use Illuminate\Support\Facades\Input;
-use App\Models\Relation;
-use App\Http\Requests\User\UpdateUserRequest;
-use App\Http\Requests\User\StoreUserRequest;
-use App\Services\User\UserServiceContract;
-use App\Services\Role\RoleServiceContract;
-use App\Services\Department\DepartmentServiceContract;
-use App\Services\Setting\SettingServiceContract;
+use Modules\Models\Relation;
+use Modules\Core\Http\Requests\User\UpdateUserRequest;
+use Modules\Core\Http\Requests\User\StoreUserRequest;
+use Modules\Core\Services\User\UserServiceContract;
+use Modules\Core\Services\Role\RoleServiceContract;
+use Modules\Core\Services\Department\DepartmentServiceContract;
+use Modules\Core\Services\Setting\SettingServiceContract;
 
 class UsersController extends Controller
 {
@@ -72,10 +72,10 @@ class UsersController extends Controller
 
   public function ticketData($id)
   {
-    $tickets = Tickets::select(
-      ['id', 'title', 'created_at', 'deadline', 'fk_user_id_assign']
+    $tickets = Ticket::select(
+      ['id', 'title', 'created_at', 'deadline', 'fk_staff_id_assign']
     )
-      ->where('fk_user_id_assign', $id)->where('status', 1);
+      ->where('fk_staff_id_assign', $id)->where('status', 1);
     return Datatables::of($tickets)
       ->addColumn('titlelink', function ($tickets) {
         return '<a href="' . route('tickets.show', $tickets->id) . '">' . $tickets->title . '</a>';
@@ -93,10 +93,10 @@ class UsersController extends Controller
 
   public function closedTicketData($id)
   {
-    $tickets = Tickets::select(
-      ['id', 'title', 'created_at', 'deadline', 'fk_user_id_assign']
+    $tickets = Ticket::select(
+      ['id', 'title', 'created_at', 'deadline', 'fk_staff_id_assign']
     )
-      ->where('fk_user_id_assign', $id)->where('status', 2);
+      ->where('fk_staff_id_assign', $id)->where('status', 2);
     return Datatables::of($tickets)
       ->addColumn('titlelink', function ($tickets) {
         return '<a href="' . route('tickets.show', $tickets->id) . '">' . $tickets->title . '</a>';
@@ -114,7 +114,7 @@ class UsersController extends Controller
 
   public function relationData($id)
   {
-    $relations = Relation::select(['id', 'name', 'company_name', 'primary_number', 'email'])->where('fk_user_id', $id);
+    $relations = Relation::select(['id', 'name', 'company_name', 'primary_number', 'email'])->where('fk_staff_id', $id);
     return Datatables::of($relations)
       ->addColumn('relationlink', function ($relations) {
         return '<a href="' . route('relations.show', $relations->id) . '">' . $relations->name . '</a>';

@@ -14,6 +14,6 @@ Route::group(['prefix' => '/tickets'], function () {
   Route::post('/updatetime/{id}', 'TicketsController@updateTime');
   Route::post('/invoice/{id}', 'TicketsController@invoice');
   Route::post('/comments/{id}', 'CommentController@store');
-
+  Route::post('select_all', ['as' => 'select_all', 'uses' => 'TicketsController@select_all']);
   // append
 });

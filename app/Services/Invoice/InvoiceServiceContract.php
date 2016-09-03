@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Invoice;
+namespace Modules\Core\Invoice;
 interface InvoiceServiceContract
 {
 

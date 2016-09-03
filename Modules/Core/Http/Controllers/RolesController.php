@@ -1,12 +1,12 @@
 <?php
-namespace App\Http\Controllers;
+namespace Modules\Core\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Role;
-use App\Http\Requests\Role\StoreRoleRequest;
-use App\Services\Role\RoleServiceContract;
+use Modules\Core\Models\Role;
+use Modules\Core\Requests\Role\StoreRoleRequest;
+use Modules\Core\Services\Role\RoleServiceContract;
 
 class RolesController extends Controller
 {

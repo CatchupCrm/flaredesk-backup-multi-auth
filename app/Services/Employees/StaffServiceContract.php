@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Employee;
+namespace Modules\Core\Employee;
 interface StaffServiceContract
 {
 

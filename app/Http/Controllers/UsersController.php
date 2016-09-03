@@ -72,10 +72,10 @@ class UsersController extends Controller
 
   public function ticketData($id)
   {
-    $tickets = Tickets::select(
-      ['id', 'title', 'created_at', 'deadline', 'fk_user_id_assign']
+    $tickets = Ticket::select(
+      ['id', 'title', 'created_at', 'deadline', 'fk_staff_id_assign']
     )
-      ->where('fk_user_id_assign', $id)->where('status', 1);
+      ->where('fk_staff_id_assign', $id)->where('status', 1);
     return Datatables::of($tickets)
       ->addColumn('titlelink', function ($tickets) {
         return '<a href="' . route('tickets.show', $tickets->id) . '">' . $tickets->title . '</a>';
@@ -93,10 +93,10 @@ class UsersController extends Controller
 
   public function closedTicketData($id)
   {
-    $tickets = Tickets::select(
-      ['id', 'title', 'created_at', 'deadline', 'fk_user_id_assign']
+    $tickets = Ticket::select(
+      ['id', 'title', 'created_at', 'deadline', 'fk_staff_id_assign']
     )
-      ->where('fk_user_id_assign', $id)->where('status', 2);
+      ->where('fk_staff_id_assign', $id)->where('status', 2);
     return Datatables::of($tickets)
       ->addColumn('titlelink', function ($tickets) {
         return '<a href="' . route('tickets.show', $tickets->id) . '">' . $tickets->title . '</a>';
@@ -114,7 +114,7 @@ class UsersController extends Controller
 
   public function relationData($id)
   {
-    $relations = Relation::select(['id', 'name', 'company_name', 'primary_number', 'email'])->where('fk_user_id', $id);
+    $relations = Relation::select(['id', 'name', 'company_name', 'primary_number', 'email'])->where('fk_staff_id', $id);
     return Datatables::of($relations)
       ->addColumn('relationlink', function ($relations) {
         return '<a href="' . route('relations.show', $relations->id) . '">' . $relations->name . '</a>';

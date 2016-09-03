@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Employee;
+namespace Modules\Core\Employee;
 
 use App\Models\Employee;
 use App\Models\Ticket;

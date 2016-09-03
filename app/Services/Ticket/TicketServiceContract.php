@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Ticket;
+namespace Modules\Core\Ticket;
 interface TicketServiceContract
 {
 

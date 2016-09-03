@@ -25,30 +25,12 @@ class ModuleServiceProvider extends ServiceProvider
   public function register()
   {
     $this->app->register(RouteServiceProvider::class);
-    //$this->registerBindings();
+    $this->registerBindings();
   }
-
-
-
-
-
-
-
-
-
-
-
 
   private function registerBindings()
   {
-    $this->app->bind(
-      'Modules\Relations\Repositories\RelationRepository',
-      function () {
-        $repository = new \Modules\Relations\Repositories\Eloquent\EloquentRelationRepository(new \Modules\Relations\Models\Relation());
-        return $repository;
-
-      }
-    );
+    $this->app->bind('Modules\Relations\Services\Relation\RelationServiceContract', 'Modules\Relations\Services\Relation\RelationService');
     // add bindings
   }
 

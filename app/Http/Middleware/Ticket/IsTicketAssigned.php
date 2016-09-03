@@ -16,14 +16,14 @@ class IsTicketAssigned
    */
   public function handle($request, Closure $next)
   {
-    $ticket = Tickets::findOrFail($request->id);
+    $ticket = Ticket::findOrFail($request->id);
     $settings = Settings::all();
     $isAdmin = Auth()->user()->hasRole('administrator');
     $settingscomplete = $settings[0]['ticket_assign_allowed'];
     if ($isAdmin) {
       return $next($request);
     }
-    if ($settingscomplete == 1 && Auth()->user()->id != $ticket->fk_user_id_assign) {
+    if ($settingscomplete == 1 && Auth()->user()->id != $ticket->fk_staff_id_assign) {
       Session()->flash('flash_message_warning', 'Only assigned user are allowed to do this');
       return redirect()->back();
     }

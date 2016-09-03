@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\User;
+namespace Modules\Core\User;
 interface UserServiceContract
 {
 

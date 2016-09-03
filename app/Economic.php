@@ -10,10 +10,10 @@ class Economic
   protected static $apiKey;
 
 
-  protected function getRelation()
+  protected function getClient()
   {
     if (!$this->relation) {
-      $this->relation = new \GuzzleHttp\Relation();
+      $this->relation = new \GuzzleHttp\Client();
       $res = $this->relation->request('GET', 'https://restapi.e-conomic.com/customers', [
         'verify' => false,
         'headers' => [
@@ -30,7 +30,7 @@ class Economic
 
   public static function getContacts()
   {
-    $res = self::getRelation()->request('GET', 'https://restapi.e-conomic.com/customers ');
+    $res = self::getClient()->request('GET', 'https://restapi.e-conomic.com/customers ');
     return json_decode($res->getBody(), true);
   }
 }

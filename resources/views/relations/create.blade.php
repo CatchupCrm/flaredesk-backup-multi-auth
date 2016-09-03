@@ -112,8 +112,8 @@ $data = Session::get('data');
 
 
 <div class="form-group">
-{!! Form::label('fk_user_id', 'Assign user:', ['class' => 'control-label']) !!} 
-{!! Form::select('fk_user_id', $users, null, ['class' => 'form-control ui search selection top right pointing search-select', 'id' => 'search-select']) !!}
+{!! Form::label('fk_staff_id', 'Assign user:', ['class' => 'control-label']) !!}
+{!! Form::select('fk_staff_id', $users, null, ['class' => 'form-control ui search selection top right pointing search-select', 'id' => 'search-select']) !!}
 
 </div> 
 

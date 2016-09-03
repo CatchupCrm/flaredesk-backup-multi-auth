@@ -34,7 +34,7 @@ class UpdateRelationRequest extends Request
       'secondary_number' => 'max:10',
       'industry' => '',
       'company_type' => '',
-      'fk_user_id' => 'required'
+      'fk_staff_id' => 'required'
     ];
   }
 }

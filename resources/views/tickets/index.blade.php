@@ -31,7 +31,7 @@
         {data: 'titlelink', name: 'title'},
         {data: 'created_at', name: 'created_at'},
         {data: 'deadline', name: 'deadline'},
-        {data: 'fk_user_id_assign', name: 'fk_user_id_assign',},
+        {data: 'fk_staff_id_assign', name: 'fk_staff_id_assign',},
       ]
     });
   });

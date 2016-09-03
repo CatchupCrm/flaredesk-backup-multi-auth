@@ -4,7 +4,7 @@ use Illuminate\Routing\Router;
 /** @var Router $router */
 Route::group(['prefix' => '/relations'], function () {
 
-  Route::resource('relations', 'RelationsController');
+  Route::resource('relations', 'relRelationsController');
   Route::get('/', [
     'as' => 'admin.relations.relations.index',
     'uses' => 'RelationsController@index',

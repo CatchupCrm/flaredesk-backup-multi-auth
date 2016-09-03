@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Requests\Lead;
+namespace Modules\Leads\Requests\Lead;
 
 use App\Http\Requests\Request;
 

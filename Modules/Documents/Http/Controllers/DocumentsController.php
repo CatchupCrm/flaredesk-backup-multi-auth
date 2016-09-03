@@ -1,15 +1,15 @@
 <?php
-namespace App\Http\Controllers;
+namespace Modules\Documents\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Document;
+use Modules\Documents\Models\Document;
 use Session;
 use Excel;
 use Validator;
-use App\Models\Relation;
-use App\Models\Settings;
+use Modules\Relations\Models\Relation;
+use Modules\Core\Models\Settings;
 
 class DocumentsController extends Controller
 {

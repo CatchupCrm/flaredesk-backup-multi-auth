@@ -1,19 +1,19 @@
 <?php
-namespace App\Http\Controllers;
+namespace Modules\Relations\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Relation;
+use Modules\Relations\Models\Relation;
 use Illuminate\Http\Request;
 use Datatables;
 use Config;
 use Dinero;
-use App\Models\Settings;
-use App\Http\Requests\Relation\StoreRelationRequest;
-use App\Http\Requests\Relation\UpdateRelationRequest;
-use App\Services\User\UserServiceContract;
-use App\Services\Relation\RelationServiceContract;
-use App\Services\Setting\SettingServiceContract;
+use Modules\Core\Models\Settings;
+use Modules\Relations\Requests\Relation\StoreRelationRequest;
+use Modules\Relations\Requests\Relation\UpdateRelationRequest;
+use Modules\Core\Services\User\UserServiceContract;
+use Modules\Relations\Services\Relation\RelationServiceContract;
+use Modules\Core\Services\Setting\SettingServiceContract;
 
 class RelationsController extends Controller
 {

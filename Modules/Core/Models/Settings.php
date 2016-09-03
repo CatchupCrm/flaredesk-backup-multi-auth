@@ -1,5 +1,5 @@
 <?php
-namespace App\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,6 +19,6 @@ class Settings extends Model
 
   public function tickets()
   {
-    return $this->belongsTo(Tickets::class);
+    return $this->belongsTo(Ticket::class);
   }
 }

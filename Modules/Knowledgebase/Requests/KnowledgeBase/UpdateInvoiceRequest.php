@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Requests\Invoice;
+namespace Modules\Core\Http\Requests\Invoice;
 
 use App\Http\Requests\Request;
 

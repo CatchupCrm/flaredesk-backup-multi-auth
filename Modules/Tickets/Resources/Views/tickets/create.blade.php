@@ -34,8 +34,8 @@
 
   </div>
   <div class="form-group form-inline">
-    {!! Form::label('fk_user_id_assign', ' Assign User:', ['class' => 'control-label']) !!}
-    {!! Form::select('fk_user_id_assign', $users, null, ['class' => 'form-control']) !!}
+    {!! Form::label('fk_staff_id_assign', ' Assign User:', ['class' => 'control-label']) !!}
+    {!! Form::select('fk_staff_id_assign', $users, null, ['class' => 'form-control']) !!}
     @if(Request::get('relation') != "")
       {!! Form::hidden('fk_relation_id', Request::get('relation')) !!}
     @else

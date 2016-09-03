@@ -39,29 +39,29 @@ class User extends Authenticatable
 
   public function ticketsAssign()
   {
-    return $this->hasMany(Tickets::class, 'fk_user_id_assign', 'id')
+    return $this->hasMany(Ticket::class, 'fk_staff_id_assign', 'id')
       ->where('status', 1)
       ->orderBy('deadline', 'asc');
   }
 
   public function ticketsCreated()
   {
-    return $this->hasMany(Tickets::class, 'fk_user_id_created', 'id')->limit(10);
+    return $this->hasMany(Ticket::class, 'fk_staff_id_created', 'id')->limit(10);
   }
 
   public function ticketsCompleted()
   {
-    return $this->hasMany(Tickets::class, 'fk_user_id_assign', 'id')->where('status', 2);
+    return $this->hasMany(Ticket::class, 'fk_staff_id_assign', 'id')->where('status', 2);
   }
 
   public function ticketsAll()
   {
-    return $this->hasMany(Tickets::class, 'fk_user_id_assign', 'id')->whereIn('status', [1, 2]);
+    return $this->hasMany(Ticket::class, 'fk_staff_id_assign', 'id')->whereIn('status', [1, 2]);
   }
 
   public function leadsAll()
   {
-    return $this->hasMany(Leads::class, 'fk_user_id', 'id');
+    return $this->hasMany(Lead::class, 'fk_staff_id', 'id');
   }
 
   public function settings()
@@ -71,7 +71,7 @@ class User extends Authenticatable
 
   public function relationsAssign()
   {
-    return $this->hasMany(Relation::class, 'fk_user_id', 'id');
+    return $this->hasMany(Relation::class, 'fk_staff_id', 'id');
   }
 
   public function userRole()
@@ -91,6 +91,6 @@ class User extends Authenticatable
 
   public function isOnline()
   {
-    return Cache::has('user-is-online-' . $this->id);
+    return Cache::has('employee-is-online-' . $this->id);
   }
 }

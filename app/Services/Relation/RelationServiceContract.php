@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Relation;
+namespace Modules\Core\Relation;
 interface RelationServiceContract
 {
 

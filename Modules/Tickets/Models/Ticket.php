@@ -1,5 +1,5 @@
 <?php
-namespace App\Models;
+namespace Modules\Tickets\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon;
@@ -10,8 +10,8 @@ class Ticket extends Model
     'title',
     'description',
     'status',
-    'fk_user_id_assign',
-    'fk_user_id_created',
+    'fk_staff_id_assign',
+    'fk_staff_id_created',
     'fk_relation_id',
     'deadline'
   ];
@@ -21,7 +21,7 @@ class Ticket extends Model
 
   public function assignee()
   {
-    return $this->belongsTo(User::class, 'fk_user_id_assign');
+    return $this->belongsTo(User::class, 'fk_staff_id_assign');
   }
 
   public function relationAssignee()
@@ -31,7 +31,7 @@ class Ticket extends Model
 
   public function ticketCreator()
   {
-    return $this->belongsTo(User::class, 'fk_user_id_created');
+    return $this->belongsTo(User::class, 'fk_staff_id_created');
   }
 
   public function comments()

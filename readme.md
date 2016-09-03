@@ -13,14 +13,14 @@ Flarepoint is a new customer relationship management system (CRM) which purpose 
 
 **How to**
 
-- Insert project into empty folder / git clone https://github.com/Bottelet/Flarepoint-crm.git
-- Create a empty database table
-- Insert database credentials in Config\Database.php
+- Insert project into empty folder / git clone (repository url)
+- Create an empty database table
 - Run the following commands
 ```
+    copy .env.example .env
+    php artisan key:generate
     composer install
     php artisan migrate --seed
-    php artisan key:generate
 ```
 - login in with these credentials  Mail: admin@admin.com Password: admin123 (Can be changed in the dashboard)
 - DONE
@@ -31,8 +31,8 @@ If you want to just play around and test the CRM, you can very easily insert dum
 
 ```
     php artisan db:seed --class=UsersDummyTableSeeder (Creates 5 extra users and are required)
-    php artisan db:seed --class=RelationsDummyTableSeeder (Creates 50 new relations)
-    php artisan db:seed --class=TicketsDummyTableSeeder (Creates 130 tickets, requires relations & users seeding)
+    php artisan db:seed --class=RelationsDummyTableSeeder (Creates 500 new relations)
+    php artisan db:seed --class=TicketsDummyTableSeeder (Creates 1750 tickets, requires relations & users seeding)
     php artisan db:seed --class=LeadsDummyTableSeeder (Creates 30 leads, requires relations & users seeding)
     
 ```

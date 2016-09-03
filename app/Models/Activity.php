@@ -26,7 +26,7 @@ class Activity extends model
    */
   public function ticket()
   {
-    return $this->belongsTo(Tickets::class, 'ticket_id', 'id');
+    return $this->belongsTo(Ticket::class, 'ticket_id', 'id');
   }
 
   public function user()

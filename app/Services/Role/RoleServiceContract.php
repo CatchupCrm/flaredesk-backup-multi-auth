@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Role;
+namespace Modules\Core\Role;
 interface RoleServiceContract
 {
 

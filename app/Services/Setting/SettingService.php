@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Setting;
+namespace Modules\Core\Setting;
 
 use App\Models\Settings;
 

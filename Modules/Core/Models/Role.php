@@ -1,5 +1,5 @@
 <?php
-namespace App\Models;
+namespace Modules\Core\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Zizaco\Entrust\EntrustRole;

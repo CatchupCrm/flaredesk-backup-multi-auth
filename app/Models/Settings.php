@@ -19,6 +19,6 @@ class Settings extends Model
 
   public function tickets()
   {
-    return $this->belongsTo(Tickets::class);
+    return $this->belongsTo(Ticket::class);
   }
 }

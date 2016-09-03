@@ -10,7 +10,7 @@ use App\Models\Relation;
 use DB;
 use App\Models\User;
 use App\Models\Settings;
-use App\Models\Leads;
+use App\Models\Lead;
 use App\Services\User\UserServiceContract;
 use App\Services\Relation\RelationServiceContract;
 use App\Services\Setting\SettingServiceContract;

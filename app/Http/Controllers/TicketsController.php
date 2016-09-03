@@ -62,8 +62,8 @@ class TicketsController extends Controller
 
   public function anyData()
   {
-    $tickets = Tickets::select(
-      ['id', 'title', 'created_at', 'deadline', 'fk_user_id_assign']
+    $tickets = Ticket::select(
+      ['id', 'title', 'created_at', 'deadline', 'fk_staff_id_assign']
     )
       ->where('status', 1)->get();
     return Datatables::of($tickets)
@@ -78,7 +78,7 @@ class TicketsController extends Controller
         return $tickets->created_at ? with(new Carbon($tickets->created_at))
           ->format('d/m/Y') : '';
       })
-      ->editColumn('fk_user_id_assign', function ($tickets) {
+      ->editColumn('fk_staff_id_assign', function ($tickets) {
         return $tickets->assignee->name;
       })->make(true);
   }
@@ -139,8 +139,8 @@ class TicketsController extends Controller
    * Sees if the Settings from backend allows all to complete taks
    * or only assigned user. if only assigned user:
    * @param  [Auth]  $id Checks Logged in users id
-   * @param  [Model] $ticket->fk_user_id_assign Checks the id of the user assigned to the ticket
-   * If Auth and fk_user_id allow complete else redirect back if all allowed excute
+   * @param  [Model] $ticket->fk_staff_id_assign Checks the id of the user assigned to the ticket
+   * If Auth and fk_staff_id allow complete else redirect back if all allowed excute
    * else stmt*/
   public function updateStatus($id, Request $request)
   {
@@ -167,7 +167,7 @@ class TicketsController extends Controller
 
   public function invoice($id, Request $request)
   {
-    $ticket = Tickets::findOrFail($id);
+    $ticket = Ticket::findOrFail($id);
     $relationId = $ticket->relationAssignee()->first()->id;
     $timeTicketId = $ticket->allTime()->get();
     $integrationCheck = Integration::first();

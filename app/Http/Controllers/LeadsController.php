@@ -2,7 +2,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Leads;
+use App\Models\Lead;
 use App\Models\User;
 use App\Models\Relation;
 use App\Http\Requests;
@@ -56,21 +56,21 @@ class LeadsController extends Controller
 
   public function anyData()
   {
-    $leads = Leads::select(
-      ['id', 'title', 'fk_user_id_created', 'fk_relation_id', 'fk_user_id_assign', 'contact_date']
+    $leads = Lead::select(
+      ['id', 'title', 'fk_staff_id_created', 'fk_relation_id', 'fk_staff_id_assign', 'contact_date']
     )->where('status', 1)->get();
     return Datatables::of($leads)
       ->addColumn('titlelink', function ($leads) {
         return '<a href="leads/' . $leads->id . '" ">' . $leads->title . '</a>';
       })
-      ->editColumn('fk_user_id_created', function ($leads) {
+      ->editColumn('fk_staff_id_created', function ($leads) {
         return $leads->createdBy->name;
       })
       ->editColumn('contact_date', function ($leads) {
         return $leads->contact_date ? with(new Carbon($leads->created_at))
           ->format('d/m/Y') : '';
       })
-      ->editColumn('fk_user_id_assign', function ($leads) {
+      ->editColumn('fk_staff_id_assign', function ($leads) {
         return $leads->assignee->name;
       })->make(true);
   }

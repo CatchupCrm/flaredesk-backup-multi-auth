@@ -16,10 +16,10 @@ class CommentController extends Controller
     $this->validate($commentRequest, [
       'description' => 'required',
       'fk_ticket_id' => '',
-      'fk_user_id' => '']);
+      'fk_staff_id' => '']);
     $input = $commentRequest = array_merge(
       $commentRequest->all(),
-      ['fk_ticket_id' => $id, 'fk_user_id' => \Auth::id()]
+      ['fk_ticket_id' => $id, 'fk_staff_id' => \Auth::id()]
     );
     Comment::create($input);
     Session::flash('flash_message', 'Comment successfully added!'); //Snippet in Master.blade.php

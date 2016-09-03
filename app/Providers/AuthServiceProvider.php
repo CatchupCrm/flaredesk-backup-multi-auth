@@ -16,7 +16,7 @@ class AuthServiceProvider extends ServiceProvider
    */
   protected $policies = [
     'App\Model' => 'App\Policies\ModelPolicy',
-    Tickets::class => allowTicketComplete::class,
+    Ticket::class => allowTicketComplete::class,
   ];
 
   /**

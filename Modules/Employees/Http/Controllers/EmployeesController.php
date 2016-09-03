@@ -1,23 +1,23 @@
 <?php
-namespace App\Http\Controllers;
+namespace Modules\Employees\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Employee;
-use App\Models\Ticket;
+use Modules\Employees\Models\Employee;
+use Modules\Tickets\Models\Ticket;
 use Illuminate\Http\Request;
 use Gate;
 use Datatables;
 use Carbon;
 use PHPZen\LaravelRbac\Traits\Rbac;
 use Illuminate\Support\Facades\Input;
-use App\Models\Relation;
-use App\Http\Requests\Employee\UpdateEmployeeRequest;
-use App\Http\Requests\Employee\StoreEmployeeRequest;
-use App\Services\Employee\StaffServiceContract;
-use App\Services\Role\RoleServiceContract;
-use App\Services\Department\DepartmentServiceContract;
-use App\Services\Setting\SettingServiceContract;
+use Modules\Models\Relation;
+use Modules\Employees\Http\Requests\Staff\StoreStaffRequest;
+use Modules\Employees\Http\Requests\Staff\UpdateStaffRequest;
+use Modules\Employees\Services\Staff\StaffServiceContract;
+use Modules\Core\Services\Role\RoleServiceContract;
+use Modules\Core\Services\Department\DepartmentServiceContract;
+use Modules\Core\Services\Setting\SettingServiceContract;
 
 class EmployeesController extends Controller
 {
@@ -72,7 +72,7 @@ class EmployeesController extends Controller
 
   public function ticketData($id)
   {
-    $tickets = Tickets::select(
+    $tickets = Ticket::select(
       ['id', 'title', 'created_at', 'deadline', 'fk_employee_id_assign']
     )
       ->where('fk_employee_id_assign', $id)->where('status', 1);
@@ -93,7 +93,7 @@ class EmployeesController extends Controller
 
   public function closedTicketData($id)
   {
-    $tickets = Tickets::select(
+    $tickets = Ticket::select(
       ['id', 'title', 'created_at', 'deadline', 'fk_employee_id_assign']
     )
       ->where('fk_employee_id_assign', $id)->where('status', 2);

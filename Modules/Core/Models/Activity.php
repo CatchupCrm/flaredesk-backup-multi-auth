@@ -1,5 +1,5 @@
 <?php
-namespace App\Models;
+namespace Modules\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -26,7 +26,7 @@ class Activity extends model
    */
   public function ticket()
   {
-    return $this->belongsTo(Tickets::class, 'ticket_id', 'id');
+    return $this->belongsTo(Ticket::class, 'ticket_id', 'id');
   }
 
   public function user()

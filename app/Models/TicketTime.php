@@ -20,7 +20,7 @@ class TicketTime extends Model
 
   public function tickets()
   {
-    return $this->belongsTo(Tickets::class);
+    return $this->belongsTo(Ticket::class);
   }
 
   public function invoices()

@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Requests\Ticket;
+namespace Modules\Tickets\Http\Requests\Ticket;
 
 use App\Http\Requests\Request;
 

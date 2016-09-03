@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Department;
+namespace Modules\Core\Department;
 interface DepartmentServiceContract
 {
 

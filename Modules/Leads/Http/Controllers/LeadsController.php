@@ -1,25 +1,25 @@
 <?php
-namespace App\Http\Controllers;
+namespace Modules\Leads\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Leads;
-use App\Models\User;
-use App\Models\Relation;
+use Modules\Leads\Models\Lead;
+use Modules\Core\Models\User;
+use Modules\Models\Relation;
 use App\Http\Requests;
 use Session;
 use App\Http\Controllers\Controller;
-use App\Models\Settings;
+use Modules\Models\Settings;
 use Auth;
 use Datatables;
 use Carbon;
-use App\Models\Activity;
+use Modules\Models\Activity;
 use DB;
-use App\Http\Requests\Lead\StoreLeadRequest;
-use App\Http\Requests\Lead\UpdateLeadFollowUpRequest;
-use App\Services\Lead\LeadServiceContract;
-use App\Services\User\UserServiceContract;
-use App\Services\Relation\RelationServiceContract;
-use App\Services\Setting\SettingServiceContract;
+use Modules\Leads\Requests\Lead\StoreLeadRequest;
+use Modules\Leads\Requests\Lead\UpdateLeadFollowUpRequest;
+use Modules\Leads\Services\Lead\LeadServiceContract;
+use Modules\Core\Services\User\UserServiceContract;
+use Modules\Relations\Services\Relation\RelationServiceContract;
+use Modules\Core\Services\Setting\SettingServiceContract;
 
 class LeadsController extends Controller
 {
@@ -56,21 +56,21 @@ class LeadsController extends Controller
 
   public function anyData()
   {
-    $leads = Leads::select(
-      ['id', 'title', 'fk_user_id_created', 'fk_relation_id', 'fk_user_id_assign', 'contact_date']
+    $leads = Lead::select(
+      ['id', 'title', 'fk_staff_id_created', 'fk_relation_id', 'fk_staff_id_assign', 'contact_date']
     )->where('status', 1)->get();
     return Datatables::of($leads)
       ->addColumn('titlelink', function ($leads) {
         return '<a href="leads/' . $leads->id . '" ">' . $leads->title . '</a>';
       })
-      ->editColumn('fk_user_id_created', function ($leads) {
+      ->editColumn('fk_staff_id_created', function ($leads) {
         return $leads->createdBy->name;
       })
       ->editColumn('contact_date', function ($leads) {
         return $leads->contact_date ? with(new Carbon($leads->created_at))
           ->format('d/m/Y') : '';
       })
-      ->editColumn('fk_user_id_assign', function ($leads) {
+      ->editColumn('fk_staff_id_assign', function ($leads) {
         return $leads->assignee->name;
       })->make(true);
   }

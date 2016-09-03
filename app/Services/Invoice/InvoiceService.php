@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Invoice;
+namespace Modules\Core\Invoice;
 
 use App\Models\Invoice;
 use App\Models\Relations;

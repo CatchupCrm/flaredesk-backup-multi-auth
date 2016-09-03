@@ -1,7 +1,7 @@
 <?php
-namespace App\Services\Lead;
+namespace Modules\Core\Lead;
 
-use App\Models\Leads;
+use App\Models\Lead;
 use Notifynder;
 use Carbon;
 use App\Models\Activity;
@@ -12,7 +12,7 @@ class LeadService implements LeadServiceContract
 
   public function find($id)
   {
-    return Leads::findOrFail($id);
+    return Lead::findOrFail($id);
   }
 
   public function create($requestData)
@@ -20,10 +20,10 @@ class LeadService implements LeadServiceContract
     $fk_relation_id = $requestData->get('fk_relation_id');
     $input = $requestData = array_merge(
       $requestData->all(),
-      ['fk_user_id_created' => \Auth::id(),
+      ['fk_staff_id_created' => \Auth::id(),
         'contact_date' => $requestData->contact_date . " " . $requestData->contact_time . ":00"]
     );
-    $lead = Leads::create($input);
+    $lead = Lead::create($input);
     $insertedId = $lead->id;
     Session()->flash('flash_message', 'Lead successfully added!'); //Snippet in Master.blade.php
     $activityinput = array_merge(
@@ -40,7 +40,7 @@ class LeadService implements LeadServiceContract
 
   public function updateStatus($id, $requestData)
   {
-    $lead = Leads::findOrFail($id);
+    $lead = Lead::findOrFail($id);
     $input = $requestData->get('status');
     $input = array_replace($requestData->all(), ['status' => 2]);
     $lead->fill($input)->save();
@@ -55,7 +55,7 @@ class LeadService implements LeadServiceContract
 
   public function updateFollowup($id, $requestData)
   {
-    $lead = Leads::findOrFail($id);
+    $lead = Lead::findOrFail($id);
     $input = $requestData->all();
     $input = $requestData =
       ['contact_date' => $requestData->contact_date . " " . $requestData->contact_time . ":00"];
@@ -71,8 +71,8 @@ class LeadService implements LeadServiceContract
 
   public function updateAssign($id, $requestData)
   {
-    $lead = Leads::findOrFail($id);
-    $input = $requestData->get('fk_user_id_assign');
+    $lead = Lead::findOrFail($id);
+    $input = $requestData->get('fk_staff_id_assign');
     $input = array_replace($requestData->all());
     $lead->fill($input)->save();
     $insertedName = $lead->assignee->name;
@@ -87,12 +87,12 @@ class LeadService implements LeadServiceContract
 
   public function allLeads()
   {
-    return Leads::all()->count();
+    return Lead::all()->count();
   }
 
   public function allCompletedLeads()
   {
-    return Leads::where('status', 2)->count();
+    return Lead::where('status', 2)->count();
   }
 
   public function percantageCompleted()
@@ -107,7 +107,7 @@ class LeadService implements LeadServiceContract
 
   public function completedLeadsToday()
   {
-    return Leads::whereRaw(
+    return Lead::whereRaw(
       'date(updated_at) = ?',
       [Carbon::now()->format('Y-m-d')]
     )->where('status', 2)->count();
@@ -115,7 +115,7 @@ class LeadService implements LeadServiceContract
 
   public function createdLeadsToday()
   {
-    return Leads::whereRaw(
+    return Lead::whereRaw(
       'date(created_at) = ?',
       [Carbon::now()->format('Y-m-d')]
     )->count();

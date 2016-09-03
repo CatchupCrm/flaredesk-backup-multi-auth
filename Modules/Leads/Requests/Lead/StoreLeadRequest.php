@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Requests\Lead;
+namespace Modules\Leads\Requests\Lead;
 
 use App\Http\Requests\Request;
 
@@ -26,8 +26,8 @@ class StoreLeadRequest extends Request
       'title' => 'required',
       'note' => 'required',
       'status' => 'required',
-      'fk_user_id_assign' => 'required',
-      'fk_user_id_created' => '',
+      'fk_staff_id_assign' => 'required',
+      'fk_staff_id_created' => '',
       'fk_relation_id' => 'required',
       'contact_date' => 'required'
     ];

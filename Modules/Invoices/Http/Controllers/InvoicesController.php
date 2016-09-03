@@ -1,10 +1,11 @@
 <?php
-namespace App\Http\Controllers;
+namespace Modules\Invoices\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Services\Invoice\InvoiceServiceContract;
-use App\Services\Relation\RelationServiceContract;
+use Modules\Invoices\Models\Invoice;
+use Modules\Invoices\Services\Invoice\InvoiceServiceContract;
+use Modules\Invoices\Services\Relation\RelationServiceContract;
 
 class InvoicesController extends Controller
 {

@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Lead;
+namespace Modules\Core\Lead;
 interface LeadServiceContract
 {
 

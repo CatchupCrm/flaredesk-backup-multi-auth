@@ -185,7 +185,7 @@
 
 
       @endif
-      <a href="{{ url('/logout') }}" class=" list-group-item impmenu" data-parent="#MainMenu"><i
+      <a href="{{ url('/auth/logout') }}" class=" list-group-item impmenu" data-parent="#MainMenu"><i
           class="glyphicon glyphicon-log-out"></i> Sign out </i></a>
 
     </div>

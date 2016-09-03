@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Role;
+namespace Modules\Core\Role;
 
 use App\Models\Role;
 use App\Models\Permissions;

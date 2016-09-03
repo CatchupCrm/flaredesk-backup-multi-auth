@@ -17,12 +17,12 @@ class CreateLeadsTable extends Migration
             $table->string('title');
             $table->text('note');
             $table->integer('status');
-            $table->integer('fk_user_id_assign')->unsigned();
-            $table->foreign('fk_user_id_assign')->references('id')->on('users');
-            $table->integer('fk_client_id')->unsigned();
-            $table->foreign('fk_client_id')->references('id')->on('clients');
-            $table->integer('fk_user_id_created')->unsigned();
-            $table->foreign('fk_user_id_created')->references('id')->on('users');
+            $table->integer('fk_staff_id_assign')->unsigned();
+            $table->foreign('fk_staff_id_assign')->references('id')->on('staff');
+            $table->integer('fk_relation_id')->unsigned();
+            $table->foreign('fk_relation_id')->references('id')->on('relations');
+            $table->integer('fk_staff_id_created')->unsigned();
+            $table->foreign('fk_staff_id_created')->references('id')->on('staff');
             $table->datetime('contact_date');
             $table->timestamps();
         });

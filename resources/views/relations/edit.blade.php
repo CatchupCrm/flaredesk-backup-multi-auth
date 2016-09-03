@@ -64,8 +64,8 @@ Edit Relation ({{$relation->name}})
     {!! Form::label('company_type', 'Company type:', ['class' => 'control-label']) !!}
     {!! Form::text('company_type',  null, ['class' => 'form-control']) !!}
 </div>  
-{!! Form::label('fk_user_id', 'Assign user:', ['class' => 'control-label']) !!} 
-{!! Form::select('fk_user_id', $users, null, ['class' => 'form-control']) !!}<br />
+{!! Form::label('fk_staff_id', 'Assign user:', ['class' => 'control-label']) !!}
+{!! Form::select('fk_staff_id', $users, null, ['class' => 'form-control']) !!}<br />
 
 {!! Form::submit('Update Relation', ['class' => 'btn btn-primary']) !!}
 

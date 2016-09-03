@@ -9,16 +9,16 @@ class Note extends Model
     'note',
     'status',
     'fk_lead_id',
-    'fk_user_id'
+    'fk_staff_id'
     ];
     protected $hidden = ['remember_token'];
 
     public function lead()
     {
-        return $this->belongsTo(Leads::class, 'fk_lead_id', 'id');
+        return $this->belongsTo(Lead::class, 'fk_lead_id', 'id');
     }
     public function user()
     {
-        return $this->belongsTo(User::class, 'fk_user_id', 'id');
+        return $this->belongsTo(User::class, 'fk_staff_id', 'id');
     }
 }

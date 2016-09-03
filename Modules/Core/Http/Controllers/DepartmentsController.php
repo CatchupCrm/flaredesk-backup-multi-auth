@@ -1,13 +1,13 @@
 <?php
-namespace App\Http\Controllers;
+namespace Modules\Core\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Department;
+use Modules\Core\Models\Department;
 use Session;
-use App\Http\Requests\Department\StoreDepartmentRequest;
-use App\Services\Department\DepartmentServiceContract;
+use Modules\Core\Requests\Department\StoreDepartmentRequest;
+use Modules\Core\Services\Department\DepartmentServiceContract;
 
 class DepartmentsController extends Controller
 {

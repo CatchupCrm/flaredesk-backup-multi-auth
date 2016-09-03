@@ -8,17 +8,17 @@ class Comment extends Model
   protected $fillable = [
     'description',
     'fk_ticket_id',
-    'fk_user_id'
+    'fk_staff_id'
   ];
   protected $hidden = ['remember_token'];
 
   public function ticket()
   {
-    return $this->belongsTo(Tickets::class, 'fk_ticket_id', 'id');
+    return $this->belongsTo(Ticket::class, 'fk_ticket_id', 'id');
   }
 
   public function user()
   {
-    return $this->belongsTo(User::class, 'fk_user_id', 'id');
+    return $this->belongsTo(User::class, 'fk_staff_id', 'id');
   }
 }

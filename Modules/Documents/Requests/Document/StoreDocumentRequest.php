@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Requests\Department;
+namespace Modules\Documents\Http\Requests\Department;
 
 use App\Http\Requests\Request;
 

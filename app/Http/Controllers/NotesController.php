@@ -6,7 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Auth;
 use Session;
-use App\Models\Leads;
+use App\Models\Lead;
 use App\Models\Note;
 
 class NotesController extends Controller
@@ -17,10 +17,10 @@ class NotesController extends Controller
       'note' => 'required',
       'status' => '',
       'fk_lead_id' => '',
-      'fk_user_id' => '']);
+      'fk_staff_id' => '']);
     $input = $request = array_merge(
       $request->all(),
-      ['fk_lead_id' => $id, 'fk_user_id' => \Auth::id(), 'status' => 0]
+      ['fk_lead_id' => $id, 'fk_staff_id' => \Auth::id(), 'status' => 0]
     );
     Note::create($input);
     Session::flash('flash_message', 'Note successfully added!'); //Snippet in Master.blade.php

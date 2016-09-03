@@ -1,5 +1,5 @@
 <?php
-namespace App\Services\Ticket;
+namespace Modules\Core\Ticket;
 
 use App\Models\Ticket;
 use Fenos\Notifynder\Notifynder;
@@ -42,14 +42,14 @@ class TicketService implements TicketServiceContract
     $fk_relation_id = $requestData->get('fk_relation_id');
     $input = $requestData = array_merge(
       $requestData->all(),
-      ['fk_user_id_created' => auth()->id(),]
+      ['fk_staff_id_created' => auth()->id(),]
     );
     $ticket = Ticket::create($input);
     $insertedId = $ticket->id;
     Session()->flash('flash_message', 'Ticket successfully added!'); //Snippet in Master.blade.php
     Notifynder::category('ticket.assign')
       ->from(auth()->id())
-      ->to($ticket->fk_user_id_assign)
+      ->to($ticket->fk_staff_id_assign)
       ->url(url('tickets', $insertedId))
       ->expire(Carbon::now()->addDays(14))
       ->send();
@@ -97,7 +97,7 @@ class TicketService implements TicketServiceContract
   public function updateAssign($id, $requestData)
   {
     $ticket = Ticket::with('assignee')->findOrFail($id);
-    $input = $requestData->get('fk_user_id_assign');
+    $input = $requestData->get('fk_staff_id_assign');
     $input = array_replace($requestData->all());
     $ticket->fill($input)->save();
     $ticket = $ticket->fresh();
@@ -182,7 +182,7 @@ class TicketService implements TicketServiceContract
 
   public function createdTicketsToday()
   {
-    return Tickets::whereRaw(
+    return Ticket::whereRaw(
       'date(created_at) = ?',
       [Carbon::now()->format('Y-m-d')]
     )->count();
@@ -190,7 +190,7 @@ class TicketService implements TicketServiceContract
 
   public function completedTicketsToday()
   {
-    return Tickets::whereRaw(
+    return Ticket::whereRaw(
       'date(updated_at) = ?',
       [Carbon::now()->format('Y-m-d')]
     )->where('status', 2)->count();

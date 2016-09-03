@@ -72,7 +72,7 @@ class EmployeesController extends Controller
 
   public function ticketData($id)
   {
-    $tickets = Tickets::select(
+    $tickets = Ticket::select(
       ['id', 'title', 'created_at', 'deadline', 'fk_employee_id_assign']
     )
       ->where('fk_employee_id_assign', $id)->where('status', 1);
@@ -93,7 +93,7 @@ class EmployeesController extends Controller
 
   public function closedTicketData($id)
   {
-    $tickets = Tickets::select(
+    $tickets = Ticket::select(
       ['id', 'title', 'created_at', 'deadline', 'fk_employee_id_assign']
     )
       ->where('fk_employee_id_assign', $id)->where('status', 2);
