@@ -14,6 +14,7 @@ class CanTicketCreate
    */
   public function handle($request, Closure $next)
   {
+    dd(auth()->user()->can());
     if (!auth()->user()->can('ticket-create')) {
       Session()->flash('flash_message_warning', 'Not allowed to create ticket');
       return redirect()->route('users.index');

@@ -81,12 +81,12 @@ class Employee extends Authenticatable
 
   public function department()
   {
-    return $this->belongsToMany(Department::class, 'department_user');
+    return $this->belongsToMany(Department::class, 'department_staff');
   }
 
   public function departmentOne()
   {
-    return $this->belongsToMany(Department::class, 'department_user')->withPivot('Department_id');
+    return $this->belongsToMany(Department::class, 'department_staff')->withPivot('Department_id');
   }
 
   public function isOnline()

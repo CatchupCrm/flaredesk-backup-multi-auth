@@ -14,6 +14,7 @@ class CanRelationCreate
    */
   public function handle($request, Closure $next)
   {
+    dd(auth()->user()->can());
     if (!auth()->user()->can('relation-create')) {
       Session()->flash('flash_message_warning', 'Not allowed to create relation!');
       return redirect()->route('relations.index');

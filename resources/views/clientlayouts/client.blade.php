@@ -73,7 +73,7 @@
                       @if(Auth::user())
                       <span class="">{!! Auth::user()->firstname." ".Auth::user()->lastname !!}</span>
                       <div class="banner-content">
-                        <a href="{{url('client-profile')}}" class="btn btn-custom btn-xs">Edit Profile</a> <a
+                        <a href="{{url('client/profile')}}" class="btn btn-custom btn-xs">Edit Profile</a> <a
                           href="{{url('auth/logout')}}" class="btn btn-custom btn-xs">Log out</a>
                       </div>
                       @endif

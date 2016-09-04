@@ -43,7 +43,7 @@
                 </a>
                 
               </div>
-              <a href="{{route('users.show', $lead->assignee->id)}}"> {{$lead->assignee->name}}</a>
+              <a href="{{route('staff.show', $lead->assignee->id)}}"> {{$lead->assignee->name}}</a>
               
               </div> <!--Shows users assigned to lead -->
             </td>

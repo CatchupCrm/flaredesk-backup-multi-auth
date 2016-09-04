@@ -1,7 +1,7 @@
 <?php
 use Illuminate\Database\Seeder;
 
-class UsersTableSeeder extends Seeder
+class AdminTableSeeder extends Seeder
 {
 
   /**
@@ -11,11 +11,13 @@ class UsersTableSeeder extends Seeder
    */
   public function run()
   {
-    \DB::table('users')->delete();
+    //\DB::table('users')->delete();
+
+
     \DB::table('users')->insert(array(
       0 =>
         array(
-          'id' => 1,
+          'id' => '',
           'name' => 'Admin',
           'email' => 'admin@admin.com',
           'password' => bcrypt('admin123'),
@@ -32,7 +34,7 @@ class UsersTableSeeder extends Seeder
     \DB::table('staff')->insert(array(
       0 =>
         array(
-          'id' => 1,
+          'id' => '',
           'name' => 'Admin',
           'email' => 'admin@admin.com',
           'password' => bcrypt('admin123'),

@@ -34,7 +34,11 @@ Route::group(['prefix' => ''], function() {
   /* SLACK */
   Route::get('integration/slack', 'IntegrationsController@slack');
 
-
+  /**
+   * USERS which means possible logins of the clients
+   */
+  Route::resource('users', 'UsersController');
+  Route::get('users/', 'UsersController@index')->name('users.index');
 
 
 

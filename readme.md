@@ -25,12 +25,23 @@ Flarepoint is a new customer relationship management system (CRM) which purpose 
 - login in with these credentials  Mail: admin@admin.com Password: admin123 (Can be changed in the dashboard)
 - DONE
 
+
+## Logging in Admin, Staff
+I've made the admin, staff login separate from the users, clients (clientheads)
+That means that you get Multi Authorization, but it required some extra coding.
+
+I ran into trouble with 'Token Mismatch Exception' and did lots of troubleshooting.
+
+Run tests, to see everything is ok for your environment!
+
+
 **Insertion of dummy data**
 
 If you want to just play around and test the CRM, you can very easily insert dummy data after completeing the steps above, follow the commands below.
 
 ```
     php artisan db:seed --class=UsersDummyTableSeeder (Creates 5 extra users and are required)
+    php artisan db:seed --class=StaffDummyTableSeeder (Creates 10 extra staff and are required)
     php artisan db:seed --class=RelationsDummyTableSeeder (Creates 500 new relations)
     php artisan db:seed --class=TicketsDummyTableSeeder (Creates 1750 tickets, requires relations & users seeding)
     php artisan db:seed --class=LeadsDummyTableSeeder (Creates 30 leads, requires relations & users seeding)

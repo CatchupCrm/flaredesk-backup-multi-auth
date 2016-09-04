@@ -124,7 +124,7 @@
 
       <a href="{{route('dashboard', \Auth::id())}}" class=" list-group-item" data-parent="#MainMenu"><i
           class="glyphicon glyphicon-dashboard"></i> Dashboard </a>
-      <a href="{{route('users.show', \Auth::id())}}" class=" list-group-item" data-parent="#MainMenu"><i
+      <a href="{{route('staff.show', \Auth::id())}}" class=" list-group-item" data-parent="#MainMenu"><i
           class="glyphicon glyphicon-user"></i> Profile </a>
 
 

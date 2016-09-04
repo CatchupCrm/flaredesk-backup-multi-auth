@@ -11,7 +11,7 @@ class StaffRoleTableSeeder extends Seeder
    */
   public function run()
   {
-    $newrole = new RoleUser;
+    $newrole = new RoleStaff;
     $newrole->role_id = '99';
     $newrole->user_id = '1';
     $newrole->timestamps = false;

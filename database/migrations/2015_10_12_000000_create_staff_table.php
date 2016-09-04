@@ -4,7 +4,6 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateStaffTable extends Migration
 {
-
   /**
    * Run the migrations.
    *
@@ -17,10 +16,7 @@ class CreateStaffTable extends Migration
       $table->string('name');
       $table->string('email')->unique();
       $table->string('password', 60);
-      $table->string('address');
-      $table->integer('work_number');
-      $table->integer('personal_number');
-      $table->string('image_path');
+      $table->integer('employee_id');
       $table->rememberToken();
       $table->timestamps();
     });
@@ -33,8 +29,6 @@ class CreateStaffTable extends Migration
    */
   public function down()
   {
-    DB::statement('SET FOREIGN_KEY_CHECKS = 0');
     Schema::drop('staff');
-    DB::statement('SET FOREIGN_KEY_CHECKS = 1');
   }
 }

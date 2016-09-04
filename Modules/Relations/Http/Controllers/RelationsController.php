@@ -31,8 +31,8 @@ class RelationsController extends Controller
     $this->users = $users;
     $this->relations = $relations;
     $this->settings = $settings;
-    $this->middleware('relation.create', ['only' => ['create']]);
-    $this->middleware('relation.update', ['only' => ['edit']]);
+    //$this->middleware('relation.create', ['only' => ['create']]);
+    //$this->middleware('relation.update', ['only' => ['edit']]);
   }
 
   /**
@@ -42,6 +42,7 @@ class RelationsController extends Controller
    */
   public function index()
   {
+    dd($this->users);
     return view('relations.index');
   }
 

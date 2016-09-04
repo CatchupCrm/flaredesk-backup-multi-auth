@@ -42,7 +42,7 @@
                 </a>
                 
               </div>
-              <a href="{{route('users.show', $ticket->assignee->id)}}"> {{$ticket->assignee->name}}</a>
+              <a href="{{route('staff.show', $ticket->assignee->id)}}"> {{$ticket->assignee->name}}</a>
               
               </div> <!--Shows users assigned to ticket -->
             </td>

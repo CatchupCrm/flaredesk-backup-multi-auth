@@ -5,6 +5,8 @@ use Illuminate\Routing\Router;
 Route::group(['prefix' => '/employees'], function () {
 
   Route::resource('employees', 'EmployeesController');
+  Route::get('/staff/show/{id}', 'EmployeesController@show')->name('staff.show');
+
   /**
    * EMPLOYEES
    */

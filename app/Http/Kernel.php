@@ -31,7 +31,9 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\VerifyCsrfToken::class,
             \App\Http\Middleware\LogLastUserActivity::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            ],
+        ],
+
+
         'relation.create' => [ \App\Http\Middleware\Relation\CanRelationCreate::class ],
         'relation.update' => [ \App\Http\Middleware\Relation\CanRelationUpdate::class ],
         'user.create' => [ \App\Http\Middleware\User\CanUserCreate::class ],
@@ -42,6 +44,9 @@ class Kernel extends HttpKernel
         'lead.create' => [ \App\Http\Middleware\Lead\CanLeadCreate::class ],
         'lead.assigned' => [ \App\Http\Middleware\Lead\IsLeadAssigned::class ],
         'lead.update.status' => [ \App\Http\Middleware\Lead\CanLeadUpdateStatus::class ],
+
+
+
         'user.is.admin' => [ \App\Http\Middleware\RedirectIfNotAdmin::class ],
         'api' => [
             'throttle:60,1',
@@ -57,10 +62,20 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+
+        'client' => \App\Http\Middleware\RedirectIfNotClient::class,
+        'customer' => \App\Http\Middleware\RedirectIfNotCustomer::class,
+        'staff' => \App\Http\Middleware\RedirectIfNotStaff::class,
+        'admin' => \App\Http\Middleware\RedirectIfNotAdmin::class,
+
+
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
+
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];

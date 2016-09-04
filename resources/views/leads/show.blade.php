@@ -128,7 +128,7 @@
         <div class="ticketcase" style="margin-top:15px; padding-top:10px;">
           <p class="smalltext">#{{$i++}}</p>
           <p>  {{$note->note}}</p>
-          <p class="smalltext">note by: <a href="{{route('users.show', $note->user->id)}}"> {{$note->user->name}} </a>
+          <p class="smalltext">note by: <a href="{{route('staff.show', $note->user->id)}}"> {{$note->user->name}} </a>
           </p>
           <p class="smalltext">Created at:
             {{ date('d F, Y, H:i:s', strtotime($note->created_at))}}

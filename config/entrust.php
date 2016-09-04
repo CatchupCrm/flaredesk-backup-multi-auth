@@ -19,7 +19,7 @@ return [
     | the role if it is in a different namespace.
     |
     */
-    'role' => 'App\Models\Role',
+    'role' => 'Modules\Core\Models\Role',
 
     /*
     |--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ return [
     | Update the permission if it is in a different namespace.
     |
     */
-    'permission' => 'App\Models\Permissions',
+    'permission' => 'Modules\Core\Models\Permissions',
 
     /*
     |--------------------------------------------------------------------------
@@ -73,14 +73,14 @@ return [
     | database.
     |
     */
-    'role_user_table' => 'role_user',
+    'role_user_table' => 'role_staff',
 
     /*
     |--------------------------------------------------------------------------
     | User Foreign key on Entrust's role_user Table (Pivot)
     |--------------------------------------------------------------------------
     */
-    'user_foreign_key' => 'user_id',
+    'user_foreign_key' => 'staff_id',
 
     /*
     |--------------------------------------------------------------------------

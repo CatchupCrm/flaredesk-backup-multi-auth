@@ -42,27 +42,7 @@
 
 <div class="col-lg-4">
   <h4>All Users</h4>
-  @foreach($users as $user)
-    <div class="col-lg-1">
-      @if($user->isOnline())
-        <i class="dot-online" data-toggle="tooltip" title="Online" data-placement="left"></i>
-      @else
-        <i class="dot-offline" data-toggle="tooltip" title="Offline" data-placement="left"></i>
-      @endif
-      <a href="{{route('users.show', $user->id)}}">
-        <img class="small-profile-picture" data-toggle="tooltip" title="{{$user->name}}" data-placement="left"
-             @if($user->image_path != "")
-             src="images/{{$companyname}}/{{$user->image_path}}"
-             @else
-             src="images/default_avatar.jpg"
-          @endif />
-      </a>
-    </div>
-
-
-  @endforeach
-
-</div>
+  &nbsp;
 </div>
 
 <div class="row">

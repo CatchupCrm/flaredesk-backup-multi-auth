@@ -3,16 +3,16 @@ use Illuminate\Routing\Router;
 
 /** @var Router $router */
 Route::group(['prefix' => '/relations'], function () {
+  Route::resource('relations', 'RelationsController');
 
-  Route::resource('relations', 'relRelationsController');
+  //Auth::loginUsingId($fan->getAuthIdentifier());
+
   Route::get('/', [
     'as' => 'admin.relations.relations.index',
     'uses' => 'RelationsController@index',
     //'middleware' => 'can:relations.relations.index'
   ]);
-
   Route::get('data', 'RelationsController@anyData')->name('relations.data');
-
   Route::get('/create', [
     'as' => 'admin.relations.relation.create',
     'uses' => 'RelationsController@create',

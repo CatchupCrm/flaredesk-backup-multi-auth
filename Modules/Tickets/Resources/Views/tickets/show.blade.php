@@ -45,7 +45,7 @@
           <p class="smalltext">#{{$i++}}</p>
           <p>  {{$comment->description}}</p>
           <p class="smalltext">Comment by: <a
-              href="{{route('users.show', $comment->user->id)}}"> {{$comment->user->name}} </a></p>
+              href="{{route('staff.show', $comment->user->id)}}"> {{$comment->user->name}} </a></p>
           <p class="smalltext">Created at:
             {{ date('d F, Y, H:i:s', strtotime($comment->created_at))}}
             @if($comment->updated_at != $comment->created_at)
@@ -69,7 +69,7 @@
       </div>
       <div class="sidebarbox">
         <p>Assigned to:
-          <a href="{{route('users.show', $tickets->assignee->id)}}">
+          <a href="{{route('staff.show', $tickets->assignee->id)}}">
             {{$tickets->assignee->name}}</a></p>
         <p>Created at: {{ date('d F, Y, H:i', strtotime($tickets->created_at))}} </p>
 

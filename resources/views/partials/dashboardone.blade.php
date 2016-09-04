@@ -16,8 +16,7 @@
     <div id="collapseOne" class="panel-collapse">
       <div class="box-body">
         <div>
-          <graphline class="chart" :labels="{{json_encode($createdTicketEachMonths)}}"
-                     :values="{{json_encode($ticketCreated)}}" :valuesextra="{{json_encode($ticketCompleted)}}"></graphline>
+          &nbsp;
         </div>
       </div>
     </div>
@@ -37,10 +36,7 @@
     <div id="collapseTwo" class="panel-collapse">
       <div class="box-body">
         <div>
-          <graphline class="chart" :labels="{{json_encode($createdLeadEachMonths)}}"
-                     :values="{{json_encode($leadCreated)}}"
-                     :valuesextra="{{json_encode($leadsCompleted)}}"></graphline>
-
+          &nbsp;
         </div>
       </div>
     </div>
@@ -55,13 +51,13 @@
 
       <div class="info-box-content">
         <span class="info-box-text">All Tickets</span>
-        <span class="info-box-number">{{$allCompletedTickets}} / {{$alltickets}}</span>
+        <span class="info-box-number">allCompletedTickets / alltickets</span>
 
         <div class="progress">
-          <div class="progress-bar" style="width: {{$totalPercentageTickets}}%"></div>
+          <div class="progress-bar" style="width: 80%"></div>
         </div>
                   <span class="progress-description">
-                    {{number_format($totalPercentageTickets, 0)}}% Completed
+                    totalPercentageTickets % Completed
                   </span>
       </div>
       <!-- /.info-box-content -->
@@ -74,13 +70,13 @@
 
       <div class="info-box-content">
         <span class="info-box-text">All Leads</span>
-        <span class="info-box-number">{{$allCompletedLeads}} / {{$allleads}}</span>
+        <span class="info-box-number">allCompletedLeads / allleads</span>
 
         <div class="progress">
-          <div class="progress-bar" style="width: {{$totalPercentageLeads}}%"></div>
+          <div class="progress-bar" style="width: 80%"></div>
         </div>
                   <span class="progress-description">
-                    {{number_format($totalPercentageLeads, 0)}}% Completed
+                    totalPercentageLeads % Completed
                   </span>
       </div>
       <!-- /.info-box-content -->
@@ -100,27 +96,7 @@
         </div>
       </div>
       <div id="collapseOne" class="panel-collapse">
-
-        @foreach($users as $user)
-          <div class="col-lg-1">
-            @if($user->isOnline())
-              <i class="dot-online" data-toggle="tooltip" title="Online" data-placement="left"></i>
-            @else
-              <i class="dot-offline" data-toggle="tooltip" title="Offline" data-placement="left"></i>
-            @endif
-            <a href="{{route('users.show', $user->id)}}">
-              <img class="small-profile-picture" data-toggle="tooltip" title="{{$user->name}}" data-placement="left"
-                   @if($user->image_path != "")
-                   src="images/{{$companyname}}/{{$user->image_path}}"
-                   @else
-                   src="images/default_avatar.jpg"
-                @endif />
-            </a>
-
-          </div>
-
-        @endforeach
-
+        &nbsp
       </div>
     </div>
   </div>
@@ -138,7 +114,7 @@
 
       <div class="info-box-content">
         <span class="info-box-text">Tickets completed today</span>
-        <span class="info-box-number">{{$completedTicketsToday}}
+        <span class="info-box-number">completedTicketsToday
           <small></small></span>
       </div>
       <!-- /.info-box-content -->
@@ -152,7 +128,7 @@
 
       <div class="info-box-content">
         <span class="info-box-text">Tickets created today</span>
-        <span class="info-box-number">{{$createdTicketsToday}}</span>
+        <span class="info-box-number">createdTicketsToday</span>
       </div>
       <!-- /.info-box-content -->
     </div>
@@ -169,7 +145,7 @@
 
       <div class="info-box-content">
         <span class="info-box-text">Leads Completed today</span>
-        <span class="info-box-number">{{$completedLeadsToday}}</span>
+        <span class="info-box-number">completedLeadsToday</span>
       </div>
       <!-- /.info-box-content -->
     </div>
@@ -182,7 +158,7 @@
 
       <div class="info-box-content">
         <span class="info-box-text">Leads created today</span>
-        <span class="info-box-number">{{$createdLeadsToday}}</span>
+        <span class="info-box-number">createdLeadsToday</span>
       </div>
       <!-- /.info-box-content -->
     </div>

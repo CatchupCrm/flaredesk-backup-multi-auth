@@ -47,6 +47,9 @@ Route::group(['middleware' => 'web'], function () {
   |
  */
 Route::group(['middleware' => 'web'], function () {
+
+
+
   Route::get('', ['as' => '/', 'uses' => 'WelcomepageController@index']);
   Route::get('guestindex', ['as' => '/', 'uses' => 'WelcomepageController@index']);
   Route::get('/', ['as' => '/', 'uses' => 'WelcomepageController@index']);
@@ -70,27 +73,36 @@ Route::group(['middleware' => 'web'], function () {
       ];
     }
   });
+
+
+
   Route::get('getform', ['as' => 'guest.getform', 'uses' => 'FormController@getForm']); /* get the form for create a ticket by guest user */
   Route::post('postform/{id}', 'FormController@postForm'); /* post the AJAX form for create a ticket by guest user */
   Route::post('postedform', 'FormController@postedForm'); /* post the form to store the value */
-  Route::get('create-ticket', ['as' => 'form', 'uses' => 'FormController@getForm']); //getform
-  Route::get('mytickets/{id}', ['as' => 'ticketinfo', 'uses' => 'GuestController@singleThread']); //detail ticket information
+  Route::get('client/create-ticket', ['as' => 'form', 'uses' => 'FormController@getForm']); //getform
+  Route::get('client/mytickets/{id}', ['as' => 'ticketinfo', 'uses' => 'GuestController@singleThread']); //detail ticket information
   Route::post('checkmyticket', 'GuestController@PostCheckTicket'); //ticket ckeck
   Route::get('check_ticket/{id}', ['as' => 'check_ticket', 'uses' => 'GuestController@get_ticket_email']); //detail ticket information
 
+
+
+
   //===================================================================================
-  Route::group(['middleware' => 'role.user', 'middleware' => 'auth'], function () {
-    Route::get('client-profile', ['as' => 'client.profile', 'uses' => 'GuestController@getProfile']); /*  User profile get  */
-    Route::get('mytickets', ['as' => 'ticket2', 'uses' => 'GuestController@getMyticket']);
-    Route::get('myticket/{id}', ['as' => 'ticket', 'uses' => 'GuestController@thread']); /* Get my tickets */
+  Route::group(['middleware' => 'role.client', 'middleware' => 'client'], function () {
+    Route::get('client/profile', ['as' => 'client.profile', 'uses' => 'GuestController@getProfile']); /*  User profile get  */
+    Route::get('client/mytickets', ['as' => 'ticket2', 'uses' => 'GuestController@getMyticket']);
+    Route::get('client/myticket/{id}', ['as' => 'ticket', 'uses' => 'GuestController@thread']); /* Get my tickets */
     Route::patch('client-profile-edit', 'GuestController@postProfile'); /* User Profile Post */
     Route::patch('client-profile-password', 'GuestController@postProfilePassword'); /*  Profile Password Post */
     Route::post('post/reply/{id}', ['as' => 'client.reply', 'uses' => 'ClientTicketController@reply']);
   });
+
+
+
   //====================================================================================
-  Route::get('checkticket', 'ClientTicketController@getCheckTicket'); /* Check your Ticket */
-  Route::get('myticket', ['as' => 'ticket', 'uses' => 'GuestController@getMyticket']); /* Get my tickets */
-  Route::get('myticket/{id}', ['as' => 'ticket', 'uses' => 'GuestController@thread']); /* Get my tickets */
+  Route::get('client/checkticket', 'ClientTicketController@getCheckTicket'); /* Check your Ticket */
+  Route::get('client/myticket', ['as' => 'ticket', 'uses' => 'GuestController@getMyticket']); /* Get my tickets */
+  Route::get('client/myticket/{id}', ['as' => 'ticket', 'uses' => 'GuestController@thread']); /* Get my tickets */
   Route::post('postcheck', 'GuestController@PostCheckTicket'); /* post Check Ticket */
   Route::get('postcheck', 'GuestController@PostCheckTicket');
   Route::post('post-ticket-reply/{id}', 'FormController@post_ticket_reply');

@@ -24,7 +24,7 @@ class User extends Authenticatable
    *
    * @var array
    */
-  protected $fillable = ['name', 'email', 'password', 'address', 'personal_number', 'work_number', 'image_path'];
+  protected $fillable = ['name', 'email', 'password'];
 
   /**
    * The attributes excluded from the model's JSON form.
@@ -36,13 +36,6 @@ class User extends Authenticatable
 
 
   protected $primaryKey = 'id';
-
-  public function ticketsAssign()
-  {
-    return $this->hasMany(Ticket::class, 'fk_staff_id_assign', 'id')
-      ->where('status_id', 1)
-      ->orderBy('deadline', 'asc');
-  }
 
   public function ticketsCreated()
   {
@@ -81,12 +74,12 @@ class User extends Authenticatable
 
   public function department()
   {
-    return $this->belongsToMany(Department::class, 'department_user');
+    return $this->belongsToMany(Department::class, 'department_staff');
   }
 
   public function departmentOne()
   {
-    return $this->belongsToMany(Department::class, 'department_user')->withPivot('department_id');
+    return $this->belongsToMany(Department::class, 'department_staff')->withPivot('department_id');
   }
 
   public function isOnline()

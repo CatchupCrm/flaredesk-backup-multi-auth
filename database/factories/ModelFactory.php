@@ -9,36 +9,35 @@
 | database. Just tell the factory how a default model should look.
 |
 */
-$factory->define(App\Models\User::class, function (Faker\Generator $faker) {
+$factory->define(Modules\Core\Models\User::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->name,
     'email' => $faker->email,
     'password' => bcrypt(str_random(10)),
-    'address' => $faker->secondaryAddress(),
-    'work_number' => $faker->randomNumber(8),
-    'personal_number' => $faker->randomNumber(8),
     'remember_token' => str_random(10),
   ];
 });
 
-$factory->define(App\Models\Employee::class, function (Faker\Generator $faker) {
+
+$factory->define(Modules\Core\Models\Staff::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->name,
     'email' => $faker->email,
     'password' => bcrypt(str_random(10)),
-    'address' => $faker->secondaryAddress(),
-    'work_number' => $faker->randomNumber(8),
-    'personal_number' => $faker->randomNumber(8),
     'remember_token' => str_random(10),
   ];
 });
 
-$factory->define(App\Models\Relation::class, function (Faker\Generator $faker) {
+
+
+
+$factory->define(Modules\Relations\Models\Relation::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->name,
     'email' => $faker->email,
     'vat' => $faker->randomNumber(8),
     'company_name' => $faker->company(),
+    'shortname' => $faker->company(),
     'address' => $faker->secondaryAddress(),
     'city' => $faker->city(),
     'zipcode' => $faker->postcode(),
@@ -50,12 +49,13 @@ $factory->define(App\Models\Relation::class, function (Faker\Generator $faker) {
   ];
 });
 
-$factory->define(App\Models\Client::class, function (Faker\Generator $faker) {
+$factory->define(Modules\Relations\Models\Client::class, function (Faker\Generator $faker) {
   return [
     'name' => $faker->name,
     'email' => $faker->email,
     'vat' => $faker->randomNumber(8),
     'company_name' => $faker->company(),
+    'shortname' => $faker->company(),
     'address' => $faker->secondaryAddress(),
     'city' => $faker->city(),
     'zipcode' => $faker->postcode(),
@@ -68,7 +68,7 @@ $factory->define(App\Models\Client::class, function (Faker\Generator $faker) {
 });
 
 
-$factory->define(App\Models\Ticket::class, function (Faker\Generator $faker) {
+$factory->define(Modules\Tickets\Models\Ticket::class, function (Faker\Generator $faker) {
   return [
     'title' => $faker->sentence,
     'description' => $faker->paragraph,
@@ -81,7 +81,7 @@ $factory->define(App\Models\Ticket::class, function (Faker\Generator $faker) {
     'updated_at' => $faker->dateTimeThisYear($max = 'now'),
   ];
 });
-$factory->define(App\Models\Lead::class, function (Faker\Generator $faker) {
+$factory->define(Modules\Leads\Models\Lead::class, function (Faker\Generator $faker) {
   return [
     'title' => $faker->sentence,
     'note' => $faker->paragraph,

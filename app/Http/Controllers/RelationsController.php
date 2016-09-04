@@ -15,7 +15,7 @@ use App\Services\User\UserServiceContract;
 use App\Services\Relation\RelationServiceContract;
 use App\Services\Setting\SettingServiceContract;
 
-class RelationsController extends Controller
+class RelatonsController extends Controller
 {
 
   protected $users;
@@ -31,8 +31,8 @@ class RelationsController extends Controller
     $this->users = $users;
     $this->relations = $relations;
     $this->settings = $settings;
-    $this->middleware('relation.create', ['only' => ['create']]);
-    $this->middleware('relation.update', ['only' => ['edit']]);
+    //$this->middleware('relation.create', ['only' => ['create']]);
+    //$this->middleware('relation.update', ['only' => ['edit']]);
   }
 
   /**

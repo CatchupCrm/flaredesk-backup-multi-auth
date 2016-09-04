@@ -34,8 +34,8 @@ class UserService implements UserServiceContract
   {
     return User::select(array('users.name', 'users.id',
       DB::raw('CONCAT(users.name, " (", departments.name, ")") AS full_name')))
-      ->join('department_user', 'users.id', '=', 'department_user.user_id')
-      ->join('departments', 'department_user.department_id', '=', 'departments.id')
+      ->join('department_staff', 'users.id', '=', 'department_staff.user_id')
+      ->join('departments', 'department_staff.department_id', '=', 'departments.id')
       ->pluck('full_name', 'id');
   }
 
