@@ -11,8 +11,8 @@ class IndustriesTableSeeder extends Seeder
    */
   public function run()
   {
-    \DB::table('industries')->delete();
-    \DB::table('industries')->insert(array(
+    \DB::table('lookup_industries')->delete();
+    \DB::table('lookup_industries')->insert(array(
       0 =>
         array(
           'id' => 1,

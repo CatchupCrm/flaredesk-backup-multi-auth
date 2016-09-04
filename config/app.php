@@ -170,6 +170,13 @@ return [
         Caffeinated\Menus\MenusServiceProvider::class,
         Caffeinated\Themes\ThemesServiceProvider::class,
 
+        Barryvdh\Debugbar\ServiceProvider::class,
+
+        Cviebrock\EloquentSluggable\ServiceProvider::class,
+        Cviebrock\EloquentTaggable\ServiceProvider::class,
+
+        'MaddHatter\LaravelFullcalendar\ServiceProvider',
+
 
 
 
@@ -236,16 +243,14 @@ return [
         'Menu' => Caffeinated\Menus\Facades\Menu::class,
         'Theme' => Caffeinated\Themes\Facades\Theme::class,
 
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
-
-
+        'Calendar' => 'MaddHatter\LaravelFullcalendar\Facades\Calendar',
 
         'Notifynder' => Fenos\Notifynder\Facades\Notifynder::class,
         'Excel'     => Maatwebsite\Excel\Facades\Excel::class,
 
         'Notifty'    => Illuminate\Support\Facades\Notification::class,
-
-
 
         'Entrust'   => Zizaco\Entrust\EntrustFacade::class,
         'role' => \Zizaco\Entrust\Middleware\EntrustRole::class,

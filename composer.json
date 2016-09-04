@@ -26,7 +26,14 @@
         "league/color-extractor": "0.3.*",
         "league/commonmark": "0.11",
         "league/json-guard": "^0.3.3",
-        "doctrine/dbal": "^2.5"
+        "doctrine/dbal": "^2.5",
+        "kalnoy/nestedset": "^4.1",
+        "vespakoen/menu": "3.*",
+        "barryvdh/laravel-ide-helper": "^2.2",
+        "barryvdh/laravel-debugbar": "^2.2",
+        "cviebrock/eloquent-sluggable": "4.0",
+        "cviebrock/eloquent-taggable": "^2.0",
+        "maddhatter/laravel-fullcalendar": "^1.2"
         
     },
     "require-dev": {
@@ -61,7 +68,9 @@
             "php artisan clear-compiled"
         ],
         "post-update-cmd": [
-            "php artisan optimize"
+          "php artisan ide-helper:generate",
+          "php artisan ide-helper:meta",
+          "php artisan optimize"
         ]
     },
     "config": {

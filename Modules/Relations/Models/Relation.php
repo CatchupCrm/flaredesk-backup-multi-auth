@@ -2,9 +2,15 @@
 namespace Modules\Relations\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentTaggable\Taggable;
+use Carbon;
 
 class Relation extends Model
 {
+  use Sluggable, Taggable;
+
+  protected $table = 'relations';
 
   protected $fillable = [
     'name',
@@ -22,7 +28,7 @@ class Relation extends Model
 
   public function userAssignee()
   {
-    return $this->belongsTo(User::class, 'fk_staff_id', 'id');
+    return $this->belongsTo(Staff::class, 'fk_staff_id', 'id');
   }
 
   public function alltickets()

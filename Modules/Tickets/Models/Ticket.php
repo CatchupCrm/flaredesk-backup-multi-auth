@@ -2,15 +2,21 @@
 namespace Modules\Tickets\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentTaggable\Taggable;
 use Carbon;
 
 class Ticket extends Model
 {
+  use Sluggable, Taggable;
+
+  protected $table = 'tickets';
+
   protected $fillable = [
     'title',
     'description',
     'status',
-    'fk_staff_id_assign',
+    'staff_id',
     'fk_staff_id_created',
     'fk_relation_id',
     'deadline'
@@ -21,7 +27,7 @@ class Ticket extends Model
 
   public function assignee()
   {
-    return $this->belongsTo(User::class, 'fk_staff_id_assign');
+    return $this->belongsTo(Staff::class, 'fk_staff_id_assign');
   }
 
   public function relationAssignee()
@@ -31,12 +37,12 @@ class Ticket extends Model
 
   public function ticketCreator()
   {
-    return $this->belongsTo(User::class, 'fk_staff_id_created');
+    return $this->belongsTo(Staff::class, 'fk_staff_id_created');
   }
 
-  public function comments()
+  public function thread()
   {
-    return $this->hasMany(Comment::class, 'fk_ticket_id', 'id');
+    return $this->hasMany(TicketThread::class, 'ticket_id', 'id');
   }
 
   // create a virtual attribute to return the days until deadline

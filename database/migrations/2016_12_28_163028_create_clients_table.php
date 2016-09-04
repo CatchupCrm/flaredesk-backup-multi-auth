@@ -28,7 +28,7 @@ class CreateClientsTable extends Migration
       $table->integer('fk_staff_id')->unsigned();
       $table->foreign('fk_staff_id')->references('id')->on('staff');
       $table->integer('industry_id')->unsigned();
-      $table->foreign('industry_id')->references('id')->on('industries');
+      $table->foreign('industry_id')->references('id')->on('lookup_industries');
       $table->timestamps();
     });
   }
