@@ -15,6 +15,7 @@ class Relation extends Model
   protected $fillable = [
     'name',
     'company_name',
+    'shortname',
     'vat',
     'email',
     'address',
@@ -26,6 +27,21 @@ class Relation extends Model
     'company_type',
     'fk_staff_id'];
 
+  /**
+   * Return the sluggable configuration array for this model.
+   *
+   * @return array
+   */
+  public function sluggable()
+  {
+    return [
+      'shortname' => [
+        'source' => 'company_name'
+      ]
+    ];
+  }
+
+
   public function userAssignee()
   {
     return $this->belongsTo(Staff::class, 'fk_staff_id', 'id');
@@ -34,14 +50,14 @@ class Relation extends Model
   public function alltickets()
   {
     return $this->hasMany(Ticket::class, 'fk_relation_id', 'id')
-      ->orderBy('status', 'asc')
+      ->orderBy('status_id', 'asc')
       ->orderBy('created_at', 'desc');
   }
 
   public function allleads()
   {
     return $this->hasMany(Lead::class, 'fk_relation_id', 'id')
-      ->orderBy('status', 'asc')
+      ->orderBy('status_id', 'asc')
       ->orderBy('created_at', 'desc');
   }
 

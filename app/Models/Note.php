@@ -7,7 +7,7 @@ class Note extends Model
 {
     protected $fillable = [
     'note',
-    'status',
+    'status_id',
     'fk_lead_id',
     'fk_staff_id'
     ];

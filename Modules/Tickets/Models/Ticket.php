@@ -8,14 +8,14 @@ use Carbon;
 
 class Ticket extends Model
 {
-  use Sluggable, Taggable;
+  use Taggable;
 
   protected $table = 'tickets';
 
   protected $fillable = [
     'title',
     'description',
-    'status',
+    'status_id',
     'staff_id',
     'fk_staff_id_created',
     'fk_relation_id',

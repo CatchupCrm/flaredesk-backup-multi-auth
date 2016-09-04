@@ -68,8 +68,8 @@ class TicketService implements TicketServiceContract
   public function updateStatus($id, $requestData)
   {
     $ticket = Ticket::findOrFail($id);
-    $input = $requestData->get('status');
-    $input = array_replace($requestData->all(), ['status' => 2]);
+    $input = $requestData->get('status_id');
+    $input = array_replace($requestData->all(), ['status_id' => 2]);
     $ticket->fill($input)->save();
     $activityinput = array_merge(
       ['text' => 'Ticket was completed by ' . Auth()->user()->name,
@@ -150,7 +150,7 @@ class TicketService implements TicketServiceContract
 
   public function allCompletedTickets()
   {
-    return Ticket::where('status', 2)->count();
+    return Ticket::where('status_id', 2)->count();
   }
 
   public function percantageCompleted()
@@ -175,7 +175,7 @@ class TicketService implements TicketServiceContract
   {
     return DB::table('tickets')
       ->select(DB::raw('count(*) as month, updated_at'))
-      ->where('status', 2)
+      ->where('status_id', 2)
       ->groupBy(DB::raw('YEAR(updated_at), MONTH(updated_at)'))
       ->get();
   }
@@ -193,14 +193,14 @@ class TicketService implements TicketServiceContract
     return Ticket::whereRaw(
       'date(updated_at) = ?',
       [Carbon::now()->format('Y-m-d')]
-    )->where('status', 2)->count();
+    )->where('status_id', 2)->count();
   }
 
   public function completedTicketsThisMonth()
   {
     return DB::table('tickets')
       ->select(DB::raw('count(*) as total, updated_at'))
-      ->where('status', 2)
+      ->where('status_id', 2)
       ->whereBetween('updated_at', array(Carbon::now()->startOfMonth(), Carbon::now()))->get();
   }
 

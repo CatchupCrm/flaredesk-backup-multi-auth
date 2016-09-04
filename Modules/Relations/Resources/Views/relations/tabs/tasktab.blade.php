@@ -16,9 +16,9 @@
         <tbody>
           <?php  $tr =""; ?>
           @foreach($relation->alltickets as $ticket)
-          @if($ticket->status == 1)
+          @if($ticket->status_id == 1)
           <?php  $tr = '#adebad'; ?>
-          @elseif($ticket->status == 2)
+          @elseif($ticket->status_id == 2)
           <?php $tr = '#ff6666'; ?>
           @endif
           <tr style="background-color:<?php echo $tr ;?>">
@@ -48,7 +48,7 @@
             </td>
             <td>{{date('d, M Y, H:i', strTotime($ticket->created_at))}}  </td>
             <td>{{date('d, M Y', strTotime($ticket->deadline))}}
-            @if($ticket->status == 1)({{ $ticket->days_until_deadline }}) @endif</td>
+            @if($ticket->status_id == 1)({{ $ticket->days_until_deadline }}) @endif</td>
             <td></td>
           </tr>
           

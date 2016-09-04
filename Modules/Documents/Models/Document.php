@@ -12,7 +12,21 @@ class Document extends Model
 
   protected $table = 'documents';
 
-  protected $fillable = ['name', 'size', 'path', 'file_display', 'fk_relation_id'];
+  protected $fillable = ['name', 'slug', 'size', 'path', 'file_display', 'fk_relation_id'];
+
+  /**
+   * Return the sluggable configuration array for this model.
+   *
+   * @return array
+   */
+  public function sluggable()
+  {
+    return [
+      'slug' => [
+        'source' => 'name'
+      ]
+    ];
+  }
 
   public function relation()
   {

@@ -21,7 +21,10 @@ class CreateClientsTable extends Migration
       $table->string('address');
       $table->integer('zipcode');
       $table->string('city');
+      $table->integer('relation_id')->unsigned();
+      $table->foreign('relation_id')->references('id')->on('relations');
       $table->string('company_name');
+      $table->string('shortname');
       $table->integer('vat');
       $table->string('industry');
       $table->string('company_type');

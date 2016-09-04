@@ -16,7 +16,7 @@ class TicketsTable extends Migration
       $table->increments('id');
       $table->string('title');
       $table->text('description');
-      $table->integer('status');
+      $table->integer('status_id');
       $table->integer('fk_staff_id_assign')->unsigned();
       $table->foreign('fk_staff_id_assign')->references('id')->on('staff');
       $table->integer('fk_staff_id_created')->unsigned();

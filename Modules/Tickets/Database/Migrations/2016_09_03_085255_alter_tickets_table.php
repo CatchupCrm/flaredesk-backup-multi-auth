@@ -15,7 +15,7 @@ class AlterTicketsTable extends Migration
     Schema::table('tickets', function (Blueprint $table) {
       $table->dropColumn('title');
       $table->dropColumn('description');
-      $table->renameColumn('status', 'status_id');
+      $table->renameColumn('status_id', 'status_id');
       $table->renameColumn('fk_staff_id_assign', 'assigned_to');
     });
   }

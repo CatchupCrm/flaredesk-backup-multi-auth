@@ -56,7 +56,7 @@
                                     </ul>
                                 </li>
                                 </li>
-                                <?php $pages = App\Model\kb\Page::where('status', '1')->where('visibility', '1')->get();
+                                <?php $pages = App\Model\kb\Page::where('status_id', '1')->where('visibility', '1')->get();
                                 ?>
                                 @foreach($pages as $page)
                                     <li><a href="{{route('pages',$page->name)}}">{{$page->name}}</a></li>
@@ -97,14 +97,14 @@
                                 <div class="form-group has-feedback {{ $errors->has('email') ? 'has-error' : '' }}">
 
                                     {!! Form::text('email',null,['placeholder'=>'Email','class' => 'form-control']) !!}
-                                    {!! $errors->first('email', '<spam class="help-block">:message</spam>') !!}
+                                    {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
                                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
 
                                 </div>
 
                                 <div class="form-group has-feedback {{ $errors->has('password') ? 'has-error' : '' }}">
                                     {!! Form::password('password',['placeholder'=>'Password','class' => 'form-control']) !!}
-                                    {!! $errors->first('password', '<spam class="help-block">:message</spam>') !!}
+                                    {!! $errors->first('password', '<span class="help-block">:message</span>') !!}
                                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                                 </div>
                                 <ul class="list-unstyled pull-left">

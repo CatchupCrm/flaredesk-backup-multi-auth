@@ -41,8 +41,8 @@ class LeadService implements LeadServiceContract
   public function updateStatus($id, $requestData)
   {
     $lead = Lead::findOrFail($id);
-    $input = $requestData->get('status');
-    $input = array_replace($requestData->all(), ['status' => 2]);
+    $input = $requestData->get('status_id');
+    $input = array_replace($requestData->all(), ['status_id' => 2]);
     $lead->fill($input)->save();
     $activityinput = array_merge(
       ['text' => 'Lead was completed by ' . Auth()->user()->name,
@@ -92,7 +92,7 @@ class LeadService implements LeadServiceContract
 
   public function allCompletedLeads()
   {
-    return Lead::where('status', 2)->count();
+    return Lead::where('status_id', 2)->count();
   }
 
   public function percantageCompleted()
@@ -110,7 +110,7 @@ class LeadService implements LeadServiceContract
     return Lead::whereRaw(
       'date(updated_at) = ?',
       [Carbon::now()->format('Y-m-d')]
-    )->where('status', 2)->count();
+    )->where('status_id', 2)->count();
   }
 
   public function createdLeadsToday()
@@ -125,7 +125,7 @@ class LeadService implements LeadServiceContract
   {
     return DB::table('leads')
       ->select(DB::raw('count(*) as total, updated_at'))
-      ->where('status', 2)
+      ->where('status_id', 2)
       ->whereBetween('updated_at', array(Carbon::now()->startOfMonth(), Carbon::now()))->get();
   }
 
@@ -133,7 +133,7 @@ class LeadService implements LeadServiceContract
   {
     return DB::table('leads')
       ->select(DB::raw('count(*) as month, updated_at'))
-      ->where('status', 2)
+      ->where('status_id', 2)
       ->groupBy(DB::raw('YEAR(updated_at), MONTH(updated_at)'))
       ->get();
   }

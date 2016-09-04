@@ -58,7 +58,7 @@ class LeadsController extends Controller
   {
     $leads = Lead::select(
       ['id', 'title', 'fk_staff_id_created', 'fk_relation_id', 'fk_staff_id_assign', 'contact_date']
-    )->where('status', 1)->get();
+    )->where('status_id', 1)->get();
     return Datatables::of($leads)
       ->addColumn('titlelink', function ($leads) {
         return '<a href="leads/' . $leads->id . '" ">' . $leads->title . '</a>';

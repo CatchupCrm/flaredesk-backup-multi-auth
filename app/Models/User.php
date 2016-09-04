@@ -40,7 +40,7 @@ class User extends Authenticatable
   public function ticketsAssign()
   {
     return $this->hasMany(Ticket::class, 'fk_staff_id_assign', 'id')
-      ->where('status', 1)
+      ->where('status_id', 1)
       ->orderBy('deadline', 'asc');
   }
 
@@ -51,12 +51,12 @@ class User extends Authenticatable
 
   public function ticketsCompleted()
   {
-    return $this->hasMany(Ticket::class, 'fk_staff_id_assign', 'id')->where('status', 2);
+    return $this->hasMany(Ticket::class, 'fk_staff_id_assign', 'id')->where('status_id', 2);
   }
 
   public function ticketsAll()
   {
-    return $this->hasMany(Ticket::class, 'fk_staff_id_assign', 'id')->whereIn('status', [1, 2]);
+    return $this->hasMany(Ticket::class, 'fk_staff_id_assign', 'id')->whereIn('status_id', [1, 2]);
   }
 
   public function leadsAll()

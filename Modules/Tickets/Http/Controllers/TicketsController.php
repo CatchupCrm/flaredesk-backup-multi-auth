@@ -65,7 +65,7 @@ class TicketsController extends Controller
     $tickets = Ticket::select(
       ['id', 'title', 'created_at', 'deadline', 'fk_staff_id_assign']
     )
-      ->where('status', 1)->get();
+      ->where('status_id', 1)->get();
     return Datatables::of($tickets)
       ->addColumn('titlelink', function ($tickets) {
         return '<a href="tickets/' . $tickets->id . '" ">' . $tickets->title . '</a>';
@@ -205,15 +205,15 @@ class TicketsController extends Controller
       foreach ($selectall as $delete) {
         $ticket = Ticket::whereId($delete)->first();
         if ($value == 'Delete') {
-/*          $ticket->status = 5;
+/*          $ticket->status_id = 5;
           $ticket->save();*/
         } elseif ($value == 'Close') {
-          $ticket->status = 2;
+          $ticket->status_id = 2;
           $ticket->closed = 1;
           $ticket->closed_at = date('Y-m-d H:i:s');
           $ticket->save();
         } elseif ($value == 'Open') {
-          $ticket->status = 1;
+          $ticket->status_id = 1;
           $ticket->reopened = 1;
           $ticket->reopened_at = date('Y-m-d H:i:s');
           $ticket->closed = 0;
@@ -255,7 +255,7 @@ class TicketsController extends Controller
       } elseif ($value == 'Open') {
         return redirect()->back()->with('success', 'Ticket has been Opened');
       } else {
-        return redirect()->back()->with('success', Lang::get('lang.hard-delete-success-message'));
+        return redirect()->back()->with('success', Lang::get('helpdesk::tickets.hard-delete-success-message'));
       }
     }
     return redirect()->back()->with('fails', 'None Selected!');

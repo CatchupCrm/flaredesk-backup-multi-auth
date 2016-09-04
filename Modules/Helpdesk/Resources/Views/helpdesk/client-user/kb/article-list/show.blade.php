@@ -11,10 +11,10 @@ $category_id = $all->lists('category_id');
 
 <div class="site-hero clearfix">
     <ol class="breadcrumb breadcrumb-custom">
-        <li class="text">{!! Lang::get('lang.you_are_here') !!}: </li>
+        <li class="text">{!! Lang::get('helpdesk::tickets.you_are_here') !!}: </li>
         <?php $category = App\Model\kb\Category::where('id', $category_id)->first(); ?>
-        <li><a href="{{url('/')}}">{!! Lang::get('lang.home') !!}</a></li>
-        <li><a href="{{url('/knowledgebase')}}">{!! Lang::get('lang.knowledge_base') !!}</a></li>
+        <li><a href="{{url('/')}}">{!! Lang::get('helpdesk::tickets.home') !!}</a></li>
+        <li><a href="{{url('/knowledgebase')}}">{!! Lang::get('helpdesk::tickets.knowledge_base') !!}</a></li>
         <li><a href="{{url('category-list/'.$category->slug)}}">{{$category->name}}</a></li>
         <li class="active">{{$arti->name}}</li>
     </ol>
@@ -49,7 +49,7 @@ $category_id = $all->lists('category_id');
         </div><!-- .entry-content -->
 
     </article><!-- .hentry -->
-    <?php $comments = App\Model\kb\Comment::where('article_id', $arti->id)->where('status', '1')->get(); ?>
+    <?php $comments = App\Model\kb\Comment::where('article_id', $arti->id)->where('status_id', '1')->get(); ?>
 
     <div id="comments" class="comments-area">
         @foreach($comments as $comment)
@@ -82,32 +82,32 @@ $category_id = $all->lists('category_id');
         </ol><!-- .comment-list -->
         @endforeach
         <div id="respond" class="comment-respond form-border">
-            <h3 id="reply-title" class="comment-reply-title section-title">{!! Lang::get('lang.leave_a_reply') !!}</h3>
+            <h3 id="reply-title" class="comment-reply-title section-title">{!! Lang::get('helpdesk::tickets.leave_a_reply') !!}</h3>
             {!! Form::open(['method'=>'post','url'=>'postcomment/'.$arti->slug]) !!}
             <div class="row">
                 <div class="form-group">
                     <div class="col-md-4">
                         <div class="form-group {{ $errors->has('name') ? 'has-error' : '' }}">
-                            {!! Form::label('name',Lang::get('lang.name')) !!}
-                            {!! $errors->first('name', '<spam class="help-block" style="red">:message</spam>') !!}
+                            {!! Form::label('name',Lang::get('helpdesk::tickets.name')) !!}
+                            {!! $errors->first('name', '<span class="help-block" style="red">:message</span>') !!}
                             {!! Form::text('name',null,['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group {{ $errors->has('email') ? 'has-error' : '' }}">
-                            {!! Form::label('email',Lang::get('lang.email')) !!}
-                            {!! $errors->first('email', '<spam class="help-block">:message</spam>') !!}
+                            {!! Form::label('email',Lang::get('helpdesk::tickets.email')) !!}
+                            {!! $errors->first('email', '<span class="help-block">:message</span>') !!}
                             {!! Form::text('email',null,['class' => 'form-control']) !!}
                         </div>
                         <div class="form-group {{ $errors->has('website') ? 'has-error' : '' }}">
-                            {!! Form::label('website',Lang::get('lang.website')) !!}
-                            {!! $errors->first('website', '<spam class="help-block">:message</spam>') !!}
+                            {!! Form::label('website',Lang::get('helpdesk::tickets.website')) !!}
+                            {!! $errors->first('website', '<span class="help-block">:message</span>') !!}
                             {!! Form::text('website',null,['class' => 'form-control']) !!}
                         </div>
-                        <button type="submit" class="btn btn-custom btn-lg">{!! Lang::get('lang.post_message') !!}</button>
+                        <button type="submit" class="btn btn-custom btn-lg">{!! Lang::get('helpdesk::tickets.post_message') !!}</button>
                     </div>
                     <div class="col-md-8">
                         <div class="form-group {{ $errors->has('comment') ? 'has-   error' : '' }}">
-                            {!! Form::label('comment',Lang::get('lang.message')) !!}
-                            {!! $errors->first('comment', '<spam class="help-block">:message</spam>') !!}
+                            {!! Form::label('comment',Lang::get('helpdesk::tickets.message')) !!}
+                            {!! $errors->first('comment', '<span class="help-block">:message</span>') !!}
                             {!! Form::textarea('comment',null,['class' => 'form-control','size' => '30x8','id'=>'comment']) !!}
                         </div>
                     </div>												
@@ -135,7 +135,7 @@ $category_id = $all->lists('category_id');
 @stop
 
 @section('category')
-<h2 class="section-title h4 clearfix">{!! Lang::get('lang.categories') !!}<small class="pull-right"><i class="fa fa-hdd-o fa-fw"></i></small></h2>
+<h2 class="section-title h4 clearfix">{!! Lang::get('helpdesk::tickets.categories') !!}<small class="pull-right"><i class="fa fa-hdd-o fa-fw"></i></small></h2>
 <ul class="nav nav-pills nav-stacked nav-categories">
 
 <?php $categorys = App\Model\kb\Category::all(); ?>

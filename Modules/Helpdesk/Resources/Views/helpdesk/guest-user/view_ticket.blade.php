@@ -88,14 +88,14 @@
             <section class="content"  >
                 <div class="col-md-12">
                     <?php
-$priority = App\Model\Ticket\Ticket_Priority::where('priority_id', '=', $tickets->priority_id)->first();
+$priority = Modules\Tickets\Models\TicketPriority::where('id', '=', $tickets->priority_id)->first();
 ?>
                     <div class="callout callout-{{$priority->priority_color}}">
                         <div class="row">
                             <div class="col-md-3">
                                 <?php
 $sla = $tickets->sla;
-$SlaPlan = App\Model\Manage\Sla_plan::where('id', '=', $sla)->first();
+$SlaPlan = Modules\Tickets\Models\SlaPlan::where('id', '=', $sla)->first();
 ?>
                                 <b>SLA Plan: {{$SlaPlan->grace_period}} </b>
                             </div>
@@ -131,9 +131,9 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
                 <div id="hide2">
                 <div class="col-md-6">
                     <table class="table table-hover"id="refresh">
-                        <tr><td><b>Status:</b></td>       <div><?php $status = App\Model\Ticket\Ticket_Status::where('id', '=', $tickets->status)->first();?><td title="{{$status->properties}}">{{$status->name}}</td></div></tr>
-                        <tr><td><b>Priority:</b></td>     <?php $priority = App\Model\Ticket\Ticket_Priority::where('priority_id', '=', $tickets->priority_id)->first();?><td title="{{$priority->priority_desc}}">{{$priority->priority_desc}}</td></tr>
-                        <tr><td><b>Department:</b></td>   <?php $help_topic = App\Model\Manage\Help_topic::where('id', '=', $tickets->help_topic_id)->first();?><td title="{{$help_topic->topic}}">{{$help_topic->topic}}</td></tr>
+                        <tr><td><b>Status:</b></td>       <div><?php $status = Modules\Tickets\Models\TicketStatus::where('id', '=', $tickets->status)->first();?><td title="{{$status->properties}}">{{$status->name}}</td></div></tr>
+                        <tr><td><b>Priority:</b></td>     <?php $priority = Modules\Tickets\Models\TicketPriority::where('id', '=', $tickets->priority_id)->first();?><td title="{{$priority->priority_desc}}">{{$priority->priority_desc}}</td></tr>
+                        <tr><td><b>Department:</b></td>   <?php $help_topic = Modules\Tickets\Models\HelpTopic::where('id', '=', $tickets->help_topic_id)->first();?><td title="{{$help_topic->topic}}">{{$help_topic->topic}}</td></tr>
                         <tr><td><b>Email:</b></td>        <td>{{$user->email}}</td></tr>
                     </table>
                 </div>
@@ -234,7 +234,7 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
                                     </div>
                                     <div class="col-md-10">
                                         {!! Form::text('To',$user->email,['id'=>'email','class'=>'form-control','style'=>'width:55%'])!!}
-                                        {!! $errors->first('To', '<spam class="help-block text-red">:message</spam>') !!}
+                                        {!! $errors->first('To', '<span class="help-block text-red">:message</span>') !!}
                         
                                         <input type="checkbox"> <a href="#" onclick="AddCcc()" data-toggle="modal" data-target="#addccc"> Add Ccc </a>
                                     </div>
@@ -265,7 +265,7 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
                                     </div>
                                     <div class="col-md-10">
                                         <textarea style="width:98%;height:200px;" name="reply_content" id="reply_content"></textarea>
-                                        {!! $errors->first('reply_content', '<spam class="help-block text-red">:message</spam>') !!}
+                                        {!! $errors->first('reply_content', '<span class="help-block text-red">:message</span>') !!}
                                         <br/>
                                         {{-- <div type="file" class="btn btn-default btn-file"><i class="fa fa-paperclip"> </i> Attachment<input type="file" name="attachment[]" multiple/></div><br/>
                                         Max. 10MB --}}
@@ -300,7 +300,7 @@ echo UTC::usertimezone(date_format($time, 'd/m/Y H:i:s'));
                                         </div>
                                         <div class="col-md-10">
                                             <textarea class="form-control" name="InternalContent" id="InternalContent" style="width:98%; height:150px;"></textarea>
-                                            {!! $errors->first('InternalContent', '<spam class="help-block text-red">:message</spam>') !!}
+                                            {!! $errors->first('InternalContent', '<span class="help-block text-red">:message</span>') !!}
                                         </div>
                                     </div>
                                 </div>
@@ -614,12 +614,12 @@ $data = $ConvDate[0];
                     <div class="form-group">
                         <label>Title</label>
                         <input type="text" name="subject" class="form-control" value="{{$thread->title}}" required>
-                        {!! $errors->first('subject', '<spam class="help-block text-red">:message</spam>') !!}
+                        {!! $errors->first('subject', '<span class="help-block text-red">:message</span>') !!}
                     </div>
                     <div class="form-group">
                         <label>Body</label>
                         <textarea name="body" class="form-control" style="width:100%;height:200px;" required>{!! $thread->body !!}</textarea>
-                        {!! $errors->first('body', '<spam class="help-block text-red">:message</spam>') !!}
+                        {!! $errors->first('body', '<span class="help-block text-red">:message</span>') !!}
                     </div>
                 </div>
                 <div id="show" style="display:none;">
@@ -680,10 +680,10 @@ $data = $ConvDate[0];
                             @endif
                             @endforeach
                         </select>
-                        <!-- <spam class="glyphicon glyphicon-search form-control-feedback"></spam> -->
+                        <!-- <span class="glyphicon glyphicon-search form-control-feedback"></span> -->
                     </div>
                     <div class="row">
-                        <div class="col-md-2"><spam class="glyphicon glyphicon-user fa-5x"></spam></div>
+                        <div class="col-md-2"><span class="glyphicon glyphicon-user fa-5x"></span></div>
                         <div class="col-md-10">
 <?php $user = App\User::where('id', '=', $tickets->user_id)->first();?>
 

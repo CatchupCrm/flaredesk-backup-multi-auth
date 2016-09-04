@@ -25,7 +25,7 @@ class StoreTicketRequest extends Request
     return [
       'title' => 'required',
       'description' => 'required',
-      'status' => 'required',
+      'status_id' => 'required',
       'fk_staff_id_assign' => 'required',
       'fk_staff_id_created' => '',
       'fk_relation_id' => '',

@@ -17,12 +17,12 @@
         <div class="banner-content">
         {!! Form::open(['url' => 'checkmyticket' , 'method' => 'POST'] )!!}
 	
-            {!! Form::label('email',Lang::get('lang.email')) !!}
-    		{!! $errors->first('email', '<spam class="help-block">:message</spam>') !!}
+            {!! Form::label('email',Lang::get('helpdesk::tickets.email')) !!}
+    		{!! $errors->first('email', '<span class="help-block">:message</span>') !!}
     		{!! Form::text('email',null,['class' => 'form-control']) !!}
                 
-            {!! Form::label('ticket_number',Lang::get('lang.ticket_number'),['style' => 'display: block']) !!}
-    		{!! $errors->first('ticket_number', '<spam class="help-block">:message</spam>') !!}
+            {!! Form::label('ticket_number',Lang::get('helpdesk::tickets.ticket_number'),['style' => 'display: block']) !!}
+    		{!! $errors->first('ticket_number', '<span class="help-block">:message</span>') !!}
     		{!! Form::text('ticket_number',null,['class' => 'form-control']) !!}
             <br/><input type="submit" value="Check Ticket Status" class="btn btn-info">
                         
@@ -59,7 +59,7 @@
 {!! Form::open(['action'=>'Client\helpdesk\FormController@postedForm','method'=>'post']) !!}
 <div>
     <div class="content-header">
-        <h4>Ticket {!! Form::submit(Lang::get('lang.send'),['class'=>'form-group btn btn-info pull-right'])!!}</h4>
+        <h4>Ticket {!! Form::submit(Lang::get('helpdesk::tickets.send'),['class'=>'form-group btn btn-info pull-right'])!!}</h4>
     </div>
     <br/>
     <div>
@@ -78,7 +78,7 @@
 
 		<div class="form-group {{ $errors->has('help_topic') ? 'has-error' : '' }}">
 			{!! Form::label('help_topic', 'Choose a Help Topic') !!} 
-			{!! $errors->first('help_topic', '<spam class="help-block">:message</spam>') !!}		
+			{!! $errors->first('help_topic', '<span class="help-block">:message</span>') !!}
             <select name="help_topic" class="form-control" id="selectid">
                 <option>--Select--</option>
                 <option value="1">Default Help Topic</option>

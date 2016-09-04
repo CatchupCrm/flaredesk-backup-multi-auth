@@ -13,8 +13,23 @@ class TicketThread extends Model
   protected $table = 'ticket_threads';
 
   protected $fillable = [
-    'id', 'pid', 'ticket_id', 'staff_id', 'user_id', 'thread_type', 'poster', 'source', 'is_internal', 'title', 'body', 'format', 'ip_address', 'created_at', 'updated_at',
+    'id', 'pid', 'ticket_id', 'staff_id', 'user_id', 'thread_type', 'poster', 'source', 'is_internal', 'title', 'slug', 'body', 'format', 'ip_address', 'created_at', 'updated_at',
   ];
+
+  /**
+   * Return the sluggable configuration array for this model.
+   *
+   * @return array
+   */
+  public function sluggable()
+  {
+    return [
+      'slug' => [
+        'source' => 'title'
+      ]
+    ];
+  }
+
 
   public function attach()
   {

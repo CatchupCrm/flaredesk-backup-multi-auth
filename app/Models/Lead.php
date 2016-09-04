@@ -9,7 +9,7 @@ class Lead extends Model
     protected $fillable = [
         'title',
         'note',
-        'status',
+        'status_id',
         'fk_staff_id_assign',
         'fk_staff_id_created',
         'fk_relation_id',

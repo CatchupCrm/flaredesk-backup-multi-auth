@@ -14,8 +14,9 @@ class Lead extends Model
 
   protected $fillable = [
     'title',
+    'slug',
     'note',
-    'status',
+    'status_id',
     'fk_staff_id_assign',
     'fk_staff_id_created',
     'fk_relation_id',
@@ -24,6 +25,20 @@ class Lead extends Model
   protected $dates = ['contact_date'];
 
   protected $hidden = ['remember_token'];
+
+  /**
+   * Return the sluggable configuration array for this model.
+   *
+   * @return array
+   */
+  public function sluggable()
+  {
+    return [
+      'slug' => [
+        'source' => 'title'
+      ]
+    ];
+  }
 
   public function assignee()
   {

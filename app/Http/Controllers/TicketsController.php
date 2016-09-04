@@ -65,7 +65,7 @@ class TicketsController extends Controller
     $tickets = Ticket::select(
       ['id', 'title', 'created_at', 'deadline', 'fk_staff_id_assign']
     )
-      ->where('status', 1)->get();
+      ->where('status_id', 1)->get();
     return Datatables::of($tickets)
       ->addColumn('titlelink', function ($tickets) {
         return '<a href="tickets/' . $tickets->id . '" ">' . $tickets->title . '</a>';

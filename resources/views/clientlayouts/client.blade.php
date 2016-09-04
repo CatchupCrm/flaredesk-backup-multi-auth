@@ -58,54 +58,59 @@
                 </li>
               </ul>
             </li>
-            <li><a href="/about-us">About Us</a></li>
+            <li><a href="/about-us">About Us (Client Logged In)</a></li>
           </ul>
-          <select class="form-control nav navbar-nav navbar-menu sf-js-enabled sf-arrows">
-            <option value="#">Navigate to...</option>
-            <option value="/">&nbsp;Home</option>
-            <option value="/create-ticket">&nbsp;Submit A
-              Ticket
-            </option>
-            <option value="/knowledgebase">&nbsp;Knowledge
-              Base
-            </option>
-            <option value="/category-list">–&nbsp;Categories</option>
-            <option value="/article-list">–&nbsp;Articles
-            </option>
-            <option value="/about-us">&nbsp;About Us
-            </option>
-          </select>
+
           <ul class="nav navbar-nav navbar-login">
-            <li><a href="#" data-toggle="collapse"
-                   class="collapsed" data-target="#login-form">Login <i
-                  class="sub-indicator fa fa-chevron-circle-down fa-fw text-muted"></i></a></li>
+
+            @if(Auth::user())
+              <li><a href="#" class="collapsed" data-toggle="collapse" data-target="#profile-menu">
+                  <i class="sub-indicator fa fa-chevron-circle-down fa-fw"></i>My Profile</a>
+                <div id="profile-menu" class="login-form collapse fade clearfix">
+
+
+                    <div class="banner-wrapper user-menu text-center clearfix">
+                      @if(Auth::user())
+                      <span class="">{!! Auth::user()->firstname." ".Auth::user()->lastname !!}</span>
+                      <div class="banner-content">
+                        <a href="{{url('client-profile')}}" class="btn btn-custom btn-xs">Edit Profile</a> <a
+                          href="{{url('auth/logout')}}" class="btn btn-custom btn-xs">Log out</a>
+                      </div>
+                      @endif
+                    </div>
+                </div>
+              </li>
+            @else
+
+
+              <li><a href="#" class="collapsed" data-toggle="collapse" data-target="#login-form">Login <i
+                    class="sub-indicator fa fa-chevron-circle-down fa-fw text-muted"></i></a>
+
+                <div id="login-form" class="login-form collapse fade clearfix">
+                  <form role="form" method="POST" action="{{ url('/login') }}">
+                    {!! csrf_field() !!}
+                    <div class="form-group has-feedback">
+                      <input placeholder="E-mail" class="form-control" name="email" type="text">
+                      <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                    </div>
+                    <div class="form-group has-feedback   ">
+                      <input placeholder="Password" class="form-control" name="password" type="password"
+                             value="">
+                      <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+                    </div>
+                    <ul class="list-unstyled pull-left">
+                      <li><a href="/auth/password/email">Forgot
+                          Password</a><br></li>
+                      <li><a href="/auth/register">Create
+                          Account</a></li>
+                    </ul>
+                    <button type="submit" class="btn btn-custom pull-right">Login</button>
+                  </form>
+                </div><!-- #login-form -->
+              </li>
+            @endif
           </ul><!-- .navbar-login -->
-          <div id="login-form" class="login-form collapse fade clearfix">
-
-
-
-            <form role="form" method="POST" action="{{ url('/login') }}">
-              {!! csrf_field() !!}
-              <div class="form-group has-feedback">
-                <input placeholder="E-mail" class="form-control" name="email" type="text">
-                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-              </div>
-              <div class="form-group has-feedback   ">
-                <input placeholder="Password" class="form-control" name="password" type="password"
-                       value="">
-                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-              </div>
-              <ul class="list-unstyled pull-left">
-                <li><a href="/auth/password/email">Forgot
-                    Password</a><br></li>
-                <li><a href="/auth/register">Create
-                    Account</a></li>
-              </ul>
-              <button type="submit" class="btn btn-custom pull-right">Login</button>
-            </form>
-          </div><!-- #login-form -->
-        </nav><!-- #site-navigation -->
-      </div><!-- #navbar -->
+      </div><!-- #navbar navbar-wrapper text-center -->
       <div id="header-search" class="site-search clearfix" style="padding-bottom:5px"><!-- #header-search -->
         <form method="GET" action="/search"
               accept-charset="UTF-8" class="search-form clearfix">

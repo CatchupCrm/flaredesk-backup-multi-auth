@@ -8,7 +8,7 @@ use Carbon;
 
 class Invoice extends Model
 {
-  use Sluggable, Taggable;
+  use Taggable;
 
   protected $table = 'invoices';
 

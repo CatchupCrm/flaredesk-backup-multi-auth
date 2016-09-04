@@ -26,8 +26,8 @@
     </div>
 
     <div class="form-group col-sm-6 removeleft removeright">
-      {!! Form::label('status', 'Status:', ['class' => 'control-label']) !!}
-      {!! Form::select('status', array(
+      {!! Form::label('status_id', 'Status:', ['class' => 'control-label']) !!}
+      {!! Form::select('status_id', array(
       '1' => 'Open', '2' => 'Completed'), null, ['class' => 'form-control'] )
    !!}
     </div>

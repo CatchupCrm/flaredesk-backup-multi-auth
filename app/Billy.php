@@ -37,7 +37,7 @@ class Billy
     $body = json_decode($res);
     $info = curl_getinfo($c);
     return (object)array(
-      'status' => $info['http_code'],
+      'status_id' => $info['http_code'],
       'body' => $body
     );
   }

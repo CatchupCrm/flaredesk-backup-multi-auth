@@ -22,6 +22,7 @@ class CreateRelationsTable extends Migration
       $table->integer('zipcode');
       $table->string('city');
       $table->string('company_name');
+      $table->string('shortname');
       $table->integer('vat');
       $table->string('industry');
       $table->string('company_type');

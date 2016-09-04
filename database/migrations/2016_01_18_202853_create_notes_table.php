@@ -14,7 +14,7 @@ class CreateNotesTable extends Migration
     Schema::create('notes', function (Blueprint $table) {
       $table->increments('id');
       $table->text('note');
-      $table->integer('status');
+      $table->integer('status_id');
       $table->integer('fk_staff_id')->unsigned();
       $table->foreign('fk_staff_id')->references('id')->on('staff');
       $table->integer('fk_lead_id')->unsigned();

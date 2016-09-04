@@ -111,9 +111,9 @@ class="active"
                                     <div class="col-md-6"> 
                                         <table class="table table-hover">
                                             <!-- <tr><th></th><th></th></tr> -->
-                                            <tr><td><b>Status:</b></td>       <?php $status = App\Model\Ticket\Ticket_Status::where('id','=',$tickets->status)->first();?><td title="{{$status->properties}}">{{$status->state}}</td></tr>
-                                            <tr><td><b>Priority:</b></td>     <?php $priority = App\Model\Ticket\Ticket_Priority::where('priority_id','=',$tickets->priority_id)->first();?><td title="{{$priority->priority_desc}}">{{$priority->priority}}</td></tr>
-                                            <tr><td><b>Department:</b></td>   <?php $help_topic = App\Model\Manage\Help_topic::where('id','=',$tickets->help_topic_id)->first();?><td title="{{$help_topic->topic}}">{{$help_topic->department}}</td></tr>                                            
+                                            <tr><td><b>Status:</b></td>       <?php $status = Modules\Tickets\Models\TicketStatus::where('id','=',$tickets->status)->first();?><td title="{{$status->properties}}">{{$status->state}}</td></tr>
+                                            <tr><td><b>Priority:</b></td>     <?php $priority = Modules\Tickets\Models\TicketPriority::where('id','=',$tickets->priority_id)->first();?><td title="{{$priority->priority_desc}}">{{$priority->priority}}</td></tr>
+                                            <tr><td><b>Department:</b></td>   <?php $help_topic = Modules\Tickets\Models\HelpTopic::where('id','=',$tickets->help_topic_id)->first();?><td title="{{$help_topic->topic}}">{{$help_topic->department}}</td></tr>
                                             
                                         </table>
                                         <!-- </div> -->
@@ -159,7 +159,7 @@ class="active"
                                                         </div>
                                                         <div class="col-md-10">
                                                             {!! Form::text('To',$user->email,['class'=>'form-control','style'=>'width:55%'])!!}
-                                                            {!! $errors->first('To', '<spam class="help-block text-red">:message</spam>') !!}
+                                                            {!! $errors->first('To', '<span class="help-block text-red">:message</span>') !!}
                                                         </div>
                                                     </div>
                                                 </div>          
@@ -173,7 +173,7 @@ class="active"
                                                         </div>
                                                         <div class="col-md-10">
                                                             <textarea name="reply_content"></textarea> 
-                                                            {!! $errors->first('reply_content', '<spam class="help-block text-red">:message</spam>') !!}
+                                                            {!! $errors->first('reply_content', '<span class="help-block text-red">:message</span>') !!}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -210,7 +210,7 @@ class="active"
                                                         </div>
                                                         <div class="col-md-10">
                                                             {!! Form::text('To',$user->email,['class'=>'form-control','style'=>'width:55%'])!!}
-                                                            {!! $errors->first('To', '<spam class="help-block text-red">:message</spam>') !!}
+                                                            {!! $errors->first('To', '<span class="help-block text-red">:message</span>') !!}
                                                         </div>
                                                     </div>
                                                 </div>          
@@ -223,7 +223,7 @@ class="active"
                                                         </div>
                                                         <div class="col-md-10">
                                                             <textarea name="reply_content"></textarea> 
-                                                            {!! $errors->first('reply_content', '<spam class="help-block text-red">:message</spam>') !!}
+                                                            {!! $errors->first('reply_content', '<span class="help-block text-red">:message</span>') !!}
                                                         </div>
                                                     </div>
                                                 </div>
