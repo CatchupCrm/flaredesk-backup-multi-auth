@@ -20,6 +20,10 @@ Route::group(['middleware' => 'web'], function () {
   // Authentication Routes...
   Route::get('login', '\App\Http\Controllers\Auth\AuthController@showLoginForm');
   Route::post('login', '\App\Http\Controllers\Auth\AuthController@login');
+
+  Route::get('stafflogin', '\App\Http\Controllers\Auth\StaffController@showStaffLoginForm');
+  Route::post('stafflogin', '\App\Http\Controllers\Auth\StaffController@postStaffLogin');
+
   Route::get('logout', '\App\Http\Controllers\Auth\AuthController@logout');
 
   // Registration Routes...

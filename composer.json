@@ -33,7 +33,8 @@
         "barryvdh/laravel-debugbar": "^2.2",
         "cviebrock/eloquent-sluggable": "4.0",
         "cviebrock/eloquent-taggable": "^2.0",
-        "maddhatter/laravel-fullcalendar": "^1.2"
+        "maddhatter/laravel-fullcalendar": "^1.2",
+        "hesto/multi-auth": "^1.0"
         
     },
     "require-dev": {
