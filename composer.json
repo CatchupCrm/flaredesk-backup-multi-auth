@@ -25,7 +25,8 @@
         "caffeinated/flash": "^3.0",
         "league/color-extractor": "0.3.*",
         "league/commonmark": "0.11",
-        "league/json-guard": "^0.3.3"
+        "league/json-guard": "^0.3.3",
+        "doctrine/dbal": "^2.5"
         
     },
     "require-dev": {

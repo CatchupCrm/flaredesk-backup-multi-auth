@@ -33,7 +33,7 @@
       ->paginate(20);
     ?>
 
-
+<!-- Client Ticket Tabs Start -->
     <div class="nav-tabs-custom">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">{!! Lang::get('lang.opened') !!}
@@ -58,9 +58,8 @@
               {!! $open->count().'-'.$open->total(); !!}
             </div>
           </div>
-          <div class=" table-responsive mailbox-messages" id="refresh1">
-            <p style="display:none;text-align:center; position:fixed; margin-left:37%;margin-top:-80px;" id="show1"
-               class="text-red"><b>Loading...</b></p>
+          <div class=" table-responsive client-tickets" id="refresh1">
+            <p style="display:none;text-align:center; position:fixed; margin-left:37%;margin-top:-80px;" id="show1" class="text-red"><b>Loading...</b></p>
             <!-- table -->
             <table class="table table-hover table-striped">
               <thead>
@@ -124,8 +123,7 @@
                   <td class="mailbox-Id">#{!! $ticket->ticket_number !!}</td>
                   <?php $priority = Modules\Tickets\Models\TicketPriority::where('priority_id', '=', $ticket->priority_id)->first();
 
-dd($ticket);
-dd($priority);
+                dd($priority);
 
                   ?>
                   <td class="mailbox-priority">
@@ -139,6 +137,27 @@ dd($priority);
                 </tr>
               @endforeach
               </tbody>
+              <tfoot>
+              <th></th>
+              <th>
+                {!! Lang::get('lang.subject') !!}
+              </th>
+              <th>
+                {!! Lang::get('lang.ticket_id') !!}
+              </th>
+              <th>
+                {!! Lang::get('lang.priority') !!}
+              </th>
+              <th>
+                {!! Lang::get('lang.last_replier') !!}
+              </th>
+              <th>
+                {!! Lang::get('lang.last_activity') !!}
+              </th>
+              <th>
+                {!! Lang::get('lang.status') !!}
+              </th>
+              </tfoot>
             </table><!-- /.table -->
             <div class="pull-right">
               <?php echo $open->setPath(url('mytickets'))->render();?>&nbsp;
@@ -161,7 +180,7 @@ dd($priority);
               {!! $close->count().'-'.$close->total(); !!}
             </div>
           </div>
-          <div class=" table-responsive mailbox-messages" id="refresh2">
+          <div class=" table-responsive client-tickets" id="refresh2">
             <p style="display:none;text-align:center; position:fixed; margin-left:40%;margin-top:-70px;" id="show2"
                class="text-red"><b>Loading...</b></p>
             <!-- table -->
@@ -242,27 +261,25 @@ dd($priority);
           {!! Form::close() !!}
         </div>
       </div><!-- /. box -->
-    </div>
+    </div><!-- /Client Ticket Tabs Start -->
   </div>
   <script>
-
     $(function () {
       //Enable check and uncheck all functionality
       $(".checkbox-toggle").click(function () {
         var clicks = $(this).data('clicks');
         if (clicks) {
           //Uncheck all checkboxes
-          $(".mailbox-messages input[type='checkbox']").iCheck("uncheck");
+          $(".client-tickets input[type='checkbox']").iCheck("uncheck");
           $(".fa", this).removeClass("fa-check-square-o").addClass('fa-square-o');
         } else {
           //Check all checkboxes
-          $(".mailbox-messages input[type='checkbox']").iCheck("check");
+          $(".client-tickets input[type='checkbox']").iCheck("check");
           $(".fa", this).removeClass("fa-square-o").addClass('fa-check-square-o');
         }
         $(this).data("clicks", !clicks);
       });
     });
-
 
     $(function () {
       // Enable check and uncheck all functionality
@@ -270,15 +287,14 @@ dd($priority);
         var clicks = $(this).data('clicks');
         if (clicks) {
           //Uncheck all checkboxes
-          $("input[type='checkbox']", ".mailbox-messages").iCheck("uncheck");
+          $("input[type='checkbox']", ".client-tickets").iCheck("uncheck");
         } else {
           //Check all checkboxes
-          $("input[type='checkbox']", ".mailbox-messages").iCheck("check");
+          $("input[type='checkbox']", ".client-tickets").iCheck("check");
         }
         $(this).data("clicks", !clicks);
       });
     });
-
 
     $(document).ready(function () { /// Wait till page is loaded
       $('#click1').click(function () {
@@ -288,7 +304,6 @@ dd($priority);
       });
     });
 
-
     $(document).ready(function () { /// Wait till page is loaded
       $('#click2').click(function () {
         $('#refresh2').load('mytickets #refresh2');
@@ -296,7 +311,5 @@ dd($priority);
         $("#show2").show();
       });
     });
-
-
   </script>
 @stop
