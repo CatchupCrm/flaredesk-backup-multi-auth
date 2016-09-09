@@ -31,7 +31,7 @@
         {data: 'titlelink', name: 'title'},
         {data: 'fk_staff_id_created', name: 'fk_staff_id_created'},
         {data: 'contact_date', name: 'contact_date',},
-        {data: 'fk_staff_id_assign', name: 'fk_staff_id_assign'},
+        {data: 'assigned_to_staff_id', name: 'assigned_to_staff_id'},
       ]
     });
   });

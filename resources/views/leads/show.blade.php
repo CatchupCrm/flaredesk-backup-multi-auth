@@ -185,7 +185,7 @@
        'method' => 'PATCH',
         'url' => ['leads/updateassign', $leads->id],
         ]) !!}
-        {!! Form::select('fk_staff_id_assign', $users, null, ['class' => 'form-control ui search selection top right pointing search-select', 'id' => 'search-select']) !!}
+        {!! Form::select('assigned_to_staff_id', $users, null, ['class' => 'form-control ui search selection top right pointing search-select', 'id' => 'search-select']) !!}
         {!! Form::submit('Assign new user', ['class' => 'btn btn-primary form-control closebtn']) !!}
         {!! Form::close() !!}
         {!! Form::model($leads, [

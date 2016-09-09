@@ -69,34 +69,31 @@
 
 
             }
-            $(function () {
 
+            /*$(function () {
+            $.get('url('/notifications/getall')', function (notifications) {
+            var obj = $.parseJSON(notifications);
+            var notifyItem = document.getElementById('notification-item');
+            var bell = document.getElementById('notifycount');
+            var msg = "";
+            var count = 0;
+            $.each(obj, function (index, notification) {
+            count++;
+            var id = notification['id'];
+            var url = notification['url'];
 
-              $.get('{{url('/notifications/getall')}}', function (notifications) {
-                var obj = $.parseJSON(notifications);
-                var notifyItem = document.getElementById('notification-item');
-                var bell = document.getElementById('notifycount');
-                var msg = "";
-                var count = 0;
-                $.each(obj, function (index, notification) {
-                  count++;
-                  var id = notification['id'];
-                  var url = notification['url'];
-
-                  msg += `<div>
-        <a class="content" onclick="postRead(` + id + `)" href="` + url + `">
-        `
-                    + notification['text'] +
-                    ` </a></div>
-        <hr class="notify-line"/>`;
-                  notifyItem.innerHTML = msg;
-                });
-                bell.innerHTML = count;
-              })
-
+            msg += `<div>
+            <a class="content" onclick="postRead(` + id + `)" href="` + url + `">
+            `
+            + notification['text'] +
+            ` </a></div>
+            <hr class="notify-line"/>`;
+            notifyItem.innerHTML = msg;
             });
+            bell.innerHTML = count;
+            })
 
-
+            });*/
           </script>
 
         </div>

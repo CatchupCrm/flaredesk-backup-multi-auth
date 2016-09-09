@@ -26,7 +26,7 @@ class StoreLeadRequest extends Request
       'title' => 'required',
       'note' => 'required',
       'status_id' => 'required',
-      'fk_staff_id_assign' => 'required',
+      'assigned_to_staff_id' => 'required',
       'fk_staff_id_created' => '',
       'fk_relation_id' => 'required',
       'contact_date' => 'required'

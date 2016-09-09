@@ -72,7 +72,7 @@ class LeadService implements LeadServiceContract
   public function updateAssign($id, $requestData)
   {
     $lead = Lead::findOrFail($id);
-    $input = $requestData->get('fk_staff_id_assign');
+    $input = $requestData->get('assigned_to_staff_id');
     $input = array_replace($requestData->all());
     $lead->fill($input)->save();
     $insertedName = $lead->assignee->name;

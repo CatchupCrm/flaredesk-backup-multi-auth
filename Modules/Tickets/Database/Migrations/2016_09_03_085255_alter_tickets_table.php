@@ -16,7 +16,7 @@ class AlterTicketsTable extends Migration
       $table->dropColumn('title');
       $table->dropColumn('description');
       $table->renameColumn('status_id', 'status_id');
-      $table->renameColumn('fk_staff_id_assign', 'assigned_to');
+      $table->renameColumn('assigned_to_staff_id', 'assigned_to');
     });
   }
 

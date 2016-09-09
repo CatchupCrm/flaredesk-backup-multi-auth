@@ -57,28 +57,52 @@ class TicketsController extends Controller
    */
   public function index()
   {
-    return view('tickets.index');
+    return view('tickets::tickets.index');
   }
 
   public function anyData()
   {
-    $tickets = Ticket::select(
-      ['id', 'title', 'created_at', 'deadline', 'fk_staff_id_assign']
-    )
-      ->where('status_id', 1)->get();
+
+
+    $tickets = Ticket::select([
+      'id',
+      'ticket_number',
+      'subject',
+      'priority_id',
+      'fk_relation_id',
+      'assigned_to_staff_id',
+      'transferred_at',
+      'created_at',
+      'reopened_at',
+      'deadline'
+    ])->orderBy('deadline', 'desc');
     return Datatables::of($tickets)
-      ->addColumn('titlelink', function ($tickets) {
-        return '<a href="tickets/' . $tickets->id . '" ">' . $tickets->title . '</a>';
+
+      ->addColumn('ticketnumber', function ($tickets) {
+        return '<a href="/tickets/ticket/' . $tickets->id . '" ">' . $tickets->ticket_number . '</a>';
       })
+
+      ->addColumn('ticketsubjectlink', function ($tickets) {
+        return '<a href="/tickets/ticket/' . $tickets->id . '" ">' . $tickets->subject . '</a>';
+      })
+
+      ->addColumn('fk_relation_id', function ($tickets) {
+        return '<a href="/relations/relation/' . $tickets->fk_relation_id . '" ">' . $tickets->relationAssignee->company_name . '</a>';
+      })
+
+      ->addColumn('priority_id', function ($tickets) {
+        return '<a href="tickets/priority/' . $tickets->priority_id . '" ">' . $tickets->priority_id . '</a>';
+      })
+
       ->editColumn('created_at', function ($tickets) {
         return $tickets->created_at ? with(new Carbon($tickets->created_at))
           ->format('d/m/Y') : '';
       })
       ->editColumn('deadline', function ($tickets) {
-        return $tickets->created_at ? with(new Carbon($tickets->created_at))
+        return $tickets->created_at ? with(new Carbon($tickets->deadline))
           ->format('d/m/Y') : '';
       })
-      ->editColumn('fk_staff_id_assign', function ($tickets) {
+      ->editColumn('assigned_to_staff_id', function ($tickets) {
         return $tickets->assignee->name;
       })->make(true);
   }
@@ -139,7 +163,7 @@ class TicketsController extends Controller
    * Sees if the Settings from backend allows all to complete taks
    * or only assigned user. if only assigned user:
    * @param  [Auth]  $id Checks Logged in users id
-   * @param  [Model] $ticket->fk_staff_id_assign Checks the id of the user assigned to the ticket
+   * @param  [Model] $ticket->assigned_to_staff_id Checks the id of the user assigned to the ticket
    * If Auth and fk_staff_id allow complete else redirect back if all allowed excute
    * else stmt*/
   public function updateStatus($id, Request $request)
@@ -199,14 +223,14 @@ class TicketsController extends Controller
    */
   public function select_all()
   {
-    if (Input::has('select_all')) {
+/*    if (Input::has('select_all')) {
       $selectall = Input::get('select_all');
       $value = Input::get('submit');
       foreach ($selectall as $delete) {
         $ticket = Ticket::whereId($delete)->first();
         if ($value == 'Delete') {
-/*          $ticket->status_id = 5;
-          $ticket->save();*/
+          /*$ticket->status_id = 5;
+            $ticket->save();* /
         } elseif ($value == 'Close') {
           $ticket->status_id = 2;
           $ticket->closed = 1;
@@ -258,7 +282,7 @@ class TicketsController extends Controller
         return redirect()->back()->with('success', Lang::get('helpdesk::tickets.hard-delete-success-message'));
       }
     }
-    return redirect()->back()->with('fails', 'None Selected!');
+    return redirect()->back()->with('fails', 'None Selected!');*/
   }
 
 

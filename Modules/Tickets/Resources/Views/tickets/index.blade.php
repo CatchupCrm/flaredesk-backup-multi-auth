@@ -8,13 +8,32 @@
     <thead>
     <tr>
 
-      <th>Name</th>
+      <th>Ticket NR</th>
+      <th>Subject</th>
+      <th>fk_relation_id</th>
+      <th>priority_id</th>
       <th>Created at</th>
-      <th>Deadline</th>
+      <th>DEdline</th>
       <th>Assigned</th>
 
     </tr>
     </thead>
+
+
+    <tfoot>
+    <tr>
+
+      <th>Ticket NR</th>
+      <th>Subject</th>
+      <th>fk_relation_id</th>
+      <th>priority_id</th>
+      <th>Created at</th>
+      <th>DEdline</th>
+      <th>Assigned</th>
+
+
+    </tr>
+    </tfoot>
   </table>
 @stop
 
@@ -28,10 +47,13 @@
       "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
       ajax: '{!! route('tickets.data') !!}',
       columns: [
-        {data: 'titlelink', name: 'title'},
+        {data: 'ticketnumber', name: 'ticket_number'},
+        {data: 'ticketsubjectlink', name: 'subject'},
+        {data: 'fk_relation_id', name: 'fk_relation_id'},
+        {data: 'priority_id', name: 'priority_id'},
         {data: 'created_at', name: 'created_at'},
         {data: 'deadline', name: 'deadline'},
-        {data: 'fk_staff_id_assign', name: 'fk_staff_id_assign',},
+        {data: 'assigned_to_staff_id', name: 'assigned_to_staff_id'},
       ]
     });
   });

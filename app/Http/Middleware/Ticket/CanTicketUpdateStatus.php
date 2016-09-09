@@ -23,7 +23,7 @@ class CanTicketUpdateStatus
     if ($isAdmin) {
       return $next($request);
     }
-    if ($settingscomplete == 1 && auth()->user()->id != $ticket->fk_staff_id_assign) {
+    if ($settingscomplete == 1 && auth()->user()->id != $ticket->assigned_to_staff_id) {
       Session()->flash('flash_message_warning', 'Only assigned user are allowed to close Ticket.');
       return redirect()->back();
     }

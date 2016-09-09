@@ -49,7 +49,7 @@ class TicketService implements TicketServiceContract
     Session()->flash('flash_message', 'Ticket successfully added!'); //Snippet in Master.blade.php
     Notifynder::category('ticket.assign')
       ->from(auth()->id())
-      ->to($ticket->fk_staff_id_assign)
+      ->to($ticket->assigned_to_staff_id)
       ->url(url('tickets', $insertedId))
       ->expire(Carbon::now()->addDays(14))
       ->send();
@@ -97,7 +97,7 @@ class TicketService implements TicketServiceContract
   public function updateAssign($id, $requestData)
   {
     $ticket = Ticket::with('assignee')->findOrFail($id);
-    $input = $requestData->get('fk_staff_id_assign');
+    $input = $requestData->get('assigned_to_staff_id');
     $input = array_replace($requestData->all());
     $ticket->fill($input)->save();
     $ticket = $ticket->fresh();

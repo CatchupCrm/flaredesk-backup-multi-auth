@@ -57,7 +57,7 @@ class LeadsController extends Controller
   public function anyData()
   {
     $leads = Lead::select(
-      ['id', 'title', 'fk_staff_id_created', 'fk_relation_id', 'fk_staff_id_assign', 'contact_date']
+      ['id', 'title', 'fk_staff_id_created', 'fk_relation_id', 'assigned_to_staff_id', 'contact_date']
     )->where('status_id', 1)->get();
     return Datatables::of($leads)
       ->addColumn('titlelink', function ($leads) {
@@ -70,7 +70,7 @@ class LeadsController extends Controller
         return $leads->contact_date ? with(new Carbon($leads->created_at))
           ->format('d/m/Y') : '';
       })
-      ->editColumn('fk_staff_id_assign', function ($leads) {
+      ->editColumn('assigned_to_staff_id', function ($leads) {
         return $leads->assignee->name;
       })->make(true);
   }

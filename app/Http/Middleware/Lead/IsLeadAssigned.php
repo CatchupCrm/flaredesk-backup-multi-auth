@@ -23,7 +23,7 @@ class IsLeadAssigned
     if ($isAdmin) {
       return $next($request);
     }
-    if ($settingscomplete == 1 && Auth()->user()->id == $lead->fk_staff_id_assign) {
+    if ($settingscomplete == 1 && Auth()->user()->id == $lead->assigned_to_staff_id) {
       Session()->flash('flash_message_warning', 'Not allowed to create lead');
       return redirect()->back();
     }

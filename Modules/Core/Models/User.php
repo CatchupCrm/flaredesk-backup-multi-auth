@@ -44,12 +44,12 @@ class User extends Authenticatable
 
   public function ticketsCompleted()
   {
-    return $this->hasMany(Ticket::class, 'fk_staff_id_assign', 'id')->where('status_id', 2);
+    return $this->hasMany(Ticket::class, 'assigned_to_staff_id', 'id')->where('status_id', 2);
   }
 
   public function ticketsAll()
   {
-    return $this->hasMany(Ticket::class, 'fk_staff_id_assign', 'id')->whereIn('status_id', [1, 2]);
+    return $this->hasMany(Ticket::class, 'assigned_to_staff_id', 'id')->whereIn('status_id', [1, 2]);
   }
 
   public function leadsAll()

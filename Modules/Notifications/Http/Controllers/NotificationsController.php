@@ -2,15 +2,16 @@
 namespace Modules\Notifications\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
-use Modules\Models\User;
+use Modules\Core\Models\Staff;
 use Notifynder;
 
 class NotificationsController extends Controller
 {
-  public function getAll()
+  public function gtAll()
   {
-    $user = User::find(\Auth::id());
+    $user = Staff::find(\Auth::id());
     $notread = $user->getNotificationsNotRead();
     return $notread->toJson();
   }

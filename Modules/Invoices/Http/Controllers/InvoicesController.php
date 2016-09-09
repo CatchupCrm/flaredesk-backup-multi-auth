@@ -2,6 +2,7 @@
 namespace Modules\Invoices\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Modules\Invoices\Models\Invoice;
 use Modules\Invoices\Services\Invoice\InvoiceServiceContract;

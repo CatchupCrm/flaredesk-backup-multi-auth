@@ -63,7 +63,7 @@ class TicketsController extends Controller
   public function anyData()
   {
     $tickets = Ticket::select(
-      ['id', 'title', 'created_at', 'deadline', 'fk_staff_id_assign']
+      ['id', 'title', 'created_at', 'deadline', 'assigned_to_staff_id']
     )
       ->where('status_id', 1)->get();
     return Datatables::of($tickets)
@@ -78,7 +78,7 @@ class TicketsController extends Controller
         return $tickets->created_at ? with(new Carbon($tickets->created_at))
           ->format('d/m/Y') : '';
       })
-      ->editColumn('fk_staff_id_assign', function ($tickets) {
+      ->editColumn('assigned_to_staff_id', function ($tickets) {
         return $tickets->assignee->name;
       })->make(true);
   }
@@ -139,7 +139,7 @@ class TicketsController extends Controller
    * Sees if the Settings from backend allows all to complete taks
    * or only assigned user. if only assigned user:
    * @param  [Auth]  $id Checks Logged in users id
-   * @param  [Model] $ticket->fk_staff_id_assign Checks the id of the user assigned to the ticket
+   * @param  [Model] $ticket->assigned_to_staff_id Checks the id of the user assigned to the ticket
    * If Auth and fk_staff_id allow complete else redirect back if all allowed excute
    * else stmt*/
   public function updateStatus($id, Request $request)

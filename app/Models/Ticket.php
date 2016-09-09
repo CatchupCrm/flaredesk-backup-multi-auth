@@ -10,7 +10,7 @@ class Ticket extends Model
     'title',
     'description',
     'status_id',
-    'fk_staff_id_assign',
+    'assigned_to_staff_id',
     'fk_staff_id_created',
     'fk_relation_id',
     'deadline'
@@ -21,7 +21,7 @@ class Ticket extends Model
 
   public function assignee()
   {
-    return $this->belongsTo(User::class, 'fk_staff_id_assign');
+    return $this->belongsTo(User::class, 'assigned_to_staff_id');
   }
 
   public function relationAssignee()

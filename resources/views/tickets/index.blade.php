@@ -10,7 +10,7 @@
 
       <th>Name</th>
       <th>Created at</th>
-      <th>Deadline</th>
+      <th>Deadlin</th>
       <th>Assigned</th>
 
     </tr>
@@ -31,7 +31,7 @@
         {data: 'titlelink', name: 'title'},
         {data: 'created_at', name: 'created_at'},
         {data: 'deadline', name: 'deadline'},
-        {data: 'fk_staff_id_assign', name: 'fk_staff_id_assign',},
+        {data: 'assigned_to_staff_id', name: 'assigned_to_staff_id',},
       ]
     });
   });

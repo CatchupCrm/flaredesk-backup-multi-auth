@@ -17,7 +17,7 @@ class Lead extends Model
     'slug',
     'note',
     'status_id',
-    'fk_staff_id_assign',
+    'assigned_to_staff_id',
     'fk_staff_id_created',
     'fk_relation_id',
     'contact_date',
@@ -42,7 +42,7 @@ class Lead extends Model
 
   public function assignee()
   {
-    return $this->belongsTo(Staff::class, 'fk_staff_id_assign');
+    return $this->belongsTo(Staff::class, 'assigned_to_staff_id');
   }
 
   public function createdBy()

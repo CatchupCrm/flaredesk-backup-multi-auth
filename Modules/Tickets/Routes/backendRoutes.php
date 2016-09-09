@@ -8,7 +8,7 @@ Route::group(['prefix' => '/tickets'], function () {
   /**
    * TICKETS
    */
-  Route::get('/data', 'TicketsController@anyData')->name('tickets.data');
+  Route::get('/data', ['as' => 'tickets.data', 'uses' => 'TicketsController@anyData']);
   Route::patch('/updatestatus/{id}', 'TicketsController@updateStatus');
   Route::patch('/updateassign/{id}', 'TicketsController@updateAssign');
   Route::post('/updatetime/{id}', 'TicketsController@updateTime');

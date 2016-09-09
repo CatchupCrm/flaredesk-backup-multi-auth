@@ -8,7 +8,7 @@ Route::group(['prefix' => '/notifications'], function () {
   /**
    * NOTIFICATIONS
    */
-  Route::get('/getall', 'NotificationsController@getAll')->name('notifications.get');
+  Route::get('/getall', ['as' => 'notifications.get', 'uses' => 'NotificationsController@gotAll']);
   Route::post('/markread', 'NotificationsController@markRead');
   Route::get('/markall', 'NotificationsController@markAll');
   // append

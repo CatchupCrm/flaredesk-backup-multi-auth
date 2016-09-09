@@ -12,7 +12,6 @@ class TicketsDummyTableSeeder extends Seeder
   public function run()
   {
     factory(App\Models\Ticket::class, 1750)->create()->each(function ($c) {
-
     });
   }
 }
