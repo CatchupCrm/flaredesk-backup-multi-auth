@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Datatables;
 use Config;
 use Dinero;
+use Illuminate\Support\Facades\Auth;
 use Modules\Core\Models\Settings;
 use Modules\Relations\Requests\Relation\StoreRelationRequest;
 use Modules\Relations\Requests\Relation\UpdateRelationRequest;
@@ -42,13 +43,17 @@ class RelationsController extends Controller
    */
   public function index()
   {
-    dd($this->users);
-    return view('relations.index');
+    //echo "guard staff (relations index)";
+    //dd(Auth::guard('staff'));
+    //dd(Auth::guard($guard));
+    //dd(Auth::guard());
+    return view('relations::relations.index');
   }
 
   public function anyData()
   {
     $relations = Relation::select(['id', 'name', 'company_name', 'email', 'primary_number']);
+
     return Datatables::of($relations)
       ->addColumn('namelink', function ($relations) {
         return '<a href="relations/' . $relations->id . '" ">' . $relations->name . '</a>';
@@ -86,7 +91,7 @@ class RelationsController extends Controller
   {
     $this->relations->create($request->all());
     Session()->flash('flash_message', 'Relation successfully added');
-    return redirect()->route('relations.index');
+    return redirect()->route('admin.relations.relations.index');
   }
 
   public function cvrapiStart(Request $vatRequest)
@@ -133,7 +138,7 @@ class RelationsController extends Controller
   {
     $this->relations->update($id, $request);
     Session()->flash('flash_message', 'Relation successfully updated');
-    return redirect()->route('relations.index');
+    return redirect()->route('admin.relations.relations.index');
   }
 
   /**
@@ -145,6 +150,6 @@ class RelationsController extends Controller
   public function destroy($id)
   {
     $this->relations->destroy($id);
-    return redirect()->route('relations.index');
+    return redirect()->route('admin.relations.relations.index');
   }
 }

@@ -71,7 +71,7 @@
           <div class="icon">
             <i class="ion ion-person"></i>
           </div>
-          <a href="{{route('relations.index')}}" class="small-box-footer">All relations <i
+          <a href="{{route('admin.relations.relations.index')}}" class="small-box-footer">All relations <i
               class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div>

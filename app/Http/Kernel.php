@@ -34,20 +34,21 @@ class Kernel extends HttpKernel
         ],
 
 
-        'relation.create' => [ \App\Http\Middleware\Relation\CanRelationCreate::class ],
-        'relation.update' => [ \App\Http\Middleware\Relation\CanRelationUpdate::class ],
-        'user.create' => [ \App\Http\Middleware\User\CanUserCreate::class ],
-        'user.update' => [ \App\Http\Middleware\User\CanUserUpdate::class ],
-        'ticket.create' => [ \App\Http\Middleware\Ticket\CanTicketCreate::class ],
-        'ticket.update.status' => [ \App\Http\Middleware\Ticket\CanTicketUpdateStatus::class ],
-        'ticket.assigned' => [ \App\Http\Middleware\Ticket\IsTicketAssigned::class ],
-        'lead.create' => [ \App\Http\Middleware\Lead\CanLeadCreate::class ],
-        'lead.assigned' => [ \App\Http\Middleware\Lead\IsLeadAssigned::class ],
-        'lead.update.status' => [ \App\Http\Middleware\Lead\CanLeadUpdateStatus::class ],
+        //'email.create' => [ \App\Http\Middleware\Email\CanEmailCreate::class ],
+        //'relation.create' => [ \App\Http\Middleware\Relation\CanRelationCreate::class ],
+        //'relation.update' => [ \App\Http\Middleware\Relation\CanRelationUpdate::class ],
+        //'user.create' => [ \App\Http\Middleware\User\CanUserCreate::class ],
+        //'user.update' => [ \App\Http\Middleware\User\CanUserUpdate::class ],
+        //'ticket.create' => [ \App\Http\Middleware\Ticket\CanTicketCreate::class ],
+        //'ticket.update.status' => [ \App\Http\Middleware\Ticket\CanTicketUpdateStatus::class ],
+        //'ticket.assigned' => [ \App\Http\Middleware\Ticket\IsTicketAssigned::class ],
+        //'lead.create' => [ \App\Http\Middleware\Lead\CanLeadCreate::class ],
+        //'lead.assigned' => [ \App\Http\Middleware\Lead\IsLeadAssigned::class ],
+        //'lead.update.status' => [ \App\Http\Middleware\Lead\CanLeadUpdateStatus::class ],
 
 
 
-        'user.is.admin' => [ \App\Http\Middleware\RedirectIfNotAdmin::class ],
+        //'user.is.admin' => [ \App\Http\Middleware\RedirectIfNotAdmin::class ],
         'api' => [
             'throttle:60,1',
             'bindings',
@@ -63,8 +64,8 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
 
-        'client' => \App\Http\Middleware\RedirectIfNotClient::class,
-        'customer' => \App\Http\Middleware\RedirectIfNotCustomer::class,
+        //'client' => \App\Http\Middleware\RedirectIfNotClient::class,
+        //'customer' => \App\Http\Middleware\RedirectIfNotCustomer::class,
         'staff' => \App\Http\Middleware\RedirectIfNotStaff::class,
         'admin' => \App\Http\Middleware\RedirectIfNotAdmin::class,
 
@@ -74,7 +75,7 @@ class Kernel extends HttpKernel
 
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
-        'can' => \Illuminate\Auth\Middleware\Authorize::class,
+        //'can' => \Illuminate\Auth\Middleware\Authorize::class,
 
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,

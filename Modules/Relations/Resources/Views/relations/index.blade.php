@@ -10,7 +10,7 @@
     <tr>
 
       <th>Name</th>
-      <th>Company</th>
+      <th>Compeny</th>
       <th>Email</th>
       <th>Number</th>
       <th></th>

@@ -6,6 +6,15 @@ Route::group(['prefix' => '/relations'], function () {
   Route::resource('relations', 'RelationsController');
 
   //Auth::loginUsingId($fan->getAuthIdentifier());
+  //echo "(backend) relations";
+
+  //dd(Auth::guard());
+  Route::get('/relations', [
+    'as' => 'admin.relations.relations.index',
+    'uses' => 'RelationsController@index',
+    //'middleware' => 'can:relations.relations.index'
+  ]);
+//->name('relations.data')
 
   Route::get('/', [
     'as' => 'admin.relations.relations.index',

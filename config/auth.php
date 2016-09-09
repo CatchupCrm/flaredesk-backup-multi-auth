@@ -12,7 +12,7 @@ return [
   */
   'defaults' => [
     'guard' => 'staff',
-    'passwords' => 'staff',
+    'passwords' => 'users',
   ],
   /*
   |--------------------------------------------------------------------------
@@ -31,31 +31,17 @@ return [
   |
   */
   'guards' => [
-    'client' => [
-      'driver' => 'session',
-      'provider' => 'clients',
-    ],
-    'customer' => [
-      'driver' => 'session',
-      'provider' => 'customers',
-    ],
-
     'web' => [
       'driver' => 'session',
       'provider' => 'users',
     ],
-    'api' => [
-      'driver' => 'token',
-      'provider' => 'users',
-    ],
-
     'staff' => [
       'driver' => 'session',
       'provider' => 'staff',
     ],
-    'admin' => [
-      'driver' => 'session',
-      'provider' => 'admins',
+    'api' => [
+      'driver' => 'token',
+      'provider' => 'users',
     ],
   ],
   /*
@@ -75,31 +61,12 @@ return [
   |
   */
   'providers' => [
-
-
-    'clients' => [
-      'driver' => 'eloquent',
-      'model' => Modules\Core\Models\Client::class,
-      'table' => 'users',
-    ],
-    'customers' => [
-      'driver' => 'eloquent',
-      'model' => Modules\Core\Models\Customer::class,
-      'table' => 'users',
-    ],
     'users' => [
       'driver' => 'eloquent',
       'model' => Modules\Core\Models\User::class,
       'table' => 'users',
     ],
-
-
     'staff' => [
-      'driver' => 'eloquent',
-      'model' => Modules\Core\Models\Staff::class,
-      'table' => 'staff',
-    ],
-    'admins' => [
       'driver' => 'eloquent',
       'model' => Modules\Core\Models\Staff::class,
       'table' => 'staff',
@@ -124,26 +91,6 @@ return [
   |
   */
   'passwords' => [
-    'clients' => [
-      'provider' => 'clients',
-      'table' => 'password_resets',
-      'expire' => 60,
-    ],
-    'customers' => [
-      'provider' => 'customers',
-      'table' => 'password_resets',
-      'expire' => 60,
-    ],
-    'staff' => [
-      'provider' => 'staff',
-      'table' => 'password_resets',
-      'expire' => 60,
-    ],
-    'admins' => [
-      'provider' => 'admins',
-      'table' => 'password_resets',
-      'expire' => 60,
-    ],
     'users' => [
       'provider' => 'users',
       'email' => 'auth.emails.password',

@@ -132,7 +132,7 @@
           class="glyphicon glyphicon-tag"></i> Relations </a>
       <div class="collapse" id="relations">
 
-        <a href="{{ route('relations.index')}}" class="list-group-item childlist">All Relations</a>
+        <a href="{{ route('admin.relations.relations.index')}}" class="list-group-item childlist">All Relations</a>
         @if(Entrust::can('relation-create'))
           <a href="{{ route('relations.create')}}" class="list-group-item childlist">New Relation</a>
         @endif

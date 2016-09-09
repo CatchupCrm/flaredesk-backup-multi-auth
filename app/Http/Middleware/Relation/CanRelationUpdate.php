@@ -16,7 +16,7 @@ class CanRelationUpdate
   {
     if (!auth()->user()->can('relation-update')) {
       Session()->flash('flash_message_warning', 'Not allowed to update relation');
-      return redirect()->route('relations.index');
+      return redirect()->route('admin.relations.relations.index');
     }
     return $next($request);
   }

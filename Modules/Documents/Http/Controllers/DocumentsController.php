@@ -60,10 +60,10 @@ class DocumentsController extends Controller
           }
         });
         \Session::flash('flash_message', 'Users uploaded successfully.');
-        // return redirect(route('relations.index'));
+        // return redirect(route('admin.relations.relations.index'));
       } catch (\Exception $e) {
         \Session::flash('flash_message_warning', $e->getMessage());
-        //return redirect(route('relations.index'));
+        //return redirect(route('admin.relations.relations.index'));
       }
     }
   }

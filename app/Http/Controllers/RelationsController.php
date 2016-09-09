@@ -42,7 +42,7 @@ class RelatonsController extends Controller
    */
   public function index()
   {
-    return view('relations.index');
+    return view('admin.relations.relations.index');
   }
 
   public function anyData()
@@ -85,7 +85,7 @@ class RelatonsController extends Controller
   {
     $this->relations->create($request->all());
     Session()->flash('flash_message', 'Relation successfully added');
-    return redirect()->route('relations.index');
+    return redirect()->route('admin.relations.relations.index');
   }
 
   public function cvrapiStart(Request $vatRequest)
@@ -132,7 +132,7 @@ class RelatonsController extends Controller
   {
     $this->relations->update($id, $request);
     Session()->flash('flash_message', 'Relation successfully updated');
-    return redirect()->route('relations.index');
+    return redirect()->route('admin.relations.relations.index');
   }
 
   /**
@@ -144,6 +144,6 @@ class RelatonsController extends Controller
   public function destroy($id)
   {
     $this->relations->destroy($id);
-    return redirect()->route('relations.index');
+    return redirect()->route('admin.relations.relations.index');
   }
 }
