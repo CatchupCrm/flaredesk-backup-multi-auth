@@ -385,7 +385,7 @@ jQuery(document).ready(function($) {
     $('#open').on('click', function (e) {
         $.ajax({
             type        :   "GET",
-            url         :   "http://localhost/faveo/public/ticket/open/{{$tickets->id}}",
+            url         :   "http://localhost/faveo/public/tickets/open/{{$tickets->id}}",
             success : function(response) {
                     $( "#refresh" ).load( "http://localhost/faveo/public/thread/{{$tickets->id}}   #refresh");
                 $('#refresh').load('thread/2 #refresh');

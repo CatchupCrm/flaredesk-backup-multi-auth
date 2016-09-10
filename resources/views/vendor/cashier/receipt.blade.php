@@ -59,7 +59,7 @@
                 &nbsp;
             </td>
 
-            <!-- Organization Name / Image -->
+            <!-- Relation Name / Image -->
             <td align="right">
                 <strong>{{ $header or $vendor }}</strong>
             </td>
@@ -69,7 +69,7 @@
                     Receipt
             </td>
 
-            <!-- Organization Name / Date -->
+            <!-- Relation Name / Date -->
             <td>
                 <br><br>
                 <strong>To:</strong> {{ $user->email ?: $user->name }}
@@ -78,7 +78,7 @@
             </td>
         </tr>
         <tr valign="top">
-            <!-- Organization Details -->
+            <!-- Relation Details -->
             <td style="font-size:9px;">
                 {{ $vendor }}<br>
                 @if (isset($street))

@@ -3,7 +3,7 @@ namespace App;
 class Economic
 {
   protected $relation;
-  protected static $organizationId;
+  protected static $relationId;
   protected static $accessToken;
   protected static $relationId;
   protected static $relationSecret;

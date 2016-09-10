@@ -114,10 +114,14 @@
 
         <!-- User Account: style can be found in dropdown.less -->
         <li class="dropdown notifications-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="myFunction()">
+
+
+          {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="myFunction()">
             <i class="fa fa-bell-o"></i>
             <span class="label label-warning" id="count">count $notifications</span>
-          </a>
+          </a>--}}
+
+
           <ul class="dropdown-menu">
             <li class="header">You have count($notifications) notifications</li>
             <li>
@@ -149,21 +153,27 @@
           </ul>
         </li>
 
-        <!-- User Account: style can be found in dropdown.less -->
+
         <li class="dropdown user user-menu">
+          <ul class="dropdown-menu">
+            <li class="user-header">
+              <p>
+                first_name last_name - role
+                <small></small>
+              </p>
+            </li>
+          </ul>
+        </li>
+
+
+        <!-- User Account: style can be found in dropdown.less -->
+        {{-- <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-
-            <img src="#" class="user-image" alt="User Image"/>
-
-            <span class="hidden-xs">first_name last_name</span>
-
+              <span class="hidden-xs">first_name last_name</span>
           </a>
           <ul class="dropdown-menu">
             <!-- User image -->
             <li class="user-header" style="background-color:#343F44;">
-
-              <img src="#" class="img-circle" alt="User Image"/>
-
               <p>
                 first_name last_name - role
                 <small></small>
@@ -172,16 +182,14 @@
             <!-- Menu Footer-->
             <li class="user-footer" style="background-color:#1a2226;">
               <div class="pull-left">
-                <a href="/staff-profile"
-                   class="btn btn-info btn-sm"><b>{!! Lang::get('lang.profile') !!}</b></a>
+                <a href="/staff-profile" class="btn btn-info btn-sm"><b>{!! Lang::get('lang.profile') !!}</b></a>
               </div>
               <div class="pull-right">
-                <a href="/auth/logout/"
-                   class="btn btn-danger btn-sm"><b>{!! Lang::get('lang.sign_out') !!}</b></a>
+                <a href="/auth/logout/" class="btn btn-danger btn-sm"><b>{!! Lang::get('lang.sign_out') !!}</b></a>
               </div>
             </li>
           </ul>
-        </li>
+        </li> --}}
       </ul>
     </div>
 
@@ -377,14 +385,14 @@
             <li id="bar" @yield(
             'user')><a href="{{ url('user') }}">{!! Lang::get('lang.user_directory') !!}</a></li></a></li>
             <li id="bar" @yield(
-            'organizations')><a href="{{ url('organizations') }}">{!! Lang::get('lang.organizations')
+            'relations')><a href="{{ url('relations') }}">{!! Lang::get('lang.relations')
               !!}</a></li></a></li>
           </ul>
         </div>
         <div class="tabs-pane @yield('ticket-bar')" id="tabC">
           <ul class="nav navbar-nav">
             <li id="bar" @yield(
-            'open')><a href="{{ url('/ticket/open') }}" id="load-open">{!! Lang::get('lang.open') !!}</a></li>
+            'open')><a href="{{ url('/tickets/open') }}" id="load-open">{!! Lang::get('lang.open') !!}</a></li>
             <li id="bar" @yield(
             'answered')><a href="{{ url('/ticket/answered') }}" id="load-answered">{!! Lang::get('lang.answered')
               !!}</a></li>
@@ -438,195 +446,133 @@
   Lang::get('lang.all_rights_reserved') !!}
   . {!! Lang::get('lang.powered_by') !!} <a href="http://www.faveohelpdesk.com/" target="_blank">Faveo</a>
 </footer>
-</div><!-- ./wrapper -->
-{{-- //
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
---}}
+                    </div><!-- ./wrapper -->
+                    {{-- // <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> --}}
 
-<script src="{{asset(" lb-faveo
-/js/ajax-jquery.min.js")}}"></script>
+                     <script src="{{asset("lb-faveo/js/ajax-jquery.min.js")}}"></script>
+                    
+                    {{-- // <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script> --}}
 
-{
-  {
-    -- // <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
---}}
+                    <script src="{{asset("lb-faveo/js/bootstrap-datetimepicker4.7.14.min.js")}}" type="text/javascript"></script>
+                    <!-- Bootstrap 3.3.2 JS -->
+                    <script src="{{asset("lb-faveo/js/bootstrap.min.js")}}" type="text/javascript"></script>
+                    <!-- Slimscroll -->
+                    <script src="{{asset("lb-faveo/plugins/slimScroll/jquery.slimscroll.min.js")}}" type="text/javascript"></script>
+                    <!-- FastClick -->
+                    <script src="{{asset("lb-faveo/plugins/fastclick/fastclick.min.js")}}"></script>
+                    <!-- AdminLTE App -->
+                    <script src="{{asset("lb-faveo/js/app.min.js")}}" type="text/javascript"></script>
+                    <!-- AdminLTE for demo purposes -->
+                    {{-- // <script src="{{asset("dist/js/demo.js")}}" type="text/javascript"></script> --}}
+                    <!-- iCheck -->
+                    <script src="{{asset("lb-faveo/plugins/iCheck/icheck.min.js")}}" type="text/javascript"></script>
+                    {{-- maskinput --}}
+                    {{-- // <script src="js/jquery.maskedinput.min.js" type="text/javascript"></script> --}}
+                    {{-- jquery ui --}}
+                    <script src="{{asset("lb-faveo/js/jquery.ui.js")}}" type="text/javascript"></script>
+                    <script src="{{asset("lb-faveo/plugins/datatables/dataTables.bootstrap.js")}}" type="text/javascript"></script>
+                    <script src="{{asset("lb-faveo/plugins/datatables/jquery.dataTables.js")}}" type="text/javascript"></script>
+                    <!-- Page Script -->
+                    
+                    {{-- // <script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script> --}}
+                    <script type="text/javascript" src="{{asset("lb-faveo/js/jquery.dataTables1.10.10.min.js")}}"></script>
+                    
+                    <script type="text/javascript" src="{{asset("lb-faveo/plugins/datatables/dataTables.bootstrap.js")}}"></script>
+                    <script src="{{asset("lb-faveo/js/jquery.rating.pack.js")}}" type="text/javascript"></script>
 
-<script src="{{asset(" lb-faveo
-/js/bootstrap-datetimepicker4.7.14.min.js")}}" type="text/javascript"></script>
-<!-- Bootstrap 3.3.2 JS -->
-<
-script
-src = "{{asset("
-lb - faveo / js / bootstrap.min.js
-")}}"
-type = "text/javascript" ></script>
-<!-- Slimscroll -->
-<script src="{{asset(" lb-faveo
-/plugins/slimScroll/jquery.slimscroll.min.js")}}" type="text/javascript"></script>
-<!-- FastClick -->
-<
-script
-src = "{{asset("
-lb - faveo / plugins / fastclick / fastclick.min.js
-")}}" ></script>
-<!-- AdminLTE App -->
-<script src="{{asset(" lb-faveo
-/js/app.min.js")}}" type="text/javascript"></script>
-<!-- AdminLTE for demo purposes -->
-{
-  {
-    -- // <script src="{{asset("dist/js/demo.js")}}" type="text/javascript"></script> --}}
-<!-- iCheck -->
-<script src="{{asset(" lb-faveo
-/plugins/iCheck/icheck.min.js")}}" type="text/javascript"></script>
-{
-  {
-    --maskinput--
-  }
-}
-{
-  {
-    -- // <script src="js/jquery.maskedinput.min.js" type="text/javascript"></script> --}}
-{{-- jquery ui --}}
-<script src="{{asset(" lb-faveo
-/js/jquery.ui.js")}}" type="text/javascript"></script>
-<
-script
-src = "{{asset("
-lb - faveo / plugins / datatables / dataTables.bootstrap.js
-")}}"
-type = "text/javascript" ></script>
-<script src="{{asset(" lb-faveo
-/plugins/datatables/jquery.dataTables.js")}}" type="text/javascript"></script>
-<!-- Page Script -->
-
-{
-  {
-    -- // <script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
---}}
-<script type="text/javascript" src="{{asset(" lb-faveo
-/js/jquery.dataTables1.10.10.min.js")}}"></script>
-
-<
-script
-type = "text/javascript"
-src = "{{asset("
-lb - faveo / plugins / datatables / dataTables.bootstrap.js
-")}}" ></script>
-<script src="{{asset(" lb-faveo
-/js/jquery.rating.pack.js")}}" type="text/javascript"></script>
-
-<
-script
-src = "{{asset("
-lb - faveo / plugins / select2 / select2.full.min.js
-")}}" ></script>
-<script src="{{asset(" lb-faveo
-/plugins/moment/moment.js")}}"></script>
-<
-script >
-function myFunction() {
-
-  document.getElementById("count").innerHTML = "0";
-
-}
-</script>
+                     <script src="{{asset("lb-faveo/plugins/select2/select2.full.min.js")}}" ></script>
+                      <script src="{{asset("lb-faveo/plugins/moment/moment.js")}}" ></script>
 <script>
-  $(document).ready(function () {
+                function myFunction() {
 
-    $('.noti_User').click(function () {
-      var id = this.id;
-      var dataString = 'id=' + id;
-      $.ajax
-      ({
-        type: "POST",
-        url: "{{url('mark-read')}}" + "/" + id,
-        data: dataString,
-        cache: false,
-        success: function (html) {
+                    document.getElementById("count").innerHTML = "0";
+
+                }
+        </script>
+        <script>
+                $(document).ready(function () {
+                    
+                    $('.noti_User').click(function () {
+                        var id = this.id;
+                    var dataString = 'id=' + id;
+                        $.ajax
+                                ({
+                                    type: "POST",
+                                    url: "{{url('mark-read')}}" + "/" + id,
+                                    data: dataString,
+                                    cache: false,
+                                    success: function (html)
+                                    {
 //$(".city").html(html);
-        }
-      });
-    });
+                                    }
+                                });
+                    });
 
-  });
-</script>
+                });
+        </script>
 <script>
-  $(function () {
+$(function() {
     // Enable iCheck plugin for checkboxes
     // iCheck for checkbox and radio inputs
     // $('input[type="checkbox"]').iCheck({
-    // checkboxClass: 'icheckbox_flat-blue',
-    // radioClass: 'iradio_flat-blue'
+        // checkboxClass: 'icheckbox_flat-blue',
+        // radioClass: 'iradio_flat-blue'
     // });
     // Enable check and uncheck all functionality
-    $(".checkbox-toggle").click(function () {
-      var clicks = $(this).data('clicks');
-      if (clicks) {
-        //Uncheck all checkboxes
-        $("input[type='checkbox']", ".mailbox-messages").iCheck("uncheck");
-      } else {
-        //Check all checkboxes
-        $("input[type='checkbox']", ".mailbox-messages").iCheck("check");
-      }
-      $(this).data("clicks", !clicks);
+    $(".checkbox-toggle").click(function() {
+        var clicks = $(this).data('clicks');
+        if (clicks) {
+            //Uncheck all checkboxes
+            $("input[type='checkbox']", ".mailbox-messages").iCheck("uncheck");
+        } else {
+            //Check all checkboxes
+            $("input[type='checkbox']", ".mailbox-messages").iCheck("check");
+        }
+        $(this).data("clicks", !clicks);
     });
 
     //Handle starring for glyphicon and font awesome
-    $(".mailbox-star").click(function (e) {
-      e.preventDefault();
-      //detect type
-      var $this = $(this).find("a > i");
-      var glyph = $this.hasClass("glyphicon");
-      var fa = $this.hasClass("fa");
-      //Switch states
-      if (glyph) {
-        $this.toggleClass("glyphicon-star");
-        $this.toggleClass("glyphicon-star-empty");
-      }
-      if (fa) {
-        $this.toggleClass("fa-star");
-        $this.toggleClass("fa-star-o");
-      }
+    $(".mailbox-star").click(function(e) {
+        e.preventDefault();
+        //detect type
+        var $this = $(this).find("a > i");
+        var glyph = $this.hasClass("glyphicon");
+        var fa = $this.hasClass("fa");
+        //Switch states
+        if (glyph) {
+            $this.toggleClass("glyphicon-star");
+            $this.toggleClass("glyphicon-star-empty");
+        }
+        if (fa) {
+            $this.toggleClass("fa-star");
+            $this.toggleClass("fa-star-o");
+        }
     });
-  });
+});
 </script>
 <script type="text/javascript">
-  //     $(document).ready(function() {
-  //         $("#content").Editor();
-  //     });
-  // </script>
+//     $(document).ready(function() {
+//         $("#content").Editor();
+//     });
+// </script>
 <!-- // <script src="../plugins/jQuery/jQuery-2.1.3.min.js"></script> -->
-<script src="{{asset(" lb-faveo
-/js/tabby.js")}}"></script>
-<
-!-- // <script src="{{asset("dist/js/editor.js")}}"></script> -->
+<script src="{{asset("lb-faveo/js/tabby.js")}}"></script>
+<!-- // <script src="{{asset("dist/js/editor.js")}}"></script> -->
 <!-- CK Editor -->
 <!-- // <script src="{{asset("//cdn.ckeditor.com/4.4.3/standard/ckeditor.js")}}"></script> -->
-{{-- //
-<script src="{{asset(" lb-faveo
-/downloads/CKEditor.js")}}"></script> --
-}
-}
-<
-script
-src = "{{asset("
-lb - faveo / plugins / filebrowser / plugin.js
-")}}" ></script>
-<script src="{{asset(" lb-faveo
-/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}"
-type="text/javascript"></script>
-<
-script >
+{{-- // <script src="{{asset("lb-faveo/downloads/CKEditor.js")}}"></script> --}}
+<script src="{{asset("lb-faveo/plugins/filebrowser/plugin.js")}}"></script>
+<script src="{{asset("lb-faveo/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}" type="text/javascript"></script>
+<script>
 // $(function () {
 // //Add text editor
 // $("textarea").wysihtml5();
 // });
 </script>
 <script type="text/javascript">
-  $.ajaxSetup({
-    headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
-  });
+$.ajaxSetup({
+headers: { 'X-CSRF-Token' : $('meta[name=_token]').attr('content') }
+});
 </script>
 @yield('FooterInclude')
 </body>

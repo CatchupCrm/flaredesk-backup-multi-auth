@@ -839,7 +839,7 @@ function AddCcc(){
         $('#open').on('click', function(e) {
             $.ajax({
                 type: "GET",
-                url: "../ticket/open/{{$tickets->id}}",
+                url: "../tickets/open/{{$tickets->id}}",
                 beforeSend: function() {
                     $("#hide2").hide();
                     $("#show2").show();

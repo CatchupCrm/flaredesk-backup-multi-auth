@@ -4,7 +4,7 @@ class Dinero
 {
   public static $relation;
   public static $instance;
-  protected static $organizationId;
+  protected static $relationId;
   protected static $accessToken;
   protected static $relationId;
   protected static $relationSecret;
@@ -53,7 +53,7 @@ class Dinero
 
   public static function initialize($dbRow)
   {
-    self::$organizationId = $dbRow['org_id'];
+    self::$relationId = $dbRow['org_id'];
     self::$relationId = config('services.dinero.relation');
     self::$relationSecret = config('services.dinero.secret');
     self::$apiKey = $dbRow['api_key'];
@@ -61,7 +61,7 @@ class Dinero
 
   public static function createInvoice($params)
   {
-    $res = self::getClient()->request('POST', 'https://api.dinero.dk/v1/' . self::$organizationId . '/invoices', [
+    $res = self::getClient()->request('POST', 'https://api.dinero.dk/v1/' . self::$relationId . '/invoices', [
       'verify' => false,
       'headers' => [
         'Authorization' => 'Bearer ' . self::$accessToken
@@ -74,7 +74,7 @@ class Dinero
   public static function bookInvoice($invoiceGuid, $timestamp)
   {
     $res = self::getClient()->request('POST', 'https://api.dinero.dk/v1/'
-      . self::$organizationId . '/invoices/' . $invoiceGuid . '/book', [
+      . self::$relationId . '/invoices/' . $invoiceGuid . '/book', [
       'verify' => false,
       'headers' => [
         'Authorization' => 'Bearer ' . self::$accessToken
@@ -88,7 +88,7 @@ class Dinero
   public static function sendInvoice($invoiceGuid, $timestamp)
   {
     $res = self::getClient()->request('POST', 'https://api.dinero.dk/v1/'
-      . self::$organizationId . '/invoices/' . $invoiceGuid . '/email', [
+      . self::$relationId . '/invoices/' . $invoiceGuid . '/email', [
       'verify' => false,
       'headers' => [
         'Authorization' => 'Bearer ' . self::$accessToken
@@ -102,7 +102,7 @@ class Dinero
   public function getContacts()
   {
     $res = self::getClient()->request('GET', 'https://api.dinero.dk/v1/'
-      . self::$organizationId . '/contacts?field=Name,ContactGuid', [
+      . self::$relationId . '/contacts?field=Name,ContactGuid', [
       'verify' => false,
       'headers' => [
         'Authorization' => 'Bearer ' . self::$accessToken

@@ -107,13 +107,14 @@
         <li @yield('Settings')><a data-target="#tabE" href="{!! url('/adminpanel/settings') !!}">{!! Lang::get('lang.settings') !!}</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-          <li><a href="{{url('staffpanel')}}">staff panel</a></li>
+        <li><a href="{{url('')}}">{!! Lang::get('core::lang.supportcenter') !!}</a></li>
+          <li><a href="{{url('/staffpanel')}}">{!! Lang::get('core::lang.staffpanel') !!}</a></li>
             <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="myFunction()">
+            {{--<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="myFunction()">
               <i class="fa fa-bell-o"></i>
               <span class="label label-warning" id="count">count $notifications</span>
-            </a>
+            </a>--}}
             <ul class="dropdown-menu">
               <li class="header">You have count($notifications) notifications</li>
               <li>
@@ -145,21 +146,25 @@
             </ul>
           </li>
 
+        <li class="dropdown user user-menu">
+          <ul class="dropdown-menu">
+        <li class="user-header">
+          <p>
+            first_name last_name - role
+            <small></small>
+          </p>
+        </li>
+            </ul>
+        </li>
+
           <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
+          {{-- <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-
-                <img src="#" class="user-image" alt="User Image"/>
-
                 <span class="hidden-xs">first_name last_name</span>
-
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header" style="background-color:#343F44;">
-
-                <img src="#" class="img-circle" alt="User Image"/>
-
                 <p>
                   first_name last_name - role
                   <small></small>
@@ -175,140 +180,225 @@
                 </div>
               </li>
             </ul>
-          </li>
+          </li> --}}
       </ul>
     </div>
   </nav>
-                            </header>
-                            <!-- Left side column. contains the logo and sidebar -->
-                            <aside class="main-sidebar">
-                                <!-- sidebar: style can be found in sidebar.less -->
-                                <section class="sidebar">
-                                    <div class="user-panel">
-                                    <div class = "row">
-                                        <div class="col-xs-3"></div>
-                                        <div class="col-xs-2" style="width:50%;">
-                                        <a href="{!! url('profile') !!}">
-                                            <img src="#" class="img-circle" alt="User Image" />
-                                        </a>
-                                        </div>
-                                    </div>
-                                        <div class="info" style="text-align:center;">
-                                            @if(Auth::user())
-                                                <p>{!! Auth::user()->first_name !!}{!! " ". Auth::user()->last_name !!}</p>
-                                            @endif
-                                            @if(Auth::user() && Auth::user()->active==1)
-                                                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-                                            @else
-                                                <a href="#"><i class="fa fa-circle"></i> Offline</a>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <!-- search form -->
-                                    {{-- <form action="#" method="get" class="sidebar-form"> --}}
-                                        {{-- <div class="input-group"> --}}
-                                            {{-- <input type="text" name="q" class="form-control" placeholder="Search..."/> --}}
-                                            {{-- <span class="input-group-btn"> --}}
-                                                {{-- <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button> --}}
-                                            {{-- </span> --}}
-                                        {{-- </div> --}}
-                                    {{-- </form> --}}
-                                    <!-- /.search form -->
-                                    <!-- sidebar menu: : style can be found in sidebar.less -->
-                                    <ul class="sidebar-menu">
-                                                            <li class="header">{!! Lang::get('lang.settings-2') !!}</li>
-        <li class="treeview @yield('Staffs')">
+</header>
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar">
+      <div class="user-panel">
+      <div class = "row">
+          <div class="col-xs-3"></div>
+          <div class="col-xs-2" style="width:50%;">
+          <a href="{!! url('/staff/profile') !!}">
+              <img src="#" class="img-circle" alt="User Image" />
+          </a>
+          </div>
+      </div>
+          <div class="info" style="text-align:center;">
+              @if(Auth::user())
+                  <p>{!! Auth::user()->first_name !!}{!! " ". Auth::user()->last_name !!}</p>
+              @endif
+              @if(Auth::user() && Auth::user()->active==1)
+                  <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+              @else
+                  <a href="#"><i class="fa fa-circle"></i> Offline</a>
+              @endif
+          </div>
+      </div>
+      <!-- search form -->
+      {{-- <form action="#" method="get" class="sidebar-form"> --}}
+          {{-- <div class="input-group"> --}}
+              {{-- <input type="text" name="q" class="form-control" placeholder="Search..."/> --}}
+              {{-- <span class="input-group-btn"> --}}
+                  {{-- <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button> --}}
+              {{-- </span> --}}
+          {{-- </div> --}}
+      {{-- </form> --}}
+      <!-- /.search form -->
+      <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+        <li class="header">{!! Lang::get('core::lang.adminsettings') !!}</li>
+
+        <li class="treeview @yield('Settings')">
+          <a href="#">
+            <i class="fa fa-cog"></i>
+            <span>{!! Lang::get('core::lang.system-settings') !!}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li @yield('settings')><a href="{{url('/adminpanel/settings')}}"><i class="fa fa-building"></i>{!! Lang::get('core::lang.settingsindex') !!}</a></li>
+            <li @yield('company')><a href="{{url('/adminpanel/getcompany')}}"><i class="fa fa-building"></i>{!! Lang::get('core::lang.company') !!}</a></li>
+            <li @yield('system')><a href="{{url('/adminpanel/getsystem')}}"><i class="fa fa-laptop"></i>{!! Lang::get('core::lang.system') !!}</a></li>
+            <li @yield('tickets')><a href="{{url('/adminpanel/getticket')}}"><i class="fa fa-file-text"></i>{!! Lang::get('core::lang.ticket') !!}</a></li>
+            <li @yield('auto-response')><a href="{{url('/adminpanel/getresponder')}}"><i class="fa fa-reply-all"></i>{!! Lang::get('core::lang.auto_response') !!}</a></li>
+            <li @yield('alert')><a href="{{url('/adminpanel/getalert')}}"><i class="fa fa-bell"></i>{!! Lang::get('core::lang.alert_notices') !!}</a></li>
+            <li @yield('languages')><a href="{{url('/adminpanel/languages')}}"><i class="fa fa-language"></i>{!! Lang::get('core::lang.language') !!}</a></li>
+            <li @yield('cron')><a href="{{url('/adminpanel/job-scheduler')}}"><i class="fa fa-hourglass"></i>{!! Lang::get('core::lang.cron') !!}</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview @yield('Staff')">
             <a  href="#">
-                <i class="fa fa-users"></i> <span>{!! Lang::get('lang.staffs') !!}</span> <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-users"></i> <span>{!! Lang::get('core::lang.staff') !!}</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li @yield('agents')><a href="{{ url('agents') }}"><i class="fa fa-user "></i>{!! Lang::get('lang.agents') !!}</a></li>
-                <li @yield('departments')><a href="{{ url('departments') }}"><i class="fa fa-sitemap"></i>{!! Lang::get('lang.departments') !!}</a></li>
-                <li @yield('teams')><a href="{{ url('teams') }}"><i class="fa fa-users"></i>{!! Lang::get('lang.teams') !!}</a></li>
-                <li @yield('groups')><a href="{{ url('groups') }}"><i class="fa fa-users"></i>{!! Lang::get('lang.groups') !!}</a></li>
+                <li @yield('staff')><a href="{{ url('/adminpanel/staff/manage') }}"><i class="fa fa-user "></i>{!! Lang::get('core::lang.staff') !!}</a></li>
+                <li @yield('departments')><a href="{{ url('/adminpanel/departments/manage') }}"><i class="fa fa-sitemap"></i>{!! Lang::get('core::lang.departments') !!}</a></li>
+                <li @yield('teams')><a href="{{ url('/adminpanel/teams/manage/manage') }}"><i class="fa fa-users"></i>{!! Lang::get('core::lang.teams') !!}</a></li>
+                <li @yield('roles')><a href="{{ url('/adminpanel/roles/manage') }}"><i class="fa fa-users"></i>{!! Lang::get('core::lang.roles') !!}</a></li>
             </ul>
         </li>
 
-       <li class="treeview @yield('Emails')">
+       <li class="treeview @yield('Mailboxes')">
             <a href="#">
                 <i class="fa fa-envelope-o"></i>
                 <span>{!! Lang::get('lang.email') !!}</span>
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li @yield('emails')><a href="{{ url('emails') }}"><i class="fa fa-envelope"></i>{!! Lang::get('lang.emails') !!}</a></li>
-                <li @yield('ban')><a href="{{ url('banlist') }}"><i class="fa fa-ban"></i>{!! Lang::get('lang.ban_lists') !!}</a></li>
-                 <li @yield('template')><a href="{{ url('list-directories') }}"><i class="fa fa-mail-forward"></i>{!! Lang::get('lang.templates') !!}</a></li>
-                <li @yield('diagnostics')><a href="{{ url('getdiagno') }}"><i class="fa fa-plus"></i>{!! Lang::get('lang.diagnostics') !!}</a></li>
-                <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Auto Response</a></li> -->
-                <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Rules/a></li> -->
-                <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Breaklines</a></li> -->
-                <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Log</a></li> -->
+                <li @yield('mailboxes')><a href="{{ url('/mailpanel/mailboxes/manage') }}"><i class="fa fa-envelope"></i>{!! Lang::get('email::lang.mailboxes') !!}</a></li>
+                <li @yield('ban')><a href="{{ url('/mailpanel/mailbanlist') }}"><i class="fa fa-ban"></i>{!! Lang::get('email::lang.ban_lists') !!}</a></li>
+                <li @yield('getmail')><a href="{{url('/mailpanel/getmail')}}"><i class="fa fa-at"></i>{!! Lang::get('email::lang.getmail') !!}</a></li>
+                <li @yield('template')><a href="{{ url('/mailpanel/mailtemplates') }}"><i class="fa fa-mail-forward"></i>{!! Lang::get('email::lang.mailtemplates') !!}</a></li>
+                <li @yield('maildiagnostics')><a href="{{ url('/mailpanel/getmaildiagno') }}"><i class="fa fa-plus"></i>{!! Lang::get('email::lang.maildiagnostics') !!}</a></li>
+                <li @yield('autoresponses')><a href="{{ url('/mailpanel/autoresponses') }}"><i class="fa fa-plus"></i>{!! Lang::get('email::lang.autoresponses') !!}</a></li>
+                <li @yield('breaklines')><a href="{{ url('/mailpanel/breaklines') }}"><i class="fa fa-plus"></i>{!! Lang::get('email::lang.breaklines') !!}</a></li>
+                <li @yield('mailrules')><a href="{{ url('/mailpanel/mailrules') }}"><i class="fa fa-plus"></i>{!! Lang::get('email::lang.mailrules') !!}</a></li>
             </ul>
         </li>
 
-        <li class="treeview @yield('Manage')">
+        <li class="treeview @yield('MailParser')">
+          <a href="#">
+            <i class="fa fa-envelope-o"></i>
+            <span>{!! Lang::get('email::lang.mailparser') !!}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li @yield('mailparser')><a href="{{ url('/adminpanel/mailparser') }}"><i class="fa fa-envelope"></i>{!! Lang::get('email::lang.mailparser') !!}</a></li>
+            <li @yield('mailboxes')><a href="{{ url('/adminpanel/mailboxes') }}"><i class="fa fa-mail-forward"></i>{!! Lang::get('email::lang.mailboxes') !!}</a></li>
+            <li @yield('mailrules')><a href="{{ url('/adminpanel/mailrules') }}"><i class="fa fa-ban"></i>{!! Lang::get('email::lang.mailrules') !!}</a></li>
+            <li @yield('mailbans')><a href="{{ url('/adminpanel/mailbanlist') }}"><i class="fa fa-ban"></i>{!! Lang::get('email::lang.mailbans') !!}</a></li>
+            <li @yield('mailcatch-all')><a href="{{ url('/adminpanel/mailcatch-all') }}"><i class="fa fa-mail-forward"></i>{!! Lang::get('email::lang.mailcatch-all') !!}</a></li>
+            <li @yield('maildiagnostics')><a href="{{ url('/adminpanel/getmaildiagno') }}"><i class="fa fa-plus"></i>{!! Lang::get('email::lang.diagnostics') !!}</a></li>
+          </ul>
+        </li>
+
+
+        <li class="treeview @yield('MailTemplates')">
+          <a href="#">
+            <i class="fa fa-envelope-o"></i>
+            <span>{!! Lang::get('email::lang.mailtemplates') !!}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li @yield('mailtemplategroups')><a href="{{ url('/adminpanel/mailtemplategroups') }}"><i class="fa fa-envelope"></i>{!! Lang::get('email::lang.mailtemplategroups') !!}</a></li>
+            <li @yield('mailtemplates')><a href="{{ url('/adminpanel/mailtemplates') }}"><i class="fa fa-mail-forward"></i>{!! Lang::get('email::lang.mailtemplates') !!}</a></li>
+            <li @yield('maillogos')><a href="{{ url('/adminpanel/maillogos') }}"><i class="fa fa-ban"></i>{!! Lang::get('email::lang.maillogos') !!}</a></li>
+            <li @yield('templateimport')><a href="{{ url('/adminpanel/templateimport') }}"><i class="fa fa-mail-forward"></i>{!! Lang::get('email::lang.templateimport') !!}</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview @yield('TicketSettings')">
             <a href="#">
                 <i class="fa  fa-cubes"></i>
-                <span>{!! Lang::get('lang.manage') !!}</span>
+                <span>{!! Lang::get('tickets::lang.managetickets') !!}</span>
                 <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-                <li @yield('help')><a href="{{url('helptopic')}}"><i class="fa fa-file-text-o"></i>{!! Lang::get('lang.help_topics') !!}</a></li>
-                <li @yield('sla')><a href="{{url('sla')}}"><i class="fa fa-clock-o"></i>{!! Lang::get('lang.sla_plans') !!}</a></li>
-                <li @yield('forms')><a href="{{url('forms')}}"><i class="fa fa-file-text"></i>{!! Lang::get('lang.forms') !!}</a></li>
-                <li @yield('workflow')><a href="{{url('workflow')}}"><i class="fa fa-sitemap"></i>{!! Lang::get('lang.workflow') !!}</a></li>
+                <li @yield('ticketsettings')><a href="{{url('/ticketspanel/settings')}}"><i class="fa fa-file-text-o"></i>{!! Lang::get('tickets::lang.ticketsettings') !!}</a></li>
+                <li @yield('tickettypes')><a href="{{url('/ticketspanel/tickettypes')}}"><i class="fa fa-file-text-o"></i>{!! Lang::get('tickets::lang.tickettypes') !!}</a></li>
+                <li @yield('ticketstatuses')><a href="{{url('/ticketspanel/ticketstatuses')}}"><i class="fa fa-file-text-o"></i>{!! Lang::get('tickets::lang.ticketstatuses') !!}</a></li>
+                <li @yield('ticketpriorities')><a href="{{url('/ticketspanel/ticketpriorities')}}"><i class="fa fa-file-text-o"></i>{!! Lang::get('tickets::lang.ticketpriorities') !!}</a></li>
+                <li @yield('helptopics')><a href="{{url('/ticketspanel/helptopics')}}"><i class="fa fa-file-text-o"></i>{!! Lang::get('tickets::lang.helptopics') !!}</a></li>
+                <li @yield('ticketlinktypes')><a href="{{url('/ticketspanel/ticketlinktypes')}}"><i class="fa fa-file-text-o"></i>{!! Lang::get('tickets::lang.ticketlinktypes') !!}</a></li>
+                <li @yield('sla')><a href="{{url('/ticketspanel/slaplans')}}"><i class="fa fa-clock-o"></i>{!! Lang::get('tickets::lang.sla_plans') !!}</a></li>
+                <li @yield('ticketautoclose')><a href="{{url('/ticketspanel/ticketautoclose')}}"><i class="fa fa-file-text"></i>{!! Lang::get('tickets::lang.ticketautoclose') !!}</a></li>
+                <li @yield('ticketbatchactions')><a href="{{url('/ticketspanel/ticketbatchactions')}}"><i class="fa fa-file-text"></i>{!! Lang::get('tickets::lang.ticketbatchactions') !!}</a></li>
+                <li @yield('ticketworkflows')><a href="{{url('/ticketspanel/ticketworkflows')}}"><i class="fa fa-sitemap"></i>{!! Lang::get('tickets::lang.ticketworkflows') !!}</a></li>
             </ul>
         </li>
 
-        <li class="treeview @yield('Settings')">
-            <a href="#">
-                <i class="fa fa-cog"></i>
-                <span>{!! Lang::get('lang.system-settings') !!}</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li @yield('company')><a href="{{url('getcompany')}}"><i class="fa fa-building"></i>{!! Lang::get('lang.company') !!}</a></li>
-                <li @yield('system')><a href="{{url('getsystem')}}"><i class="fa fa-laptop"></i>{!! Lang::get('lang.system') !!}</a></li>
-                <li @yield('email')><a href="{{url('getemail')}}"><i class="fa fa-at"></i>{!! Lang::get('lang.email') !!}</a></li>
-                <li @yield('tickets')><a href="{{url('getticket')}}"><i class="fa fa-file-text"></i>{!! Lang::get('lang.ticket') !!}</a></li>
-                <li @yield('auto-response')><a href="{{url('getresponder')}}"><i class="fa fa-reply-all"></i>{!! Lang::get('lang.auto_response') !!}</a></li>
-                <li @yield('alert')><a href="{{url('getalert')}}"><i class="fa fa-bell"></i>{!! Lang::get('lang.alert_notices') !!}</a></li>
-                <li @yield('languages')><a href="{{url('languages')}}"><i class="fa fa-language"></i>{!! Lang::get('lang.language') !!}</a></li>
-                <li @yield('cron')><a href="{{url('job-scheduler')}}"><i class="fa fa-hourglass"></i>{!! Lang::get('lang.cron') !!}</a></li>
-            </ul>
+
+        <li class="treeview @yield('Escalations')">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>{!! Lang::get('lang.widgets') !!}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li @yield('ticketescalations')><a href="{{ url('/ticketspanel/escalatetickets') }}"><i class="fa fa-list-alt"></i> {!! Lang::get('tickets::lang.escalatetickets') !!}</a></li>
+          </ul>
         </li>
-        <li class="treeview @yield('Themes')">
-            <a href="#">
-                <i class="fa fa-pie-chart"></i>
-                <span>{!! Lang::get('lang.widgets') !!}</span>
-                <i class="fa fa-angle-left pull-right"></i>
-            </a>
-            <ul class="treeview-menu">
-                <li @yield('widget')><a href="{{ url('widgets') }}"><i class="fa fa-list-alt"></i> {!! Lang::get('lang.widgets') !!}</a></li>
-                <li @yield('socail')><a href="{{ url('social-buttons') }}"><i class="fa fa-cubes"></i> {!! Lang::get('lang.social') !!}</a></li>
+
+        <li class="treeview @yield('Logs')">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>{!! Lang::get('core::lang.logs') !!}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li @yield('errorlogs')><a href="{{ url('/adminpanel/errorlogs') }}"><i class="fa fa-list-alt"></i> {!! Lang::get('core::lang.errorlogs') !!}</a></li>
+            <li @yield('joblogs')><a href="{{ url('/adminpanel/joblogs') }}"><i class="fa fa-list-alt"></i> {!! Lang::get('core::lang.joblogs') !!}</a></li>
+            <li @yield('activitylogs')><a href="{{ url('/adminpanel/activitylogs') }}"><i class="fa fa-list-alt"></i> {!! Lang::get('core::lang.activitylogs') !!}</a></li>
+            <li @yield('loginlogs')><a href="{{ url('/adminpanel/loginlogs') }}"><i class="fa fa-list-alt"></i> {!! Lang::get('core::lang.loginlogs') !!}</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview @yield('Cron')">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>{!! Lang::get('core::lang.cron') !!}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li @yield('cron')><a href="{{ url('/adminpanel/cronjobs') }}"><i class="fa fa-list-alt"></i> {!! Lang::get('core::lang.cronjobs') !!}</a></li>
+            <li @yield('cron')><a href="{{url('/adminpanel/job-scheduler')}}"><i class="fa fa-hourglass"></i>{!! Lang::get('core::lang.cron') !!}</a></li>
+            <li @yield('joblogs')><a href="{{ url('/adminpanel/joblogs') }}"><i class="fa fa-list-alt"></i> {!! Lang::get('core::lang.joblogs') !!}</a></li>
+          </ul>
+        </li>
 
 
+        <li class="treeview @yield('SLAplans')">
+          <a href="#">
+            <i class="fa fa-pie-chart"></i>
+            <span>{!! Lang::get('lang.widgets') !!}</span>
+            <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li @yield('slaplans')><a href="{{ url('/ticketspanel/slaplans') }}"><i class="fa fa-list-alt"></i> {!! Lang::get('tickets::lang.slaplans') !!}</a></li>
+            <li @yield('slaplanschedules')><a href="{{ url('ticketspanel/slaplanschedules') }}"><i class="fa fa-cubes"></i> {!! Lang::get('tickets::lang.slaplanschedules') !!}</a></li>
+          </ul>
+        </li>
 
-            </ul>
+        <li class="treeview @yield('KnowledgeBase')">
+          <a  href="#">
+            <i class="fa fa-users"></i> <span>{!! Lang::get('knowledgebase::lang.knowledgebase') !!}</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li @yield('kbsettings')><a href="{{ url('/kbpanel/kbsettings') }}"><i class="fa fa-user "></i>{!! Lang::get('knowledgebase::lang.kbsettings') !!}</a></li>
+            <li @yield('kbcategories')><a href="{{ url('/kbpanel/kbcategories') }}"><i class="fa fa-sitemap"></i>{!! Lang::get('knowledgebase::lang.kbcategories') !!}</a></li>
+            <li @yield('kbarticles')><a href="{{ url('/kbpanel/kbarticles') }}"><i class="fa fa-users"></i>{!! Lang::get('knowledgebase::lang.kbarticles') !!}</a></li>
+            <li @yield('kbtags')><a href="{{ url('/kbpanel/kbtags') }}"><i class="fa fa-users"></i>{!! Lang::get('knowledgebase::lang.kbtags') !!}</a></li>
+            <li @yield('kblinks')><a href="{{ url('/kbpanel/kblinks') }}"><i class="fa fa-users"></i>{!! Lang::get('knowledgebase::lang.kblinks') !!}</a></li>
+          </ul>
         </li>
-        <li class="treeview @yield('Plugins')">
-            <a href="{{ url('plugins') }}">
-                <i class="fa fa-plug"></i>
-                <span>{!! Lang::get('lang.plugin') !!}</span>
-                <!-- <i class="fa fa-angle-left pull-right"></i> -->
-            </a>
-            <!-- <ul class="treeview-menu">
-                <li @yield('plugin')><a href="{{ url('plugins') }}"><i class="fa fa-circle-o"></i>{!! Lang::get('lang.view-all')!!}</a></li>
-                <li @yield('a')><a href="#"><i class="fa fa-circle-o"></i>{!! Lang::get('lang.add-new')!!}</a></li>
-            
-            
-           
-            </ul> -->
+
+        <li class="treeview @yield('Troubleshooter')">
+          <a  href="#">
+            <i class="fa fa-users"></i> <span>{!! Lang::get('knowledgebase::lang.troubleshooter') !!}</span> <i class="fa fa-angle-left pull-right"></i>
+          </a>
+          <ul class="treeview-menu">
+            <li @yield('troubleshooter')><a href="{{ url('/kbpanel/troubleshooter') }}"><i class="fa fa-user "></i>{!! Lang::get('knowledgebase::lang.troubleshooter') !!}</a></li>
+          </ul>
         </li>
+
         </ul>
     </section>
-                                <!-- /.sidebar -->
+<!-- /.sidebar -->
 </aside>
 
 <!-- Right side column. Contains the navbar and content of the page -->
@@ -320,58 +410,54 @@
         <div class="tabs-pane @yield('dashboard-bar')" id="tabA">
           <ul class="nav navbar-nav">
             <li id="bar" @yield(
-            'dashboard') ><a href="{{url('dashboard')}}">{!! Lang::get('lang.dashboard') !!}</a></li>
+            'dashboard') ><a href="{{url('/adminpanel/')}}">{!! Lang::get('core::lang.dashboard') !!}</a></li>
             <li id="bar" @yield(
-            'profile') ><a href="{{url('profile')}}">{!! Lang::get('lang.profile') !!}</a></li>
+            'profile') ><a href="{{url('/staff/profile')}}">{!! Lang::get('core::lang.profile') !!}</a></li>
           </ul>
         </div>
         <div class="tabs-pane @yield('user-bar')" id="tabB">
           <ul class="nav navbar-nav">
             <li id="bar" @yield(
-            'user')><a href="{{ url('user') }}">{!! Lang::get('lang.user_directory') !!}</a></li></a></li>
+            'user')><a href="{{ url('/adminpanel/users/manage') }}">{!! Lang::get('lang.user_directory') !!}</a></li></a></li>
             <li id="bar" @yield(
-            'organizations')><a href="{{ url('organizations') }}">{!! Lang::get('lang.organizations')
+            'relations')><a href="{{ url('/relationspanel/') }}">{!! Lang::get('lang.relations')
               !!}</a></li></a></li>
           </ul>
         </div>
         <div class="tabs-pane @yield('ticket-bar')" id="tabC">
           <ul class="nav navbar-nav">
             <li id="bar" @yield(
-            'open')><a href="{{ url('/ticket/open') }}" id="load-open">{!! Lang::get('lang.open') !!}</a></li>
+            'open')><a href="{{ url('/tickets/open') }}" id="load-open">{!! Lang::get('lang.open') !!}</a></li>
             <li id="bar" @yield(
-            'answered')><a href="{{ url('/ticket/answered') }}" id="load-answered">{!! Lang::get('lang.answered')
+            'answered')><a href="{{ url('/tickets/answered') }}" id="load-answered">{!! Lang::get('lang.answered')
               !!}</a></li>
             <li id="bar" @yield(
-            'myticket')><a href="{{ url('/ticket/myticket') }}">{!! Lang::get('lang.my_tickets') !!}</a></li>
-            {{--
-            <li id="bar" @yield(
-            'ticket')><a href="{{ url('ticket') }}">Ticket</a></li> --}}
-            {{--
-            <li id="bar" @yield(
-            'overdue')><a href="{{ url('/ticket/overdue') }}">Overdue</a></li> --}}
-            <li id="bar" @yield(
-            'assigned')><a href="{{ url('/ticket/assigned') }}" id="load-assigned">{!! Lang::get('lang.assigned')
+            'myticket')><a href="{{ url('/tickets/mytickets') }}">{!! Lang::get('lang.my_tickets') !!}</a></li>
+
+            <li id="bar" @yield('ticket')><a href="{{ url('/tickets/') }}">Ticket</a></li>
+
+            <li id="bar" @yield('overdue')><a href="{{ url('/tickets/overdue') }}">Overdue</a></li>
+            <li id="bar" @yield('assigned')><a href="{{ url('/tickets/assigned') }}" id="load-assigned">{!! Lang::get('lang.assigned')
               !!}</a></li>
-            <li id="bar" @yield(
-            'closed')><a href="{{ url('/ticket/closed') }}">{!! Lang::get('lang.closed') !!}</a></li>
+            <li id="bar" @yield('closed')><a href="{{ url('/tickets/closed') }}">{!! Lang::get('lang.closed') !!}</a></li>
             <?php //if ($group->can_create_ticket == 1) {?>
             <li id="bar" @yield('newticket')><a
-                href="{{ url('/newticket') }}">{!! Lang::get('lang.create_ticket') !!}</a></li>
+                href="{{ url('/tickets/newticket') }}">{!! Lang::get('lang.create_ticket') !!}</a></li>
             <?php //} ?>
           </ul>
         </div>
         <div class="tabs-pane @yield('tools-bar')" id="tabD">
           <ul class="nav navbar-nav">
             <li id="bar" @yield('tools')><a
-                href="{{ url('/canned/list') }}">{!! Lang::get('lang.canned_response') !!}</a></li>
-            <li id="bar" @yield('kb')><a href="{{ url('/comment') }}">{!! Lang::get('lang.knowledge_base') !!}</a></li>
+                href="{{ url('/tickets/canned/list') }}">{!! Lang::get('tickets::lang.canned_response') !!}</a></li>
+            <li id="bar" @yield('kb')><a href="{{ url('/kbpanel/comments') }}">{!! Lang::get('lang.knowledge_base') !!}</a></li>
           </ul>
         </div>
         <div class="tabs-pane @yield('tools-bar')" id="tabE">
           <ul class="nav navbar-nav">
             <li id="bar" @yield('Settings')><a
-              href="{{ url('/adminpanel/settings') }}">{!! Lang::get('lang.settings') !!}</a></li>
-            <li id="bar" @yield('kb')><a href="{{ url('/knowledgebase') }}">{!! Lang::get('lang.knowledge_base') !!}</a></li>
+              href="{{ url('/adminpanel/settings') }}">{!! Lang::get('core::lang.settings') !!}</a></li>
+            <li id="bar" @yield('kb')><a href="{{ url('/kbpanel') }}">{!! Lang::get('knowledgebase::lang.knowledge_base') !!}</a></li>
           </ul>
         </div>
       </div>
@@ -387,141 +473,92 @@
   </section><!-- /.content -->
                                 <!-- /.content-wrapper -->
 </div>
-<footer class="main-footer">
-  <div class="pull-right hidden-xs">
-    <b>Version</b> {!! Config::get('app.version') !!}
-  </div>
-  <strong>{!! Lang::get('lang.copyright') !!} &copy; {!! date('Y') !!} <a href="#" target="_blank">company_name</a>.</strong> {!! Lang::get('lang.all_rights_reserved') !!}
-  . {!! Lang::get('lang.powered_by') !!} <a href="http://www.faveohelpdesk.com/" target="_blank">Faveo</a>
-</footer>
-</div><!-- ./wrapper -->
-{{-- // <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> --}}
-<!-- jQuery 2.1.3 -->
-<script src="{{asset("lb-faveo/js/ajax-jquery.min.js")}}"></script>
 
-{{-- // <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script> --}}
 
-<script src="{{asset("lb-faveo/js/bootstrap-datetimepicker4.7.14.min.js")}}" type="text/javascript"></script>
-<!-- Bootstrap 3.3.2 JS -->
-<script src="{{asset("lb-faveo/js/bootstrap.min.js")}}" type="text/javascript"></script>
-<!-- Slimscroll -->
-<script src="{{asset("lb-faveo/plugins/slimScroll/jquery.slimscroll.min.js")}}" type="text/javascript"></script>
-<!-- FastClick -->
-<script src="{{asset("lb-faveo/plugins/fastclick/fastclick.min.js")}}"></script>
-<!-- AdminLTE App -->
-<script src="{{asset("lb-faveo/js/app.min.js")}}" type="text/javascript"></script>
-<!-- AdminLTE for demo purposes -->
-{{-- // <script src="{{asset("dist/js/demo.js")}}" type="text/javascript"></script> --}}
-  <!-- iCheck -->
-<script src="{{asset("lb-faveo/plugins/iCheck/icheck.min.js")}}" type="text/javascript"></script>
-{{-- maskinput --}}
-{{-- // <script src="js/jquery.maskedinput.min.js" type="text/javascript"></script> --}}
-{{-- jquery ui --}}
-<script src="{{asset("lb-faveo/js/jquery.ui.js")}}" type="text/javascript"></script>
-<script src="{{asset("lb-faveo/plugins/datatables/dataTables.bootstrap.js")}}" type="text/javascript"></script>
-<script src="{{asset("lb-faveo/plugins/datatables/jquery.dataTables.js")}}" type="text/javascript"></script>
-<!-- Page Script -->
-<script src="{{asset("lb-faveo/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}" type="text/javascript"></script>
-{{-- // <script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script> --}}
-<script src="{{asset("lb-faveo/js/jquery.dataTables1.10.10.min.js")}}" type="text/javascript"></script>
 
-<script src="{{asset("lb-faveo/plugins/datatables/dataTables.bootstrap.js")}}" type="text/javascript"></script>
-<script src="{{asset("lb-faveo/js/jquery.rating.pack.js")}}" type="text/javascript"></script>
+  <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+          <b>Version</b> {!! Config::get('app.version') !!}
+      </div>
+      <strong>{!! Lang::get('lang.copyright') !!} &copy; {!! date('Y') !!}  <a href="#" target="_blank">company_name</a>.</strong> {!! Lang::get('lang.all_rights_reserved') !!}. {!! Lang::get('lang.powered_by') !!} <a href="http://www.faveohelpdesk.com/" target="_blank">Faveo</a>
+  </footer>
+                    </div><!-- ./wrapper -->
+                    <!-- jQuery 2.1.3 -->
+                    <script src="{{asset("lb-faveo/js/ajax-jquery.min.js")}}"></script>
+                    <!-- Bootstrap 3.3.2 JS -->
+                    <script src="{{asset("lb-faveo/js/bootstrap.min.js")}}" type="text/javascript"></script>
+                    <!-- Slimscroll -->
+                    <script src="{{asset("lb-faveo/plugins/slimScroll/jquery.slimscroll.min.js")}}" type="text/javascript"></script>
+                    <!-- FastClick -->
+                    <script src="{{asset("lb-faveo/plugins/fastclick/fastclick.min.js")}}"></script>
+                    <!-- AdminLTE App -->
+                    <script src="{{asset("lb-faveo/js/app.min.js")}}" type="text/javascript"></script>
+                    <!-- AdminLTE for demo purposes -->
+                    {{-- // <script src="{{asset("dist/js/demo.js")}}" type="text/javascript"></script> --}}
+                    <!-- iCheck -->
+                    <script src="{{asset("lb-faveo/plugins/iCheck/icheck.min.js")}}" type="text/javascript"></script>
+                    <script src="{{asset("lb-faveo/plugins/datatables/dataTables.bootstrap.js")}}" type="text/javascript"></script>
+                    <script src="{{asset("lb-faveo/plugins/datatables/jquery.dataTables.js")}}" type="text/javascript"></script>
+                    <!-- Page Script -->
+                    <script src="{{asset("lb-faveo/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}" type="text/javascript"></script>
+                    {{-- // <script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script> --}}
+                    <script src="{{asset("lb-faveo/js/jquery.dataTables1.10.10.min.js")}}"  type="text/javascript"></script>
+                    <script src="{{asset("lb-faveo/plugins/datatables/dataTables.bootstrap.js")}}"  type="text/javascript"></script>
+                    <script>
+                        $(function () {
+                        //Add text editor
+                        $("textarea").wysihtml5();
+                        });
 
-<script src="{{asset("lb-faveo/plugins/select2/select2.full.min.js")}}"></script>
-<script src="{{asset("lb-faveo/plugins/moment/moment.js")}}"></script>
-<script>
-  function myFunction() {
-
-    document.getElementById("count").innerHTML = "0";
-
-  }
-</script>
-<script>
-  $(document).ready(function () {
-
-    $('.noti_User').click(function () {
-      var id = this.id;
-      var dataString = 'id=' + id;
-      $.ajax
-      ({
-        type: "POST",
-        url: "{{url('mark-read')}}" + "/" + id,
-        data: dataString,
-        cache: false,
-        success: function (html) {
-//$(".city").html(html);
-        }
-      });
+$(function() {
+    //Enable iCheck plugin for checkboxes
+    //iCheck for checkbox and radio inputs
+    $('input[type="checkbox"]').iCheck({
+        checkboxClass: 'icheckbox_flat-blue',
+        radioClass: 'iradio_flat-blue'
     });
 
-  });
-</script>
-<script>
-  $(function () {
-    // Enable iCheck plugin for checkboxes
-    // iCheck for checkbox and radio inputs
-    // $('input[type="checkbox"]').iCheck({
-    // checkboxClass: 'icheckbox_flat-blue',
-    // radioClass: 'iradio_flat-blue'
-    // });
-    // Enable check and uncheck all functionality
-    $(".checkbox-toggle").click(function () {
-      var clicks = $(this).data('clicks');
-      if (clicks) {
-        //Uncheck all checkboxes
-        $("input[type='checkbox']", ".mailbox-messages").iCheck("uncheck");
-      } else {
-        //Check all checkboxes
-        $("input[type='checkbox']", ".mailbox-messages").iCheck("check");
-      }
-      $(this).data("clicks", !clicks);
+    //Enable check and uncheck all functionality
+    $(".checkbox-toggle").click(function() {
+        var clicks = $(this).data('clicks');
+        if (clicks) {
+            //Uncheck all checkboxes
+            $("input[type='checkbox']", ".mailbox-messages").iCheck("uncheck");
+        } else {
+            //Check all checkboxes
+            $("input[type='checkbox']", ".mailbox-messages").iCheck("check");
+        }
+        $(this).data("clicks", !clicks);
     });
 
     //Handle starring for glyphicon and font awesome
-    $(".mailbox-star").click(function (e) {
-      e.preventDefault();
-      //detect type
-      var $this = $(this).find("a > i");
-      var glyph = $this.hasClass("glyphicon");
-      var fa = $this.hasClass("fa");
-      //Switch states
-      if (glyph) {
-        $this.toggleClass("glyphicon-star");
-        $this.toggleClass("glyphicon-star-empty");
-      }
-      if (fa) {
-        $this.toggleClass("fa-star");
-        $this.toggleClass("fa-star-o");
-      }
+    $(".mailbox-star").click(function(e) {
+        e.preventDefault();
+        //detect type
+        var $this = $(this).find("a > i");
+        var glyph = $this.hasClass("glyphicon");
+        var fa = $this.hasClass("fa");
+
+        //Switch states
+        if (glyph) {
+            $this.toggleClass("glyphicon-star");
+            $this.toggleClass("glyphicon-star-empty");
+        }
+
+        if (fa) {
+            $this.toggleClass("fa-star");
+            $this.toggleClass("fa-star-o");
+        }
     });
-  });
+});
 </script>
-<script type="text/javascript">
-  //     $(document).ready(function() {
-  //         $("#content").Editor();
-  //     });
-  // </script>
 <!-- // <script src="../plugins/jQuery/jQuery-2.1.3.min.js"></script> -->
 <script src="{{asset("lb-faveo/js/tabby.js")}}"></script>
 <!-- // <script src="{{asset("dist/js/editor.js")}}"></script> -->
 <!-- CK Editor -->
 <!-- // <script src="{{asset("//cdn.ckeditor.com/4.4.3/standard/ckeditor.js")}}"></script> -->
-{{-- // <script src="{{asset("lb-faveo/downloads/CKEditor.js")}}"></script> --}}
 <script src="{{asset("lb-faveo/plugins/filebrowser/plugin.js")}}"></script>
-<script src="{{asset("lb-faveo/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}"
-        type="text/javascript"></script>
-<script>
-  // $(function () {
-  // //Add text editor
-  // $("textarea").wysihtml5();
-  // });
-</script>
-<script type="text/javascript">
-  $.ajaxSetup({
-    headers: {'X-CSRF-Token': $('meta[name=_token]').attr('content')}
-  });
-</script>
+
 @yield('FooterInclude')
 </body>
 </html>
