@@ -47,14 +47,31 @@ class LoginController extends Controller
   }
 
   /**
+   * Log the user out of the application.
+   *
+   * @return Response
+   */
+  public function getLogout()
+  {
+    Auth::logout();
+    //$this->auth->logout();
+    return redirect('/guestindex');
+  }
+
+
+
+  /**
    * Show the application's login form.
    *
    * @return \Illuminate\Http\Response
    */
   public function showLoginForm()
   {
-    return view('admin.auth.login');
+    return view('staff.auth.login');
   }
+
+
+
 
 
   /**
@@ -132,19 +149,25 @@ class LoginController extends Controller
       }*/
       //$this->guard = SessionGuard
       //dd(Auth::guard('staff')->user());
-      $user = $this->guard()->user();
-
-      $user = Auth::guard('staff')->user();
+      //$user = $this->guard('staff')->user();
       //Auth::guard($this->getGuard())->login();
       //dd($this->guard()->user()->name);
+      // #loggedOut: false
+
+
+      /*
+       *  The Attempt will return true if valid login! do some magic for admin role!
+       **/
+      $staff = new \Modules\Core\Models\Staff;
+      Auth::guard('staff')->setUser($staff);
+      Auth::guard('staff')->lastAttempted = $staff;
+      $user = Auth::guard('staff')->user();
       $this->username = $user->name;
       $this->role =$user->userRole->role->name;
 
       //Auth = AuthManager
       ////dd('do magic');
-      /*
-       *  The Attempt will return true if valid login! do some magic for admin role!
-       **/
+
       return redirect()->intended($this->redirectPath());
       //return $this->sendLoginResponse($request);
     }

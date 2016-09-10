@@ -1,7 +1,4 @@
 <?php
-
-Route::get('/staff/home', function () {
-echo "staff home";
-    dd(Auth::guard('staff')->user());
-});
-
+/*
+ *  NameSpace and MiddleWare (//'middleware' => 'staff', 'namespace' => '\Modules\Core\Http\Controllers') already applied in app / RouteServiceprovicer
+ **/

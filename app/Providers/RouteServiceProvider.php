@@ -53,8 +53,8 @@ class RouteServiceProvider extends ServiceProvider
   protected function mapStaffRoutes()
   {
     Route::group([
-      'middleware' => 'web',
-      'namespace' => $this->namespace,
+      //'middleware' => 'staff',
+      'namespace' => 'Modules\Core\Http\Controllers',
     ], function ($router) {
       require base_path('routes/staff.php');
     });
@@ -65,7 +65,7 @@ class RouteServiceProvider extends ServiceProvider
   {
     //['namespace' => 'Admin']
     Route::group([
-      'middleware' => 'web',
+      //'middleware' => 'staff',
       'namespace' => 'Modules\Core\Http\Controllers',
     ], function ($router) {
       require base_path('routes/admin.php');

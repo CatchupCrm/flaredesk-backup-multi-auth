@@ -2,6 +2,8 @@
 namespace App\Http\Controllers\StaffAuth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,18 +26,22 @@ class LoginController extends Controller
    *
    * @var string
    */
-  public $redirectTo = '/staff/home';
+  public $redirectTo = '/staffpanel';
+
+  // if auth is user
+  protected $redirectToUser = '/profile';
+  /* Direct After Logout */
+  protected $redirectAfterLogout = '/';
+  protected $loginPath = '/login';
 
   /**
    * Create a new controller instance.
-   *
-   * @return void
    */
-  public function __construct()
+  public function __construct(Guard $auth)
   {
+    $this->auth = $auth;
     $this->middleware('guest', ['except' => 'logout']);
   }
-
 
   /**
    * Log the user out of the application.

@@ -10,18 +10,13 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-
-Route::group(['prefix' => '/adminpanel','middleware' => 'staff'], function() {
+//'middleware' => 'staff'
+Route::group(['prefix' => '/adminpanel'], function() {
   /**
    * MAIN
    */
   Route::get('/', 'PagesController@backenddashboard');
   Route::get('dashboard', 'PagesController@dashboard')->name('dashboard');
-
-
-
-
-
 
   /**
    * DEPARTMENTS
@@ -39,8 +34,12 @@ Route::group(['prefix' => '/adminpanel','middleware' => 'staff'], function() {
    */
   Route::resource('users', 'UsersController');
   Route::get('users/', 'UsersController@index')->name('users.index');
-
-
-
-
 });
+
+
+Route::group(['prefix' => '/staffpanel'], function () {
+  Route::get('/', ['as' => 'staffdashboard', 'uses' => 'DashBoardController@staffdashboard']);
+  Route::get('dashboard', 'DashBoardController@staffdashboard')->name('staffpaneldashboard');
+  // append
+});
+

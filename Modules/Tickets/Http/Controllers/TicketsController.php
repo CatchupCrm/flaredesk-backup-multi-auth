@@ -215,6 +215,17 @@ class TicketsController extends Controller
     return redirect()->back();
   }
 
+  public function openticketsperdepartment($department = null)
+  {
+  }
+
+  public function inprogressticketsperdepartment($department = null)
+  {
+  }
+
+  public function closedticketsperdepartment($department = null)
+  {
+  }
 
   /**
    * select_all.

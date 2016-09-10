@@ -16,13 +16,9 @@ class RedirectIfNotStaff
    */
   public function handle($request, Closure $next, $guard = 'staff')
   {
-
-    echo "RedirectIfNotStaff file RedirectIfNotStaff LINE 20";
-    dd(Auth::guard($guard));
-/*
     if (!Auth::guard($guard)->check()) {
-      return redirect('staffloginnostaff');
-    }*/
+      return redirect('/');
+    }
     return $next($request);
   }
 }

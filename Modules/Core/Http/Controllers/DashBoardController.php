@@ -10,12 +10,19 @@ class DashBoardController extends Controller
 {
   public function __construct()
   {
-      dd(Auth::guard('staff')->user());
-    $this->middleware('staff');
+    //$this->middleware('auth');
   }
 
   public function index()
   {
     return view('core::admin.admindashboard');
   }
+
+
+  public function staffdashboard()
+  {
+    return view('core::staff.staffdashboard');
+  }
+
+
 }
