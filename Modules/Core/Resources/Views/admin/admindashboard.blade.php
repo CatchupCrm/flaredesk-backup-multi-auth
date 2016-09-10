@@ -1,4 +1,15 @@
 @extends('core::adminlayouts.adminmaster')
+@section('Dashboard')
+class="active"
+@stop
+
+@section('dashboard-bar')
+active
+@stop
+
+@section('dashboard')
+class="active"
+@stop
 
 @section('content')
   <script>

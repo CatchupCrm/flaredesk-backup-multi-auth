@@ -13,7 +13,7 @@ class DashBoardController extends Controller
     //$this->middleware('auth');
   }
 
-  public function index()
+  public function admindashboard()
   {
     return view('core::admin.admindashboard');
   }

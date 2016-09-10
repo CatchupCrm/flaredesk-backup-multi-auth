@@ -15,8 +15,9 @@ Route::group(['prefix' => '/adminpanel'], function() {
   /**
    * MAIN
    */
-  Route::get('/', 'PagesController@backenddashboard');
-  Route::get('dashboard', 'PagesController@dashboard')->name('dashboard');
+  Route::get('/', ['as' => 'admindashboard', 'uses' => 'DashBoardController@admindashboard']);
+  Route::get('dashboard', 'DashBoardController@admindashboard')->name('adminpaneldashboard');
+  Route::get('getdiagno', 'TemplateController@formDiagno'); // for getting form for diagnostic
 
   /**
    * DEPARTMENTS

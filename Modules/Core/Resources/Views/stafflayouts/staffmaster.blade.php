@@ -110,7 +110,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
 
-          <li><a href="{{url('admin')}}">admin_panel</a></li>
+          <li><a href="{{url('/adminpanel')}}">admin_panel</a></li>
 
             <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
