@@ -10,7 +10,7 @@ class DashBoardController extends Controller
 {
   public function __construct()
   {
-    //  dd(Auth::guard('admin')->user());
+      dd(Auth::guard('staff')->user());
     $this->middleware('staff');
   }
 

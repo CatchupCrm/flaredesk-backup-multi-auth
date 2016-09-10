@@ -41,7 +41,7 @@ class PagesController extends Controller
     $this->leads = $leads;
   }
 
-  public function dashboard()
+  public function hellodashboard()
   {
     /**
      * Other Statistics

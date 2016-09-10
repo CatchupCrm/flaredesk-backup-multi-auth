@@ -41,7 +41,7 @@
 <body>
 <div id="wrapper">
   <div class="navbar navbar-default navbar-top">
-    <!--NOTIFICATIONS START-->
+    <!--NOTIFICATIONS (resources views master) START-->
     <div class="dropdown">
       <a id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
         <i class="glyphicon glyphicon-bell"><span id="notifycount"></span></i>

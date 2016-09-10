@@ -11,11 +11,11 @@
 |
 */
 
-Route::group(['prefix' => ''], function() {
+Route::group(['prefix' => '/adminpanel','middleware' => 'staff'], function() {
   /**
    * MAIN
    */
-  Route::get('/', 'PagesController@dashboard');
+  Route::get('/', 'PagesController@backenddashboard');
   Route::get('dashboard', 'PagesController@dashboard')->name('dashboard');
 
 

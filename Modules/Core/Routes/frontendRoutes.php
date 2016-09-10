@@ -21,10 +21,13 @@ Route::group(['middleware' => 'web'], function () {
   Route::get('login', '\App\Http\Controllers\Auth\AuthController@showLoginForm');
   Route::post('login', '\App\Http\Controllers\Auth\AuthController@login');
 
-  Route::get('stafflogin', '\App\Http\Controllers\Auth\StaffController@showStaffLoginForm');
+
+  Route::get('stafflogin', '\App\Http\Controllers\StaffAuth\LoginController@showStaffLoginForm');
   Route::post('stafflogin', '\App\Http\Controllers\Auth\StaffController@postStaffLogin');
 
-  Route::get('logout', '\App\Http\Controllers\Auth\AuthController@logout');
+  Route::get('staff/logout', '\App\Http\Controllers\StaffAuth\LoginController@getLogout');
+
+  Route::get('logout', 'App\Http\Controllers\Auth\AuthController@logout');
 
   // Registration Routes...
   Route::get('register', 'App\Http\Controllers\Auth\AuthController@showRegistrationForm');

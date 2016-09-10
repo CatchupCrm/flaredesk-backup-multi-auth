@@ -35,7 +35,7 @@ Route::get('admin/password/reset/{token}', 'AdminAuth\ResetPasswordController@sh
 //Staff Login
 Route::get('staff/login', 'StaffAuth\LoginController@showLoginForm');
 Route::post('staff/login', 'StaffAuth\LoginController@login');
-Route::get('staff/logout', 'StaffAuth\LoginController@logout');
+Route::get('staff/logout', 'StaffAuth\LoginController@getLogmeout');
 
 //Staff Register
 Route::get('staff/register', 'StaffAuth\RegisterController@showRegistrationForm');

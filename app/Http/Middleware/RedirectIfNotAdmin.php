@@ -16,8 +16,9 @@ class RedirectIfNotAdmin
    */
   public function handle($request, Closure $next, $guard = 'admin')
   {
-    echo "guard";
+    echo "RedirectIfNotAdmin";
     dd(Auth::guard());
+    exit;
     //setUser
 /*    if (!Auth::guard($guard)->check()) {
       return redirect('/noadminmaybe');
