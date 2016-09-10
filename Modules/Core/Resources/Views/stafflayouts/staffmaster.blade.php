@@ -86,9 +86,9 @@
   <a href="http://www.faveohelpdesk.com" class="logo"><img src="{{ asset('lb-faveo/media/images/logo.png') }}"
                                                            width="100px;"></a>
   <?php
-/*  $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first();
-  if ($company != null) {
-  }*/
+  /*  $company = App\Model\helpdesk\Settings\Company::where('id', '=', '1')->first();
+    if ($company != null) {
+    }*/
   ?>
     <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">
@@ -110,78 +110,78 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
 
-          <li><a href="{{url('/adminpanel')}}">admin_panel</a></li>
+        <li><a href="{{url('/adminpanel')}}">Admin Panel</a></li>
 
-            <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown notifications-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="myFunction()">
-              <i class="fa fa-bell-o"></i>
-              <span class="label label-warning" id="count">count $notifications</span>
-            </a>
-            <ul class="dropdown-menu">
-              <li class="header">You have count($notifications) notifications</li>
-              <li>
+        <!-- User Account: style can be found in dropdown.less -->
+        <li class="dropdown notifications-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="myFunction()">
+            <i class="fa fa-bell-o"></i>
+            <span class="label label-warning" id="count">count $notifications</span>
+          </a>
+          <ul class="dropdown-menu">
+            <li class="header">You have count($notifications) notifications</li>
+            <li>
 
-                <ul class="menu">
-                  {{--@foreach($notifications as $notification)
-                    @if($notification->type == 'registration')
-                      <li>
-                        <a href="{!! route('user.show', $notification->model_id) !!}"
-                           id="{{$notification->notification_id}}" class='noti_User'>
-                          <i class="{!! $notification->icon_class !!}"></i> {!! $notification->message !!}
-                        </a>
-                      </li>
-                    @else
-                      <li>
-                        <a href="{!! route('ticket.thread', $notification->model_id) !!}"
-                           id='{{ $notification->notification_id}}' class='noti_User'>
-                          <i class="{!! $notification->icon_class !!}"></i> {!! $notification->message !!}
-                        </a>
-                      </li>
-                    @endif
-                  @endforeach--}}
+              <ul class="menu">
+                {{--@foreach($notifications as $notification)
+                  @if($notification->type == 'registration')
+                    <li>
+                      <a href="{!! route('user.show', $notification->model_id) !!}"
+                         id="{{$notification->notification_id}}" class='noti_User'>
+                        <i class="{!! $notification->icon_class !!}"></i> {!! $notification->message !!}
+                      </a>
+                    </li>
+                  @else
+                    <li>
+                      <a href="{!! route('ticket.thread', $notification->model_id) !!}"
+                         id='{{ $notification->notification_id}}' class='noti_User'>
+                        <i class="{!! $notification->icon_class !!}"></i> {!! $notification->message !!}
+                      </a>
+                    </li>
+                  @endif
+                @endforeach--}}
 
-                </ul>
-              </li>
-              <li class="footer"><a href="/notifications-list">View all</a>
-              </li>
+              </ul>
+            </li>
+            <li class="footer"><a href="/notifications-list">View all</a>
+            </li>
 
-            </ul>
-          </li>
+          </ul>
+        </li>
 
-          <!-- User Account: style can be found in dropdown.less -->
-          <li class="dropdown user user-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <!-- User Account: style can be found in dropdown.less -->
+        <li class="dropdown user user-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-                <img src="#" class="user-image" alt="User Image"/>
+            <img src="#" class="user-image" alt="User Image"/>
 
-                <span class="hidden-xs">first_name last_name</span>
+            <span class="hidden-xs">first_name last_name</span>
 
-            </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header" style="background-color:#343F44;">
+          </a>
+          <ul class="dropdown-menu">
+            <!-- User image -->
+            <li class="user-header" style="background-color:#343F44;">
 
-                <img src="#" class="img-circle" alt="User Image"/>
+              <img src="#" class="img-circle" alt="User Image"/>
 
-                <p>
-                  first_name last_name - role
-                  <small></small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer" style="background-color:#1a2226;">
-                <div class="pull-left">
-                  <a href="/staff-profile"
-                     class="btn btn-info btn-sm"><b>{!! Lang::get('lang.profile') !!}</b></a>
-                </div>
-                <div class="pull-right">
-                  <a href="/auth/logout/"
-                     class="btn btn-danger btn-sm"><b>{!! Lang::get('lang.sign_out') !!}</b></a>
-                </div>
-              </li>
-            </ul>
-          </li>
+              <p>
+                first_name last_name - role
+                <small></small>
+              </p>
+            </li>
+            <!-- Menu Footer-->
+            <li class="user-footer" style="background-color:#1a2226;">
+              <div class="pull-left">
+                <a href="/staff-profile"
+                   class="btn btn-info btn-sm"><b>{!! Lang::get('lang.profile') !!}</b></a>
+              </div>
+              <div class="pull-right">
+                <a href="/auth/logout/"
+                   class="btn btn-danger btn-sm"><b>{!! Lang::get('lang.sign_out') !!}</b></a>
+              </div>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
 
@@ -234,49 +234,49 @@
       <?php
 
 
-/*      if (Auth::user()->role == 'admin') {
-        //$inbox = App\Model\helpdesk\Ticket\Tickets::all();
-        $myticket = App\Model\helpdesk\Ticket\Tickets::where('assigned_to', Auth::user()->id)->where('status', '1')->get();
-        $unassigned = App\Model\helpdesk\Ticket\Tickets::where('assigned_to', '=', null)->where('status', '=', '1')->get();
-        $tickets = App\Model\helpdesk\Ticket\Tickets::where('status', '1')->get();
-        $deleted = App\Model\helpdesk\Ticket\Tickets::where('status', '5')->get();
-      } elseif (Auth::user()->role == 'agent') {
-        //$inbox = App\Model\helpdesk\Ticket\Tickets::where('dept_id','',Auth::user()->primary_dpt)->get();
-        $myticket = App\Model\helpdesk\Ticket\Tickets::where('assigned_to', Auth::user()->id)->where('status', '1')->get();
-        $unassigned = App\Model\helpdesk\Ticket\Tickets::where('assigned_to', '=', null)->where('status', '=', '1')->where('dept_id', '=', Auth::user()->primary_dpt)->get();
-        $tickets = App\Model\helpdesk\Ticket\Tickets::where('status', '1')->where('dept_id', '=', Auth::user()->primary_dpt)->get();
-        $deleted = App\Model\helpdesk\Ticket\Tickets::where('status', '5')->where('dept_id', '=', Auth::user())->get();
-      }
-      if (Auth::user()->role == 'agent') {
-        $dept = App\Model\helpdesk\Agent\Department::where('id', '=', Auth::user()->primary_dpt)->first();
-        $overdues = App\Model\helpdesk\Ticket\Tickets::where('status', '=', 1)->where('isanswered', '=', 0)->where('dept_id', '=', $dept->id)->orderBy('id', 'DESC')->get();
-      } else {
-        $overdues = App\Model\helpdesk\Ticket\Tickets::where('status', '=', 1)->where('isanswered', '=', 0)->orderBy('id', 'DESC')->get();
-      }*/
+      /*      if (Auth::user()->role == 'admin') {
+              //$inbox = App\Model\helpdesk\Ticket\Tickets::all();
+              $myticket = App\Model\helpdesk\Ticket\Tickets::where('assigned_to', Auth::user()->id)->where('status', '1')->get();
+              $unassigned = App\Model\helpdesk\Ticket\Tickets::where('assigned_to', '=', null)->where('status', '=', '1')->get();
+              $tickets = App\Model\helpdesk\Ticket\Tickets::where('status', '1')->get();
+              $deleted = App\Model\helpdesk\Ticket\Tickets::where('status', '5')->get();
+            } elseif (Auth::user()->role == 'agent') {
+              //$inbox = App\Model\helpdesk\Ticket\Tickets::where('dept_id','',Auth::user()->primary_dpt)->get();
+              $myticket = App\Model\helpdesk\Ticket\Tickets::where('assigned_to', Auth::user()->id)->where('status', '1')->get();
+              $unassigned = App\Model\helpdesk\Ticket\Tickets::where('assigned_to', '=', null)->where('status', '=', '1')->where('dept_id', '=', Auth::user()->primary_dpt)->get();
+              $tickets = App\Model\helpdesk\Ticket\Tickets::where('status', '1')->where('dept_id', '=', Auth::user()->primary_dpt)->get();
+              $deleted = App\Model\helpdesk\Ticket\Tickets::where('status', '5')->where('dept_id', '=', Auth::user())->get();
+            }
+            if (Auth::user()->role == 'agent') {
+              $dept = App\Model\helpdesk\Agent\Department::where('id', '=', Auth::user()->primary_dpt)->first();
+              $overdues = App\Model\helpdesk\Ticket\Tickets::where('status', '=', 1)->where('isanswered', '=', 0)->where('dept_id', '=', $dept->id)->orderBy('id', 'DESC')->get();
+            } else {
+              $overdues = App\Model\helpdesk\Ticket\Tickets::where('status', '=', 1)->where('isanswered', '=', 0)->orderBy('id', 'DESC')->get();
+            }*/
 
 
 
-/*      $i = count($overdues);
-      if ($i == 0) {
-        $overdue_ticket = 0;
-      } else {
-        $j = 0;
-        foreach ($overdues as $overdue) {
-          $sla_plan = App\Model\helpdesk\Manage\Sla_plan::where('id', '=', $overdue->sla)->first();
-          $ovadate = $overdue->created_at;
-          $new_date = date_add($ovadate, date_interval_create_from_date_string($sla_plan->grace_period)) . '<br/><br/>';
-          if (date('Y-m-d H:i:s') > $new_date) {
-            $j++;
-            //$value[] = $overdue;
-          }
-        }
-        // dd(count($value));
-        if ($j > 0) {
-          $overdue_ticket = $j;
-        } else {
-          $overdue_ticket = 0;
-        }
-      }*/
+      /*      $i = count($overdues);
+            if ($i == 0) {
+              $overdue_ticket = 0;
+            } else {
+              $j = 0;
+              foreach ($overdues as $overdue) {
+                $sla_plan = App\Model\helpdesk\Manage\Sla_plan::where('id', '=', $overdue->sla)->first();
+                $ovadate = $overdue->created_at;
+                $new_date = date_add($ovadate, date_interval_create_from_date_string($sla_plan->grace_period)) . '<br/><br/>';
+                if (date('Y-m-d H:i:s') > $new_date) {
+                  $j++;
+                  //$value[] = $overdue;
+                }
+              }
+              // dd(count($value));
+              if ($j > 0) {
+                $overdue_ticket = $j;
+              } else {
+                $overdue_ticket = 0;
+              }
+            }*/
 
 
       ?>
@@ -312,24 +312,23 @@
       </li>
       <li class="header">{!! Lang::get('lang.Departments') !!}</li>
       <?php
-/*      $depts = App\Model\helpdesk\Agent\Department::all();
-      foreach ($depts as $dept) {
-      $open = App\Model\helpdesk\Ticket\Tickets::where('status', '=', '1')->where('isanswered', '=', 0)->where('dept_id', '=', $dept->id)->get();
-      $open = count($open);
-      $underprocess = App\Model\helpdesk\Ticket\Tickets::where('status', '=', '1')->where('assigned_to', '>', 0)->where('dept_id', '=', $dept->id)->get();
-      $underprocess = count($underprocess);
-      $closed = App\Model\helpdesk\Ticket\Tickets::where('status', '=', '2')->where('dept_id', '=', $dept->id)->get();
-      $closed = count($closed);
-      // $underprocess = 0;
-      // foreach ($inbox as $ticket4) {
-      //  if ($ticket4->assigned_to == null) {
-      //  } else {
-      //      $underprocess++;
-      //  }
-      // }
-      if (Auth::user()->role == 'admin') {*/
+      /*      $depts = App\Model\helpdesk\Agent\Department::all();
+            foreach ($depts as $dept) {
+            $open = App\Model\helpdesk\Ticket\Tickets::where('status', '=', '1')->where('isanswered', '=', 0)->where('dept_id', '=', $dept->id)->get();
+            $open = count($open);
+            $underprocess = App\Model\helpdesk\Ticket\Tickets::where('status', '=', '1')->where('assigned_to', '>', 0)->where('dept_id', '=', $dept->id)->get();
+            $underprocess = count($underprocess);
+            $closed = App\Model\helpdesk\Ticket\Tickets::where('status', '=', '2')->where('dept_id', '=', $dept->id)->get();
+            $closed = count($closed);
+            // $underprocess = 0;
+            // foreach ($inbox as $ticket4) {
+            //  if ($ticket4->assigned_to == null) {
+            //  } else {
+            //      $underprocess++;
+            //  }
+            // }
+            if (Auth::user()->role == 'admin') {*/
       ?>
-
 
 
       <li class="treeview">
@@ -403,16 +402,19 @@
             <li id="bar" @yield(
             'closed')><a href="{{ url('/ticket/closed') }}">{!! Lang::get('lang.closed') !!}</a></li>
             <?php //if ($group->can_create_ticket == 1) {?>
-            <li id="bar" @yield('newticket')><a
-                href="{{ url('/newticket') }}">{!! Lang::get('lang.create_ticket') !!}</a></li>
+            <li id="bar" @yield(
+            'newticket')><a
+              href="{{ url('/newticket') }}">{!! Lang::get('lang.create_ticket') !!}</a></li>
             <?php //} ?>
           </ul>
         </div>
         <div class="tabs-pane @yield('tools-bar')" id="tabD">
           <ul class="nav navbar-nav">
-            <li id="bar" @yield('tools')><a
-                href="{{ url('/canned/list') }}">{!! Lang::get('lang.canned_response') !!}</a></li>
-            <li id="bar" @yield('kb')><a href="{{ url('/comment') }}">{!! Lang::get('lang.knowledge_base') !!}</a></li>
+            <li id="bar" @yield(
+            'tools')><a
+              href="{{ url('/canned/list') }}">{!! Lang::get('lang.canned_response') !!}</a></li>
+            <li id="bar" @yield(
+            'kb')><a href="{{ url('/comment') }}">{!! Lang::get('lang.knowledge_base') !!}</a></li>
           </ul>
         </div>
       </div>
@@ -431,51 +433,103 @@
   <div class="pull-right hidden-xs">
     <b>Version</b> {!! Config::get('app.version') !!}
   </div>
-  <strong>{!! Lang::get('lang.copyright') !!} &copy; {!! date('Y') !!} <a href="#" target="_blank">company_name</a>.</strong> {!! Lang::get('lang.all_rights_reserved') !!}
+  <strong>{!! Lang::get('lang.copyright') !!} &copy; {!! date('Y') !!} <a href="#"
+                                                                          target="_blank">company_name</a>.</strong> {!!
+  Lang::get('lang.all_rights_reserved') !!}
   . {!! Lang::get('lang.powered_by') !!} <a href="http://www.faveohelpdesk.com/" target="_blank">Faveo</a>
 </footer>
 </div><!-- ./wrapper -->
-{{-- // <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> --}}
+{{-- //
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+--}}
 
-<script src="{{asset("lb-faveo/js/ajax-jquery.min.js")}}"></script>
+<script src="{{asset(" lb-faveo
+/js/ajax-jquery.min.js")}}"></script>
 
-{{-- // <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script> --}}
+{
+  {
+    -- // <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+--}}
 
-<script src="{{asset("lb-faveo/js/bootstrap-datetimepicker4.7.14.min.js")}}" type="text/javascript"></script>
+<script src="{{asset(" lb-faveo
+/js/bootstrap-datetimepicker4.7.14.min.js")}}" type="text/javascript"></script>
 <!-- Bootstrap 3.3.2 JS -->
-<script src="{{asset("lb-faveo/js/bootstrap.min.js")}}" type="text/javascript"></script>
+<
+script
+src = "{{asset("
+lb - faveo / js / bootstrap.min.js
+")}}"
+type = "text/javascript" ></script>
 <!-- Slimscroll -->
-<script src="{{asset("lb-faveo/plugins/slimScroll/jquery.slimscroll.min.js")}}" type="text/javascript"></script>
+<script src="{{asset(" lb-faveo
+/plugins/slimScroll/jquery.slimscroll.min.js")}}" type="text/javascript"></script>
 <!-- FastClick -->
-<script src="{{asset("lb-faveo/plugins/fastclick/fastclick.min.js")}}"></script>
+<
+script
+src = "{{asset("
+lb - faveo / plugins / fastclick / fastclick.min.js
+")}}" ></script>
 <!-- AdminLTE App -->
-<script src="{{asset("lb-faveo/js/app.min.js")}}" type="text/javascript"></script>
+<script src="{{asset(" lb-faveo
+/js/app.min.js")}}" type="text/javascript"></script>
 <!-- AdminLTE for demo purposes -->
-{{-- // <script src="{{asset("dist/js/demo.js")}}" type="text/javascript"></script> --}}
-  <!-- iCheck -->
-<script src="{{asset("lb-faveo/plugins/iCheck/icheck.min.js")}}" type="text/javascript"></script>
-{{-- maskinput --}}
-{{-- // <script src="js/jquery.maskedinput.min.js" type="text/javascript"></script> --}}
+{
+  {
+    -- // <script src="{{asset("dist/js/demo.js")}}" type="text/javascript"></script> --}}
+<!-- iCheck -->
+<script src="{{asset(" lb-faveo
+/plugins/iCheck/icheck.min.js")}}" type="text/javascript"></script>
+{
+  {
+    --maskinput--
+  }
+}
+{
+  {
+    -- // <script src="js/jquery.maskedinput.min.js" type="text/javascript"></script> --}}
 {{-- jquery ui --}}
-<script src="{{asset("lb-faveo/js/jquery.ui.js")}}" type="text/javascript"></script>
-<script src="{{asset("lb-faveo/plugins/datatables/dataTables.bootstrap.js")}}" type="text/javascript"></script>
-<script src="{{asset("lb-faveo/plugins/datatables/jquery.dataTables.js")}}" type="text/javascript"></script>
+<script src="{{asset(" lb-faveo
+/js/jquery.ui.js")}}" type="text/javascript"></script>
+<
+script
+src = "{{asset("
+lb - faveo / plugins / datatables / dataTables.bootstrap.js
+")}}"
+type = "text/javascript" ></script>
+<script src="{{asset(" lb-faveo
+/plugins/datatables/jquery.dataTables.js")}}" type="text/javascript"></script>
 <!-- Page Script -->
 
-{{-- // <script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script> --}}
-<script type="text/javascript" src="{{asset("lb-faveo/js/jquery.dataTables1.10.10.min.js")}}"></script>
+{
+  {
+    -- // <script type="text/javascript" src="https://cdn.datatables.net/1.10.10/js/jquery.dataTables.min.js"></script>
+--}}
+<script type="text/javascript" src="{{asset(" lb-faveo
+/js/jquery.dataTables1.10.10.min.js")}}"></script>
 
-<script type="text/javascript" src="{{asset("lb-faveo/plugins/datatables/dataTables.bootstrap.js")}}"></script>
-<script src="{{asset("lb-faveo/js/jquery.rating.pack.js")}}" type="text/javascript"></script>
+<
+script
+type = "text/javascript"
+src = "{{asset("
+lb - faveo / plugins / datatables / dataTables.bootstrap.js
+")}}" ></script>
+<script src="{{asset(" lb-faveo
+/js/jquery.rating.pack.js")}}" type="text/javascript"></script>
 
-<script src="{{asset("lb-faveo/plugins/select2/select2.full.min.js")}}"></script>
-<script src="{{asset("lb-faveo/plugins/moment/moment.js")}}"></script>
-<script>
-  function myFunction() {
+<
+script
+src = "{{asset("
+lb - faveo / plugins / select2 / select2.full.min.js
+")}}" ></script>
+<script src="{{asset(" lb-faveo
+/plugins/moment/moment.js")}}"></script>
+<
+script >
+function myFunction() {
 
-    document.getElementById("count").innerHTML = "0";
+  document.getElementById("count").innerHTML = "0";
 
-  }
+}
 </script>
 <script>
   $(document).ready(function () {
@@ -543,19 +597,31 @@
   //     });
   // </script>
 <!-- // <script src="../plugins/jQuery/jQuery-2.1.3.min.js"></script> -->
-<script src="{{asset("lb-faveo/js/tabby.js")}}"></script>
-<!-- // <script src="{{asset("dist/js/editor.js")}}"></script> -->
+<script src="{{asset(" lb-faveo
+/js/tabby.js")}}"></script>
+<
+!-- // <script src="{{asset("dist/js/editor.js")}}"></script> -->
 <!-- CK Editor -->
 <!-- // <script src="{{asset("//cdn.ckeditor.com/4.4.3/standard/ckeditor.js")}}"></script> -->
-{{-- // <script src="{{asset("lb-faveo/downloads/CKEditor.js")}}"></script> --}}
-<script src="{{asset("lb-faveo/plugins/filebrowser/plugin.js")}}"></script>
-<script src="{{asset("lb-faveo/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}"
-        type="text/javascript"></script>
-<script>
-  // $(function () {
-  // //Add text editor
-  // $("textarea").wysihtml5();
-  // });
+{{-- //
+<script src="{{asset(" lb-faveo
+/downloads/CKEditor.js")}}"></script> --
+}
+}
+<
+script
+src = "{{asset("
+lb - faveo / plugins / filebrowser / plugin.js
+")}}" ></script>
+<script src="{{asset(" lb-faveo
+/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js")}}"
+type="text/javascript"></script>
+<
+script >
+// $(function () {
+// //Add text editor
+// $("textarea").wysihtml5();
+// });
 </script>
 <script type="text/javascript">
   $.ajaxSetup({

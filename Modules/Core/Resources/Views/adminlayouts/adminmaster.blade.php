@@ -99,12 +99,15 @@
 <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-collapse">
       <ul class="tabs tabs-horizontal nav navbar-nav navbar-left">
-        <li @yield('settings')><a href="{!! url('admin') !!}">{!! Lang::get('lang.home') !!}</a></li>
+
+        <li @yield('Dashboard')><a data-target="#tabA" href="#">dashboard</a></li>
+        <li @yield('Users')><a data-target="#tabB" href="#">users</a></li>
+        <li @yield('Tickets')><a data-target="#tabC" href="#">tickets</a></li>
+        <li @yield('Tools')><a data-target="#tabD" href="#">tools</a></li>
+        <li @yield('Settings')><a data-target="#tabE" href="{!! url('/adminpanel/settings') !!}">{!! Lang::get('lang.settings') !!}</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-
           <li><a href="{{url('staffpanel')}}">staff panel</a></li>
-
             <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="myFunction()">
@@ -175,7 +178,6 @@
           </li>
       </ul>
     </div>
-
   </nav>
                             </header>
                             <!-- Left side column. contains the logo and sidebar -->
@@ -226,7 +228,7 @@
                 <li @yield('groups')><a href="{{ url('groups') }}"><i class="fa fa-users"></i>{!! Lang::get('lang.groups') !!}</a></li>
             </ul>
         </li>
-      
+
        <li class="treeview @yield('Emails')">
             <a href="#">
                 <i class="fa fa-envelope-o"></i>
@@ -244,7 +246,7 @@
                 <!-- <li><a href="#"><i class="fa fa-circle-o"></i> Log</a></li> -->
             </ul>
         </li>
-        
+
         <li class="treeview @yield('Manage')">
             <a href="#">
                 <i class="fa  fa-cubes"></i>
@@ -258,7 +260,7 @@
                 <li @yield('workflow')><a href="{{url('workflow')}}"><i class="fa fa-sitemap"></i>{!! Lang::get('lang.workflow') !!}</a></li>
             </ul>
         </li>
-        
+
         <li class="treeview @yield('Settings')">
             <a href="#">
                 <i class="fa fa-cog"></i>
@@ -285,9 +287,9 @@
             <ul class="treeview-menu">
                 <li @yield('widget')><a href="{{ url('widgets') }}"><i class="fa fa-list-alt"></i> {!! Lang::get('lang.widgets') !!}</a></li>
                 <li @yield('socail')><a href="{{ url('social-buttons') }}"><i class="fa fa-cubes"></i> {!! Lang::get('lang.social') !!}</a></li>
-              
-            
-           
+
+
+
             </ul>
         </li>
         <li class="treeview @yield('Plugins')">
@@ -363,6 +365,13 @@
             <li id="bar" @yield('tools')><a
                 href="{{ url('/canned/list') }}">{!! Lang::get('lang.canned_response') !!}</a></li>
             <li id="bar" @yield('kb')><a href="{{ url('/comment') }}">{!! Lang::get('lang.knowledge_base') !!}</a></li>
+          </ul>
+        </div>
+        <div class="tabs-pane @yield('tools-bar')" id="tabE">
+          <ul class="nav navbar-nav">
+            <li id="bar" @yield('Settings')><a
+              href="{{ url('/adminpanel/settings') }}">{!! Lang::get('lang.settings') !!}</a></li>
+            <li id="bar" @yield('kb')><a href="{{ url('/knowledgebase') }}">{!! Lang::get('lang.knowledge_base') !!}</a></li>
           </ul>
         </div>
       </div>
